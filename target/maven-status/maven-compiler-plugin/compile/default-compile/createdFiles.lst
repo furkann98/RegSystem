@@ -1,5 +1,8 @@
 org/groupId/controllers/TestController.class
 module-info.class
+org/groupId/models/Billett.class
+org/groupId/models/Lokale.class
 org/groupId/RegSystem.class
 org/groupId/controllers/MainController.class
-org/groupId/models/TextDocument.class
+org/groupId/models/Arrangement.class
+org/groupId/models/Person.class

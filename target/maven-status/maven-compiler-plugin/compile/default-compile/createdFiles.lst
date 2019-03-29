@@ -1,0 +1,5 @@
+org/groupId/controllers/TestController.class
+module-info.class
+org/groupId/RegSystem.class
+org/groupId/controllers/MainController.class
+org/groupId/models/TextDocument.class

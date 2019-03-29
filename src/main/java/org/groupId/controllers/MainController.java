@@ -7,4 +7,9 @@ public class MainController {
 	public void exitApplication(ActionEvent actionEvent) {
 		Platform.exit();
 	}
+
+	public void btnTest(ActionEvent actionEvent){
+
+
+	}
 }

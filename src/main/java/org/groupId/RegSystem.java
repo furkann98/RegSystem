@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class VikariatSystem extends Application {
+public class RegSystem extends Application {
 
 
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class VikariatSystem extends Application {
 		loader.setLocation(getClass().getResource("/views/MainView.fxml"));
 		Parent root = loader.load();
 		stage.setScene(new Scene(root));
-		stage.setTitle("VikariatSystem");
+		stage.setTitle("RegSystem");
 		stage.show();
 	}
 }

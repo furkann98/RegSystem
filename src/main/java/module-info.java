@@ -1,3 +1,6 @@
+/**
+ *
+ */
 module RegSystem {
     requires javafx.controls;
     requires javafx.graphics;

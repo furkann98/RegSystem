@@ -1,8 +1,7 @@
 
 
 
-/* TABS  */
-
+/******** TABS  ********/
 .tab
 {
     -fx-pref-width: 150;
@@ -16,7 +15,3 @@
     -fx-background-color: Black;
 }
 
-.tab:pressed
-{
-    -fx-background-color: Red;
-}

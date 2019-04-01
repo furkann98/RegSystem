@@ -1,11 +1,22 @@
 
 
 
+/* TABS  */
+
 .tab
 {
-
     -fx-pref-width: 150;
-    -fx-background-color: BLACK;
-
+    -fx-background-color: GREY;
+    -fx-font-size: 15;
 }
 
+
+.tab:hover
+{
+    -fx-background-color: Black;
+}
+
+.tab:pressed
+{
+    -fx-background-color: Red;
+}

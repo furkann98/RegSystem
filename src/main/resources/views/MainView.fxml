@@ -23,15 +23,15 @@
                         <font>
                            <Font size="16.0" />
                         </font></Button>
-                     <Button layoutX="97.0" layoutY="173.0" mnemonicParsing="false" text="Button">
+                     <Button layoutX="97.0" layoutY="173.0" mnemonicParsing="false" text="Se Lokaler">
                         <font>
                            <Font size="16.0" />
                         </font></Button>
-                     <Button layoutX="97.0" layoutY="241.0" mnemonicParsing="false" text="Button">
+                     <Button layoutX="72.0" layoutY="234.0" mnemonicParsing="false" text="Lag Arrangement">
                         <font>
                            <Font size="16.0" />
                         </font></Button>
-                     <Button layoutX="97.0" layoutY="307.0" mnemonicParsing="false" text="Button">
+                     <Button layoutX="99.0" layoutY="308.0" mnemonicParsing="false" text="Billettsalg">
                         <font>
                            <Font size="16.0" />
                         </font></Button>
@@ -90,7 +90,7 @@
                            <Font size="16.0" />
                         </font>
                      </Text>
-                     <TextFlow layoutX="362.0" layoutY="65.0" prefHeight="354.0" prefWidth="200.0" />
+                     <TextFlow layoutX="362.0" layoutY="119.0" prefHeight="354.0" prefWidth="200.0" />
                      <Text layoutX="14.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artist">
                         <font>
                            <Font size="16.0" />
@@ -142,7 +142,7 @@
                   </children></AnchorPane>
             </content>
          </Tab>
-         <Tab fx:id="tabId" text="Billett Salg">
+         <Tab fx:id="tabId" text="Billettsalg">
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>

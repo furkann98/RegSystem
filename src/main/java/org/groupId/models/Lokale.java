@@ -35,8 +35,17 @@ public class Lokale {
         return antallPlasser;
     }
 
-    public void leggTilLokal(String navn, String type, int antallPlasser){
-        lokaler.add(new Lokale(navn,type,antallPlasser ));
+    public void leggTilLokal(Lokale lokal){
+        /*
+        throw IllegalArgumentException{
+
+            if(!(navn instanceof String)){
+                new IllegalArgumentException("Navn skal bare inneholde tekst");
+            }
+        }
+        */
+
+        lokaler.add(lokal);
     }
 
     public void fjernLokal(Lokale valgtLokal){

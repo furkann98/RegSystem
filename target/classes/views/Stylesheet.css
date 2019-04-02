@@ -4,9 +4,12 @@
 /******** TABS  ********/
 .tab
 {
-    -fx-pref-width: 150;
+    -fx-pref-width: 240;
+    /*-fx-pref-height: auto; */
     -fx-background-color: GREY;
-    -fx-font-size: 15;
+    -fx-font-size: 17;
+    -fx-text-alignment: CENTER;
+
 }
 
 
@@ -15,3 +18,8 @@
     -fx-background-color: Black;
 }
 
+.root
+{
+ -fx-background: BLUE;
+
+}

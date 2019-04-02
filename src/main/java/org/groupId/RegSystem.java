@@ -11,8 +11,6 @@ public class RegSystem extends Application {
 
 
 	public static void main(String[] args) {
-		System.out.println("hade");
-
 		Application.launch(args);
 	}
 

@@ -4,21 +4,22 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Lokale {
 
 
     // DATAFELT
-
-
     private ArrayList<Lokale> lokaler = new ArrayList<>();
-    public ObservableList<Lokale> lokalerTest;
     private String navn;
     private String type;
     private int antallPlasser;
 
 
-    // KONSTRUKTØR
+    // KONSTRUKTØRER
+    public Lokale(){
+
+    }
 
     public Lokale(String navn, String type, int antallPlasser){
         this.navn = navn;
@@ -32,7 +33,7 @@ public class Lokale {
 
     @Override
     public String toString() {
-        return navn;
+        return navn + " " + type + " " + antallPlasser;
     }
 
     public String getNavn(){ return navn; }
@@ -45,17 +46,27 @@ public class Lokale {
         return antallPlasser;
     }
 
+    public Lokale getSisteLokal(String navn){
+        for (Lokale lokal : lokaler) {
+            if(lokal.navn == navn){
+                return lokal;
+            }
+        }
+        return null;
+    }
+
     public void leggTilLokal(Lokale lokal){
         lokaler.add(lokal);
+        System.out.println("ARRAYLIST:  " + lokaler.toString());
     }
 
     public void fjernLokal(int valgtLokalIndex){
         lokaler.remove(valgtLokalIndex);
+        System.out.println("ARRAYLIST:  " + lokaler.toString());
     }
 
-    public ArrayList getArrayList(){
+    public ArrayList<Lokale> getArrayList(){
         return lokaler;
-
     }
 
 

@@ -5,11 +5,10 @@
 .tab
 {
     -fx-pref-width: 240;
-    /*-fx-pref-height: auto; */
+    /* -fx-pref-height: auto; */
     -fx-background-color: GREY;
     -fx-font-size: 17;
     -fx-text-alignment: CENTER;
-
 }
 
 
@@ -20,6 +19,5 @@
 
 .root
 {
- -fx-background: BLUE;
-
+    -fx-background: BLUE;
 }

@@ -1,8 +1,1 @@
-org\groupId\models\Billett.class
 module-info.class
-org\groupId\models\Person.class
-org\groupId\RegSystem.class
-org\groupId\controllers\MainController.class
-org\groupId\models\Lokale.class
-org\groupId\models\Arrangement.class
-org\groupId\controllers\TestController.class

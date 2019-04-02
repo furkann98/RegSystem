@@ -1,5 +1,8 @@
 package org.groupId.models;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 
 public class Lokale {
@@ -9,6 +12,7 @@ public class Lokale {
 
 
     private ArrayList<Lokale> lokaler = new ArrayList<>();
+    public ObservableList<Lokale> lokalerTest;
     private String navn;
     private String type;
     private int antallPlasser;
@@ -25,6 +29,12 @@ public class Lokale {
 
     // METODER
 
+
+    @Override
+    public String toString() {
+        return navn;
+    }
+
     public String getNavn(){ return navn; }
 
     public String getType() {
@@ -36,20 +46,16 @@ public class Lokale {
     }
 
     public void leggTilLokal(Lokale lokal){
-        /*
-        throw IllegalArgumentException{
-
-            if(!(navn instanceof String)){
-                new IllegalArgumentException("Navn skal bare inneholde tekst");
-            }
-        }
-        */
-
         lokaler.add(lokal);
     }
 
-    public void fjernLokal(Lokale valgtLokal){
-        lokaler.remove(valgtLokal);
+    public void fjernLokal(int valgtLokalIndex){
+        lokaler.remove(valgtLokalIndex);
+    }
+
+    public ArrayList getArrayList(){
+        return lokaler;
+
     }
 
 

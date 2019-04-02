@@ -1,13 +1,13 @@
 package org.groupId.controllers;
 
 import javafx.application.Platform;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.TextFlow;
 import org.groupId.models.Lokale;
 
 import java.net.URL;
@@ -16,19 +16,31 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
 	//DATAFELT
-	Lokale lokale;
-	ObservableList<String> items;
+	public Lokale LOKALE;
+	public ObservableList<Lokale> lstViewList;
+
+
+	@FXML
+	public ListView<Lokale> lstViewLokal;
 
 	@FXML
 	public TextField txtLokalNavn;
 
 	@FXML
-	public ListView<String> lstViewLokal;
+	public TextField txtLokalType;
+
+	@FXML
+	public TextField txtLokalAntallPlasser;
+
+	@FXML
+	public TextFlow txtFlowLokal;
+
 
 	//INITIALIZE
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		items = lstViewLokal.getItems();
+		lstViewList = lstViewLokal.getItems();
+		//lstViewList.addAll(LOKALE.getArrayList());
 	}
 
 
@@ -47,19 +59,21 @@ public class MainController implements Initializable {
 	}
 
 	public void btnFjernLokal(ActionEvent actionEvent) { //Lokale
-		items.remove(lstViewLokal.getSelectionModel().getSelectedIndex());
+		LOKALE.fjernLokal(lstViewLokal.getSelectionModel().getSelectedIndex());
+		lstViewList.remove(lstViewLokal.getSelectionModel().getSelectedIndex());
 	}
 
 	public void btnLeggTilLokal(ActionEvent actionEvent) { //Lokale
 
-
 	}
 
 	public void btnFullfoorLokal(ActionEvent actionEvent) { //Lokale
-		lokale = new Lokale(txtLokalNavn.getText(),"type",100);
-		items.add(lokale.getNavn());
-
+		Lokale nyttLokale = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), 100);
+		//LOKALE.leggTilLokal(nyttLokale);
+		lstViewList.add(nyttLokale);
 	}
+
+	public void 
 
 
 }

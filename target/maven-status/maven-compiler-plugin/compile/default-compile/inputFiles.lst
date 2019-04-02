@@ -1,8 +1,9 @@
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\controllers\TestController.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\models\Lokale.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\RegSystem.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\models\Billett.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\models\Person.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\module-info.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\controllers\MainController.java
-C:\Users\pedi-\OneDrive\Documents\GitHub\RegSystem\src\main\java\org\groupId\models\Arrangement.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/RegSystem.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/NotStringException.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/module-info.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/controllers/MainController.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/controllers/TestController.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Arrangement.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Billett.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Person.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Lokale.java

@@ -101,7 +101,12 @@
                            </VBox>
                         </children>
                      </HBox>
-                     <Text layoutX="443.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokale">
+                     <Text layoutX="461.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oversikt">
+                        <font>
+                           <Font size="40.0" />
+                        </font>
+                     </Text>
+                     <Text layoutX="55.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokale">
                         <font>
                            <Font size="40.0" />
                         </font>

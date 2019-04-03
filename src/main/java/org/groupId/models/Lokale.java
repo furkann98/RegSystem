@@ -33,7 +33,7 @@ public class Lokale {
 
     @Override
     public String toString() {
-        return navn + " " + type + " " + antallPlasser;
+        return navn;
     }
 
     public String getNavn(){ return navn; }
@@ -53,6 +53,10 @@ public class Lokale {
             }
         }
         return null;
+    }
+
+    public int getLengde(){
+        return lokaler.size();
     }
 
     public void leggTilLokal(Lokale lokal){

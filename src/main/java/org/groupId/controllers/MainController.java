@@ -1,28 +1,24 @@
 package org.groupId.controllers;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.groupId.models.Lokale;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
 	//DATAFELT
 	public Lokale LOKALE;
-	public ObservableList<Lokale> lokalerListView;
+	public ObservableList<Lokale> lokalerObservableList;
+	public ObservableList<Lokale> arrangementObservableList;
+
 
 	//DATAFELT FXML
 	@FXML
@@ -46,24 +42,23 @@ public class MainController implements Initializable {
 	@FXML
 	public Button btnFullfoorLokalId;
 
+	@FXML
+	public ChoiceBox<Lokale> cbLokal;
+
 
 	//INITIALIZE
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		//Default
+
 		LOKALE = new Lokale();
 
-		LOKALE.leggTilLokal(new Lokale("Lindeberg","Kino", 100));
-		LOKALE.leggTilLokal(new Lokale("Trosterud","Teater", 150));
-		LOKALE.leggTilLokal(new Lokale("Haugerud","Sal", 300));
+		lokalerObservableList = lstViewLokal.getItems();
+		arrangementObservableList = cbLokal.getItems();
 
-		lokalerListView = lstViewLokal.getItems();
+		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
+		leggTilLokal(new Lokale("Trosterud","Teater", 150));
+		leggTilLokal(new Lokale("Haugerud","Sal", 300));
 
-		lokalerListView.add(LOKALE.getArrayList().get(0));
-		lokalerListView.add(LOKALE.getArrayList().get(1));
-		lokalerListView.add(LOKALE.getArrayList().get(2));
-
-		//lokalerListView = FXCollections.observableArrayList();
 
 
 
@@ -74,7 +69,7 @@ public class MainController implements Initializable {
 	}
 
 
-	//KNAPPER OG METODER
+	//KNAPPER
 	public void exitApplication(ActionEvent actionEvent) {
 		Platform.exit();
 	}
@@ -99,7 +94,7 @@ public class MainController implements Initializable {
 	}
 
 	public void btnFullfoorLokal(ActionEvent actionEvent) { //Lokale
-		Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), 100);
+		Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
 		leggTilLokal(nyttLokal);
 
 		skjulLokalleggTil();
@@ -119,14 +114,20 @@ public class MainController implements Initializable {
 
 	}
 
+
+
+	//METODER
+
 	public void leggTilLokal(Lokale nyttLokal){
 		LOKALE.leggTilLokal(nyttLokal);
-		lokalerListView.add(nyttLokal);
+		lokalerObservableList.add(nyttLokal);
+		arrangementObservableList.add(nyttLokal);
 	}
 
 	public void fjernLokal(int indeks){
 		LOKALE.fjernLokal(indeks);
-		lokalerListView.remove(indeks);
+		lokalerObservableList.remove(indeks);
+		arrangementObservableList.remove(indeks);
 	}
 
 	public void visLokalleggTil(){

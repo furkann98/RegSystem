@@ -43,7 +43,11 @@ public class MainController implements Initializable {
 	public Button btnFullfoorLokalId;
 
 	@FXML
-	public ChoiceBox<Lokale> cbLokal;
+	public ComboBox<Lokale> cbLokal;
+
+	@FXML
+	public ComboBox<Lokale> cbKontaktperson;
+
 
 
 	//INITIALIZE

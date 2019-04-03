@@ -2,22 +2,33 @@
 
 
 /******** TABS  ********/
-.tab
+.tab-label
 {
-    -fx-pref-width: 240;
+    -fx-pref-width: 230;
     /* -fx-pref-height: auto; */
     -fx-background-color: GREY;
     -fx-font-size: 17;
-    -fx-text-alignment: CENTER;
+    /*-fx-text-fill: White;*/
 }
-
 
 .tab:hover
 {
     -fx-background-color: Black;
 }
 
-.root
+.tab:selected, .tab-label:selected
 {
-    -fx-background: BLUE;
+
+    -fx-background-color: RED;
+    
+
 }
+
+
+
+
+/*BAKGRUNN*/
+.anchorPane{
+    -fx-background-color:#4234d9;
+}
+

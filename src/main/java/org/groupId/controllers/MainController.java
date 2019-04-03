@@ -46,10 +46,10 @@ public class MainController implements Initializable {
 	public Button btnFullfoorLokalId;
 
 	@FXML
-	public ChoiceBox<Lokale> cbLokal;
+	public Button btnFjernLokal;
 
 	@FXML
-	public Button btnFjernLokal;
+	public ComboBox<Lokale> cbLokal;
 
 
 	//INITIALIZE

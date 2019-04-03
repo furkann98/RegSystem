@@ -18,7 +18,7 @@
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.groupId.controllers.MainController">
    <TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@Stylesheet.css" tabClosingPolicy="UNAVAILABLE">
      <tabs>
-       <Tab text="Velkommen">
+       <Tab fx:id="tabPaneVelkommen" text="Velkommen">
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@Stylesheet.css">
                   <children>
@@ -52,7 +52,7 @@
                </AnchorPane>
          </content>
        </Tab>
-       <Tab text="Lokale">
+       <Tab fx:id="tabPaneLokale" text="Lokale">
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -114,7 +114,7 @@
                   </children></AnchorPane>
          </content>
        </Tab>
-         <Tab text="Lag Arrangement">
+         <Tab fx:id="tabPaneArrangement" text="Lag Arrangement">
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -197,7 +197,7 @@
                   </children></AnchorPane>
             </content>
          </Tab>
-         <Tab text="Billettsalg">
+         <Tab fx:id="tabPaneBillettsalg" text="Billettsalg">
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>

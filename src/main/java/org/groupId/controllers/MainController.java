@@ -81,7 +81,8 @@ public class MainController implements Initializable {
 	}
 
 	public void btnSeLokaler(ActionEvent actionEvent) {  //Hovedside
-		tabPaneId.getSelectionModel().select(1);
+		System.out.println("hehehehhe");
+		tabPaneId.getSelectionModel().select(tabPaneLokale);
 
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.groupId.controllers.MainController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.groupId.controllers.MainController">
    <TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@Stylesheet.css" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Velkommen">
@@ -150,7 +150,6 @@
                         </font>
                      </Text>
                      <TextField fx:id="txtArrangementProgram" layoutX="101.0" layoutY="356.0" prefHeight="35.0" prefWidth="238.0" />
-                     <ChoiceBox fx:id="cbKontaktperson" layoutX="139.0" layoutY="224.0" prefWidth="150.0" />
                      <Text layoutX="347.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lag Arrangement">
                         <font>
                            <Font size="40.0" />
@@ -187,13 +186,14 @@
                      <TextFlow layoutX="370.0" layoutY="497.0" prefHeight="92.0" prefWidth="200.0" />
                      <TextField fx:id="txtLokale" editable="false" layoutX="101.0" layoutY="401.0" prefHeight="35.0" prefWidth="238.0" />
                      <TextField fx:id="txtArrangementType" editable="false" layoutX="101.0" layoutY="266.0" prefHeight="35.0" prefWidth="238.0" />
-                     <ChoiceBox fx:id="cbLokal" layoutX="139.0" layoutY="169.0" prefWidth="150.0" />
                      <Text layoutX="14.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bill. Salg">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Text>
                      <TextField fx:id="txtBillSalg1" layoutX="101.0" layoutY="583.0" prefHeight="35.0" prefWidth="238.0" />
+                     <ComboBox fx:id="cbLokal" layoutX="145.0" layoutY="171.0" prefWidth="150.0" promptText="Legg til Lokale" />
+                     <ComboBox fx:id="cbKontaktperson" layoutX="145.0" layoutY="226.0" prefWidth="150.0" promptText="Legg til kontaktperson" />
                   </children></AnchorPane>
             </content>
          </Tab>

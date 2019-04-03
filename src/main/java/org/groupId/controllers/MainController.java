@@ -22,6 +22,9 @@ public class MainController implements Initializable {
 
 	//DATAFELT FXML
 	@FXML
+	public TabPane tabPaneId;
+
+	@FXML
 	public ListView<Lokale> lstViewLokal;
 
 	@FXML
@@ -44,6 +47,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	public ChoiceBox<Lokale> cbLokal;
+
+	@FXML
+	public Button btnFjernLokal;
 
 
 	//INITIALIZE
@@ -75,6 +81,8 @@ public class MainController implements Initializable {
 	}
 
 	public void btnSeLokaler(ActionEvent actionEvent) {  //Hovedside
+		tabPaneId.getSelectionModel().select(1);
+
 	}
 
 	public void btnLagArrangement(ActionEvent actionEvent) { //Hovedside
@@ -85,6 +93,11 @@ public class MainController implements Initializable {
 
 	public void btnFjernLokal(ActionEvent actionEvent) { //Lokale
 		fjernLokal(lstViewLokal.getSelectionModel().getSelectedIndex());
+
+		if(LOKALE.isEmpty()){
+			System.out.println("lengde 0");
+			btnFjernLokal.setDisable(true);
+		}
 
 		tomTextArea();
 	}
@@ -102,16 +115,13 @@ public class MainController implements Initializable {
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
 
-
 		try{
 			txtFlowLokal.setText(lstViewLokal.getSelectionModel().getSelectedItem().toString());
 
-		} catch (Exception e){
-			System.out.println("fant exception");
+		} catch (NullPointerException e){
+			System.out.println("Må velge et lokal for å se oversikt.   ----- > " + e.getMessage());
 
 		}
-
-
 	}
 
 
@@ -143,9 +153,5 @@ public class MainController implements Initializable {
 	public void tomTextArea(){
 		txtFlowLokal.clear();
 	}
-
-
-
-
 
 }

@@ -73,6 +73,10 @@ public class Lokale {
         return lokaler;
     }
 
+    public boolean isEmpty(){
+        return lokaler.isEmpty();
+    }
+
 
 
 

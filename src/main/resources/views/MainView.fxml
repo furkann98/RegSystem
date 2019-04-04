@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.groupId.controllers.MainController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.groupId.controllers.MainController">
    <TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@Stylesheet.css" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab fx:id="tabPaneVelkommen" text="Velkommen">

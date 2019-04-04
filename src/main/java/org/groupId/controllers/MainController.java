@@ -24,6 +24,8 @@ public class MainController implements Initializable {
 	@FXML
 	public TabPane tabPaneId;
 
+	@FXML Tab tabPaneLokale;
+
 	@FXML
 	public ListView<Lokale> lstViewLokal;
 

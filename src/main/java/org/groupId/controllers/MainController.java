@@ -58,6 +58,8 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
+		System.out.println("hei");
+
 		LOKALE = new Lokale();
 
 		lokalerObservableList = lstViewLokal.getItems();

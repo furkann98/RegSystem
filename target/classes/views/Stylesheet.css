@@ -2,18 +2,29 @@
 
 
 /******** TABS  ********/
+
+.tab-pane
+{
+    -fx-tab-min-width:230px;
+    -fx-tab-max-width:230px;
+    -fx-tab-min-height:50px;
+    -fx-tab-max-height:50px;
+}
+.tab{
+    -fx-background-color: grey;
+}
+
 .tab-label
 {
-    -fx-pref-width: 230;
-    /* -fx-pref-height: auto; */
-    -fx-background-color: GREY;
-    -fx-font-size: 18;
+
+
+    -fx-font-size: 30;
     -fx-text-alignment: CENTER;
     
 }
 
 
-.tab:hover
+.tab:hover, .tab-pane:hover
 {
     -fx-background-color: Black;
 }
@@ -21,7 +32,7 @@
 
 .tab-label:selected, .tab:selected
 {
-    -fx-background-color: RED;
+    -fx-background-color: lightblue;
 }
 
 

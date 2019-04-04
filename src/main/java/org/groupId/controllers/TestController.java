@@ -11,5 +11,6 @@ public class TestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        System.out.println("hei");
     }
 }

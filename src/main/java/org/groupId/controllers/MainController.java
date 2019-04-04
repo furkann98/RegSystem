@@ -18,7 +18,7 @@ public class MainController implements Initializable {
 	public Lokale LOKALE;
 	public ObservableList<Lokale> lokalerObservableList;
 	public ObservableList<Lokale> arrangementObservableList;
-
+	public Alert errorAlert;
 
 	//DATAFELT FXML
 	@FXML
@@ -32,8 +32,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	public Tab tabPaneBillettsalg;
-
-
 
 	@FXML
 	public ListView<Lokale> lstViewLokal;
@@ -49,6 +47,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	public TextArea txtFlowLokal;
+
+	@FXML
+	public TextArea txtFlowLokalOverskrift;
 
 	@FXML
 	public HBox hBoxNyttLokale;
@@ -105,7 +106,6 @@ public class MainController implements Initializable {
 		fjernLokal(lstViewLokal.getSelectionModel().getSelectedIndex());
 
 		if(LOKALE.isEmpty()){
-			System.out.println("lengde 0");
 			btnFjernLokal.setDisable(true);
 		}
 
@@ -121,20 +121,30 @@ public class MainController implements Initializable {
 	}
 
 	public void btnFullfoorLokal(ActionEvent actionEvent) { //Lokale
+		if(LOKALE.isEmpty()){
+			btnFjernLokal.setDisable(false);
+		}
 		Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
 		leggTilLokal(nyttLokal);
 
 		skjulLokalleggTil();
+
+		txtLokalNavn.setText("");
+		txtLokalType.setText("");
+		txtLokalAntallPlasser.setText("");
+
 	}
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
 
 		try{
-			txtFlowLokal.setText(lstViewLokal.getSelectionModel().getSelectedItem().toString());
+			Lokale info = lstViewLokal.getSelectionModel().getSelectedItem();
+			txtFlowLokalOverskrift.setText(info.getNavn());
+			txtFlowLokal.setText("Type: " + info.getType() + "\n" + "Antall Plasser: " + info.getAntallPlasser());
 
 		} catch (NullPointerException e){
 			System.out.println("Må velge et lokal for å se oversikt.   ----- > " + e.getMessage());
-
+			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
 		}
 	}
 
@@ -166,6 +176,13 @@ public class MainController implements Initializable {
 
 	public void tomTextArea(){
 		txtFlowLokal.clear();
+	}
+
+	public void feilMelding(String melding){
+		errorAlert = new Alert(Alert.AlertType.ERROR);
+		errorAlert.setHeaderText("Feilmelding!");
+		errorAlert.setContentText(melding);
+		errorAlert.showAndWait();
 	}
 
 }

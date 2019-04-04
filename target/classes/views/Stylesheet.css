@@ -31,7 +31,47 @@
     -fx-background-color: GREY;
 }
 
+/*
+.text-area *.text
+{
+    -fx-background-color:transparent;
+
+    -fx-opacity: 1.0;
+    -fx-font-size: 18;
+    -fx-text-alignment: center;
+}
+*/
+.text-area
+{
+    -fx-font-size: 18;
+    -fx-background-color: Grey;
+    -fx-text-fill: BlACK;
+
+}
 
 
+.text-area *.text
+{
+    -fx-text-alignment: center;
+    -fx-opacity: 1;
+
+
+}
+
+.text-area .content {
+    -fx-background-color: transparent ;
+
+    -fx-background-color:Grey;
+
+}
+
+#txtAreaOversikt {
+
+    -fx-text-alignment: center;
+    -fx-text-fill: BlACK;
+    -fx-opacity: 1;
+    -fx-font-size: 24;
+
+}
 
 

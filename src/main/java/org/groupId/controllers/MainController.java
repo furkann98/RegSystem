@@ -22,9 +22,18 @@ public class MainController implements Initializable {
 
 	//DATAFELT FXML
 	@FXML
-	public TabPane tabPaneId;
+	public TabPane tabPane;
 
-	@FXML Tab tabPaneLokale;
+	@FXML
+	public Tab tabPaneLokale;
+
+	@FXML
+	public Tab tabPaneArrangement;
+
+	@FXML
+	public Tab tabPaneBillettsalg;
+
+
 
 	@FXML
 	public ListView<Lokale> lstViewLokal;
@@ -69,29 +78,27 @@ public class MainController implements Initializable {
 
 
 
-
-
-
-
-
 	}
 
 
 	//KNAPPER
+	//KNAPPER - HOVEDSIDE
 	public void exitApplication(ActionEvent actionEvent) {
 		Platform.exit();
 	}
 
 	public void btnSeLokaler(ActionEvent actionEvent) {  //Hovedside
 		System.out.println("hehehehhe");
-		tabPaneId.getSelectionModel().select(tabPaneLokale);
+		tabPane.getSelectionModel().select(tabPaneLokale);
 
 	}
 
 	public void btnLagArrangement(ActionEvent actionEvent) { //Hovedside
+		tabPane.getSelectionModel().select(tabPaneArrangement);
 	}
 
 	public void btnBillettsalg(ActionEvent actionEvent) { //Hovedside
+		tabPane.getSelectionModel().select(tabPaneBillettsalg);
 	}
 
 	public void btnFjernLokal(ActionEvent actionEvent) { //Lokale
@@ -105,6 +112,10 @@ public class MainController implements Initializable {
 		tomTextArea();
 	}
 
+
+
+
+	//KNAPPER - LOKALE
 	public void btnLeggTilLokal(ActionEvent actionEvent) { //Lokale
 		visLokalleggTil();
 	}

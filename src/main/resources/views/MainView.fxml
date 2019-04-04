@@ -20,9 +20,9 @@
      <tabs>
        <Tab fx:id="tabPaneVelkommen" text="Velkommen">
          <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@Stylesheet.css">
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                           <Button layoutX="96.0" layoutY="489.0" onAction="#exitApplication" text="Avslutt">
+                           <Button layoutX="96.0" layoutY="489.0" onAction="#exitApplication" stylesheets="@Stylesheet.css" text="Avslutt">
                         <font>
                            <Font size="16.0" />
                         </font></Button>
@@ -54,7 +54,7 @@
        </Tab>
        <Tab fx:id="tabPaneLokale" text="Lokale">
          <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
                      <ListView fx:id="lstViewLokal" layoutX="30.0" layoutY="119.0" onMouseClicked="#txtFlowOnMouseClicked" prefHeight="367.0" prefWidth="200.0" />
                      <TextArea fx:id="txtFlowLokal" editable="false" layoutX="400.0" layoutY="119.0" prefHeight="318.0" prefWidth="262.0" />
@@ -116,7 +116,7 @@
        </Tab>
          <Tab fx:id="tabPaneArrangement" text="Lag Arrangement">
             <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
                      <Text layoutX="10.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn">
                         <font>
@@ -199,7 +199,7 @@
          </Tab>
          <Tab fx:id="tabPaneBillettsalg" text="Billettsalg">
             <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css" />
             </content>
          </Tab>
      </tabs>

@@ -1,6 +1,6 @@
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/RegSystem.java
-/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/NotStringException.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/module-info.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/LokaleOversiktException.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/controllers/MainController.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/controllers/TestController.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Arrangement.java

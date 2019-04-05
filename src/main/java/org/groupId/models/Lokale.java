@@ -2,6 +2,7 @@ package org.groupId.models;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +35,11 @@ public class Lokale {
     @Override
     public String toString() {
         return navn;
+    }
+
+    public void getOversikt(TextArea tittel, TextArea info){
+        tittel.setText(this.navn);
+        info.setText("Type: " + this.type + "\n" + "Antall Plasser: " + this.antallPlasser);
     }
 
     public String getNavn(){ return navn; }

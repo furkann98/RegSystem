@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.groupId.models.Lokale;
+import org.groupId.models.exceptions.LokaleOversiktException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -82,7 +84,6 @@ public class MainController implements Initializable {
 	}
 
 
-	//KNAPPER
 	//KNAPPER - HOVEDSIDE
 	public void exitApplication(ActionEvent actionEvent) {
 		Platform.exit();
@@ -102,6 +103,10 @@ public class MainController implements Initializable {
 		tabPane.getSelectionModel().select(tabPaneBillettsalg);
 	}
 
+
+
+	//KNAPPER - LOKALE
+
 	public void btnFjernLokal(ActionEvent actionEvent) { //Lokale
 		fjernLokal(lstViewLokal.getSelectionModel().getSelectedIndex());
 
@@ -113,9 +118,6 @@ public class MainController implements Initializable {
 	}
 
 
-
-
-	//KNAPPER - LOKALE
 	public void btnLeggTilLokal(ActionEvent actionEvent) { //Lokale
 		visLokalleggTil();
 	}
@@ -129,18 +131,16 @@ public class MainController implements Initializable {
 
 		skjulLokalleggTil();
 
-		txtLokalNavn.setText("");
-		txtLokalType.setText("");
-		txtLokalAntallPlasser.setText("");
-
+		tomFulfoorLokal();
 	}
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
 
 		try{
 			Lokale info = lstViewLokal.getSelectionModel().getSelectedItem();
-			txtFlowLokalOverskrift.setText(info.getNavn());
-			txtFlowLokal.setText("Type: " + info.getType() + "\n" + "Antall Plasser: " + info.getAntallPlasser());
+			info.getOversikt(txtFlowLokalOverskrift,txtFlowLokal);
+			//txtFlowLokalOverskrift.setText(info.getNavn());
+			//txtFlowLokal.setText("Type: " + info.getType() + "\n" + "Antall Plasser: " + info.getAntallPlasser());
 
 		} catch (NullPointerException e){
 			System.out.println("Må velge et lokal for å se oversikt.   ----- > " + e.getMessage());
@@ -150,7 +150,7 @@ public class MainController implements Initializable {
 
 
 
-	//METODER
+	//METODER - Lokal
 
 	public void leggTilLokal(Lokale nyttLokal){
 		LOKALE.leggTilLokal(nyttLokal);
@@ -178,6 +178,16 @@ public class MainController implements Initializable {
 		txtFlowLokal.clear();
 	}
 
+	public void tomFulfoorLokal() {
+		txtLokalNavn.setText("");
+		txtLokalType.setText("");
+		txtLokalAntallPlasser.setText("");
+	}
+
+
+
+
+	//FEILMELDING
 	public void feilMelding(String melding){
 		errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setHeaderText("Feilmelding!");

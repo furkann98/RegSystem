@@ -22,21 +22,21 @@
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                           <Button layoutX="465.0" layoutY="583.0" onAction="#exitApplication" stylesheets="@Stylesheet.css" text="Avslutt">
+                           <Button layoutX="800.0" layoutY="600.0"  onAction="#exitApplication" stylesheets="@Stylesheet.css" text="Avslutt">
                         <font>
                            <Font size="16.0" />
                         </font></Button>
-                     <Button layoutX="438.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnSeLokaler" text="Se Lokaler">
+                     <Button layoutX="400.0" layoutY="200.0" minWidth="250" minHeight="70" mnemonicParsing="false" onAction="#btnSeLokaler" text="Lokaler">
                         <font>
-                           <Font size="20.0" />
+                           <Font size="25.0" />
                         </font></Button>
-                     <Button layoutX="410.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnLagArrangement" text="Lag Arrangement">
+                     <Button layoutX="400.0" layoutY="290.0" minWidth="250" minHeight="70" mnemonicParsing="false" onAction="#btnLagArrangement" text="Arrangement">
                         <font>
-                           <Font size="20.0" />
+                           <Font size="25.0" />
                         </font></Button>
-                     <Button layoutX="440.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnBillettsalg" text="Billettsalg">
+                     <Button layoutX="400.0" layoutY="380.0" minWidth="250" minHeight="70" mnemonicParsing="false" onAction="#btnBillettsalg" text="Billettsalg">
                         <font>
-                           <Font size="20.0" />
+                           <Font size="25.0" />
                         </font></Button>
                      <TextFlow layoutX="615.0" layoutY="93.0" prefHeight="464.0" prefWidth="374.0" />
                      <Text layoutX="342.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Velkommen">

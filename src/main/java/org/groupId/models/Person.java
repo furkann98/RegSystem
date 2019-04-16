@@ -1,9 +1,13 @@
 package org.groupId.models;
 
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+
 public class Person {
 
     // DATAFELT
-
+    private ArrayList<Person> personer = new ArrayList<>();
     private String navn;
     private int telefonfNummer;
     private String Epost;
@@ -24,6 +28,12 @@ public class Person {
     }
 
     // METODER
+
+
+    @Override
+    public String toString() {
+        return navn;
+    }
 
     public String getNavn() {
         return navn;
@@ -48,4 +58,5 @@ public class Person {
     public String getOpplysninger() {
         return opplysninger;
     }
+
 }

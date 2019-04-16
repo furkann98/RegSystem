@@ -70,8 +70,6 @@
 }
 
 .text-area .content {
-    -fx-background-color: transparent ;
-
     -fx-background-color:Grey;
 
 }
@@ -83,6 +81,12 @@
     -fx-opacity: 1;
     -fx-font-size: 24;
 
+}
+
+.txtNull {
+    -fx-background-color: Grey;
+    -fx-text-fill: black;
+    -fx-font-size: 16;
 }
 
 

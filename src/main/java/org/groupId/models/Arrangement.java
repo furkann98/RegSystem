@@ -6,29 +6,43 @@ public class Arrangement {
 
     //DATAFELT
     private Person kontaktPerson;
+    private Lokale lokale;
     private String type;
     private String navn;
     private String artist;
     private String program;
-    private String sted;
     private Date tidspunkt;
     private int billettPris;
     private int billettSalg;
 
+    private String kontaktPersonNavn;
+    private String programTekst;
+    private String antallLedige;
+
     // KONSTRUKTØR
-    public Arrangement(Person kontaktPerson, String type, String navn, String artist, String program, String sted, Date tidspunkt, int billettPris, int billettSalg) {
+    public Arrangement(Person kontaktPerson, Lokale lokale, String type, String navn, String artist, String program, Date tidspunkt, int billettPris, int billettSalg) {
         this.kontaktPerson = kontaktPerson;
+        this.lokale = lokale;
         this.type = type;
         this.navn = navn;
         this.artist = artist;
         this.program = program;
-        this.sted = sted;
         this.tidspunkt = tidspunkt;
         this.billettPris = billettPris;
         this.billettSalg = billettSalg;
+        this.programTekst = program;
+        this.kontaktPersonNavn = kontaktPerson.getNavn();
+
+        if(!(artist == "")){
+            this.programTekst += "\n" + "Dagens artist er: " + artist;
+        }
+
+        int ledige = this.lokale.getAntallPlasser() - billettSalg;
+        this.antallLedige = ledige + " av " + lokale.getAntallPlasser();
     }
 
     // METODER
+
     public Person getKontaktPerson() {
         return kontaktPerson;
     }
@@ -41,6 +55,18 @@ public class Arrangement {
         return navn;
     }
 
+    public Lokale getLokale() {
+        return lokale;
+    }
+
+    public String getKontaktPersonNavn() {
+        return kontaktPersonNavn;
+    }
+
+    public String getAntallLedige() {
+        return antallLedige;
+    }
+
     public String getArtist() {
         return artist;
     }
@@ -49,8 +75,8 @@ public class Arrangement {
         return program;
     }
 
-    public String getSted() {
-        return sted;
+    public String getProgramTekst() {
+        return programTekst;
     }
 
     public Date getTidspunkt() {

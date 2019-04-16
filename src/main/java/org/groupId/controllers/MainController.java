@@ -1,17 +1,21 @@
 package org.groupId.controllers;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import org.groupId.models.Lokale;
-import org.groupId.models.exceptions.LokaleOversiktException;
+//import org.groupId.models.Arrangement;
+//import org.groupId.models.Lokale;
+import org.groupId.models.*;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -19,51 +23,67 @@ public class MainController implements Initializable {
 	//DATAFELT
 	public Lokale LOKALE;
 	public ObservableList<Lokale> lokalerObservableList;
-	public ObservableList<Lokale> arrangementObservableList;
+
+	public Arrangement arrangement;
+	public ObservableList<Lokale> arrangementLokaleObservableList;
+	public ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
+
 	public Alert errorAlert;
 
 	//DATAFELT FXML
+
+	//Tabpane
 	@FXML
 	public TabPane tabPane;
 
 	@FXML
-	public Tab tabPaneLokale;
+	public Tab tabPaneLokale, tabPaneArrangement, tabPaneBillettsalg;
 
-	@FXML
-	public Tab tabPaneArrangement;
 
-	@FXML
-	public Tab tabPaneBillettsalg;
+	//Lokale
 
 	@FXML
 	public ListView<Lokale> lstViewLokal;
 
 	@FXML
-	public TextField txtLokalNavn;
+	public TextField txtLokalNavn, txtLokalAntallPlasser, txtLokalType;
 
 	@FXML
-	public TextField txtLokalType;
-
-	@FXML
-	public TextField txtLokalAntallPlasser;
-
-	@FXML
-	public TextArea txtFlowLokal;
-
-	@FXML
-	public TextArea txtFlowLokalOverskrift;
+	public TextArea txtFlowLokal, txtFlowLokalOverskrift;
 
 	@FXML
 	public HBox hBoxNyttLokale;
 
 	@FXML
-	public Button btnFullfoorLokalId;
+	public Button btnFullfoorLokalId, btnFjernLokal;
 
-	@FXML
-	public Button btnFjernLokal;
+
+
+
+	//Arrangement
 
 	@FXML
 	public ComboBox<Lokale> cbLokal;
+
+	@FXML
+	public TableView<Arrangement> tableArrangement;
+
+	@FXML
+	public TextField txtArrangementAntPlasser, txtArrangementType, txtArrangementNavn,
+			txtArrangementProgram, txtArrangementArtist, txtArrangementBillPris, txtArrangementBillSalg;
+
+	@FXML
+	public TableColumn<Arrangement, String> TCNavn, TCProgram, TCPris, TCAntall, TCPerson;
+
+	@FXML
+	public TableColumn<Arrangement, Lokale> TCLokale;
+
+	@FXML
+	public TableColumn<Arrangement, Date> TCDato;
+
+
+
+
 
 
 	//INITIALIZE
@@ -73,7 +93,7 @@ public class MainController implements Initializable {
 		LOKALE = new Lokale();
 
 		lokalerObservableList = lstViewLokal.getItems();
-		arrangementObservableList = cbLokal.getItems();
+		arrangementLokaleObservableList = cbLokal.getItems();
 
 		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
 		leggTilLokal(new Lokale("Trosterud","Teater", 150));
@@ -81,7 +101,14 @@ public class MainController implements Initializable {
 
 
 
+
+		Lokale test1 = new Lokale("lokale", "KINO", 124);
+		Person test2 = new Person("ole",95959595,"hei@Oslomet.no","", test1,"Dette er en test");
+		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest","Drake","dette er en konsert", new Date(2015,12,11,1100,1200),25,10);
+
+		arrangementObservablelist.add(arrangement);
 	}
+
 
 
 	//KNAPPER - HOVEDSIDE
@@ -95,7 +122,7 @@ public class MainController implements Initializable {
 
 	}
 
-	public void btnLagArrangement(ActionEvent actionEvent) { //Hovedside
+	public void btnArrangement(ActionEvent actionEvent) { //Hovedside
 		tabPane.getSelectionModel().select(tabPaneArrangement);
 	}
 
@@ -139,29 +166,31 @@ public class MainController implements Initializable {
 		try{
 			Lokale info = lstViewLokal.getSelectionModel().getSelectedItem();
 			info.getOversikt(txtFlowLokalOverskrift,txtFlowLokal);
-			//txtFlowLokalOverskrift.setText(info.getNavn());
+			//txtFlowLokalOverskrift.setText(info.getTKNavn());
 			//txtFlowLokal.setText("Type: " + info.getType() + "\n" + "Antall Plasser: " + info.getAntallPlasser());
 
 		} catch (NullPointerException e){
-			System.out.println("Må velge et lokal for å se oversikt.   ----- > " + e.getMessage());
 			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
 		}
 	}
 
 
 
-	//METODER - Lokal
+	//METODER
+
+
+	// Lokal
 
 	public void leggTilLokal(Lokale nyttLokal){
 		LOKALE.leggTilLokal(nyttLokal);
 		lokalerObservableList.add(nyttLokal);
-		arrangementObservableList.add(nyttLokal);
+		arrangementLokaleObservableList.add(nyttLokal);
 	}
 
 	public void fjernLokal(int indeks){
 		LOKALE.fjernLokal(indeks);
 		lokalerObservableList.remove(indeks);
-		arrangementObservableList.remove(indeks);
+		arrangementLokaleObservableList.remove(indeks);
 	}
 
 	public void visLokalleggTil(){
@@ -176,6 +205,9 @@ public class MainController implements Initializable {
 
 	public void tomTextArea(){
 		txtFlowLokal.clear();
+		txtFlowLokalOverskrift.clear();
+		txtArrangementAntPlasser.clear();
+		txtArrangementType.clear();
 	}
 
 	public void tomFulfoorLokal() {
@@ -187,6 +219,47 @@ public class MainController implements Initializable {
 
 
 
+	// Arrangement
+	public void arrangementTableViewStruktur(){
+		tableArrangement.setItems(arrangementObservablelist);
+
+		TCNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+		TCProgram.setCellValueFactory(new PropertyValueFactory<>("programTekst"));
+		TCPris.setCellValueFactory(new PropertyValueFactory<>("billettPris"));
+		TCLokale.setCellValueFactory(new PropertyValueFactory<>("lokale"));
+		TCAntall.setCellValueFactory(new PropertyValueFactory<>("antallLedige"));
+		TCPerson.setCellValueFactory(new PropertyValueFactory<>("kontaktPersonNavn"));
+		TCDato.setCellValueFactory(new PropertyValueFactory<>("tidspunkt"));
+
+	}
+	public void cbLokalOnAction(ActionEvent actionEvent) {
+		try{
+			Lokale info = cbLokal.getSelectionModel().getSelectedItem();
+
+			txtArrangementAntPlasser.setText(Integer.toString(info.getAntallPlasser()));
+			txtArrangementType.setText(info.getType());
+
+
+		} catch (NullPointerException e){
+			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
+		}
+
+	}
+
+	public void btnLagArrangement(ActionEvent actionEvent) {
+	}
+
+
+
+	public void tableArrangementOnMouseClicked(MouseEvent mouseEvent) {
+
+	}
+
+
+
+
+
+
 	//FEILMELDING
 	public void feilMelding(String melding){
 		errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -194,5 +267,7 @@ public class MainController implements Initializable {
 		errorAlert.setContentText(melding);
 		errorAlert.showAndWait();
 	}
+
+
 
 }

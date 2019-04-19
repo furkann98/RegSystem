@@ -88,6 +88,9 @@ public class MainController implements Initializable {
 	@FXML
 	public TableColumn<Arrangement, Date> TCDato;
 
+	@FXML
+	public DatePicker DatePickerArrangement;
+
 
 
 
@@ -101,7 +104,9 @@ public class MainController implements Initializable {
 
 		lokalerObservableList = lstViewLokal.getItems();
 		arrangementLokaleObservableList = cbLokal.getItems();
-		arrangementTableViewStruktur();
+
+		arrangementTableViewStruktur(); // Kobler objektet med tableview
+		feilhaandteringListener(); // kobler alle bokser til en listener
 
 
 		//Testverdier
@@ -113,12 +118,9 @@ public class MainController implements Initializable {
 
 		Lokale test1 = new Lokale("lokale", "KINO", 124);
 		Person test2 = new Person("ole",95959595,"hei@Oslomet.no","", test1,"Dette er en test");
-		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", new Date(2015,12,11,1100,1200),25,10);
+		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", DatePickerArrangement.getValue(),25,10);
 
 		arrangementObservablelist.add(arrangement);
-
-		LokalFeilhaandtering();
-
 
 	}
 
@@ -162,15 +164,17 @@ public class MainController implements Initializable {
 	}
 
 	public void btnFullfoorLokal(ActionEvent actionEvent) { //Lokale
-		if(LOKALE.isEmpty()){
-			btnFjernLokal.setDisable(false);
+		if(LokalFeilhaandtering()){
+			if(LOKALE.isEmpty()){
+				btnFjernLokal.setDisable(false);
+			}
+			Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
+			leggTilLokal(nyttLokal);
+			skjulLokalleggTil();
+			tomFulfoorLokal();
 		}
-		Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
-		leggTilLokal(nyttLokal);
 
-		skjulLokalleggTil();
 
-		tomFulfoorLokal();
 	}
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
@@ -187,6 +191,40 @@ public class MainController implements Initializable {
 	}
 
 	//KNAPPER - ARRANGEMENT
+	public void cbLokalOnAction(ActionEvent actionEvent) {
+		try{
+			Lokale info = cbLokal.getSelectionModel().getSelectedItem();
+
+			txtArrangementAntPlasser.setText(Integer.toString(info.getAntallPlasser()));
+			txtArrangementType.setText(info.getType());
+
+
+		} catch (NullPointerException e){
+			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
+		}
+
+	}
+
+	public void btnLagArrangement(ActionEvent actionEvent) {
+		if(ArrangementFeilhaandtering()){
+			Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
+			Person person = new Person("ole",95959595,"hei@Oslomet.no","", lokale,"Dette er en test");
+			arrangement = new Arrangement(person,lokale , lokale.getType(),
+					txtArrangementNavn.getText(),txtArrangementArtist.getText(),
+					txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
+					Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
+
+			arrangementObservablelist.add(arrangement);
+
+		}
+
+	}
+
+
+
+	public void tableArrangementOnMouseClicked(MouseEvent mouseEvent) {
+
+	}
 
 
 
@@ -229,14 +267,6 @@ public class MainController implements Initializable {
 		txtLokalAntallPlasser.setText("");
 	}
 
-	public void LokalFeilhaandtering () {
-		//txtLokalAntallPlasser
-		feilhaandtering.KunBokstaver(txtLokalNavn);
-		feilhaandtering.KunBokstaver(txtLokalType);
-
-
-	}
-
 
 
 
@@ -253,28 +283,7 @@ public class MainController implements Initializable {
 		TCDato.setCellValueFactory(new PropertyValueFactory<>("tidspunkt"));
 
 	}
-	public void cbLokalOnAction(ActionEvent actionEvent) {
-		try{
-			Lokale info = cbLokal.getSelectionModel().getSelectedItem();
 
-			txtArrangementAntPlasser.setText(Integer.toString(info.getAntallPlasser()));
-			txtArrangementType.setText(info.getType());
-
-
-		} catch (NullPointerException e){
-			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
-		}
-
-	}
-
-	public void btnLagArrangement(ActionEvent actionEvent) {
-	}
-
-
-
-	public void tableArrangementOnMouseClicked(MouseEvent mouseEvent) {
-
-	}
 
 
 
@@ -282,6 +291,45 @@ public class MainController implements Initializable {
 
 
 	//Feilhåndetering
+	public void feilhaandteringListener(){
+		//Lokale - legg til lokal
+		feilhaandtering.ListenerKunBokstaver(txtLokalNavn);
+		feilhaandtering.ListenerKunBokstaver(txtLokalType);
+		feilhaandtering.ListenerKunTall(txtLokalAntallPlasser);
+
+		//Arrangement - legg til arrangment
+		feilhaandtering.ListenerKunBokstaver(txtArrangementNavn);
+		feilhaandtering.ListenerKunBokstaver(txtArrangementProgram);
+		feilhaandtering.ListenerKunBokstaver(txtArrangementArtist);
+		feilhaandtering.ListenerKunTall(txtArrangementBillPris);
+		feilhaandtering.ListenerKunTall(txtArrangementBillSalg);
+
+	}
+
+	public boolean LokalFeilhaandtering () {
+		if(feilhaandtering.KunBokstaver(txtLokalNavn) &&
+			feilhaandtering.KunBokstaver(txtLokalType) &&
+			feilhaandtering.KunTall(txtLokalAntallPlasser) ){
+			return true;
+		} else{
+			return false;
+		}
+	}
+
+	public boolean ArrangementFeilhaandtering () {
+		if(		feilhaandtering.KunBokstaver(txtArrangementNavn) &&
+				feilhaandtering.KunBokstaver(txtArrangementProgram) &&
+				feilhaandtering.KunBokstaver(txtArrangementArtist) &&
+				feilhaandtering.KunTall(txtArrangementBillPris) &&
+				feilhaandtering.KunTall(txtArrangementBillSalg)){
+			return true;
+		} else{
+			return false;
+		}
+	}
+
+
+
 	public void feilMelding(String melding){
 		errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setHeaderText("Feilmelding!");

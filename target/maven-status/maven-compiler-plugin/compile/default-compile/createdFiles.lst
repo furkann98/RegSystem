@@ -6,7 +6,6 @@ org/groupId/models/Arrangement.class
 org/groupId/models/exceptions/Feilhaandtering.class
 org/groupId/models/Person.class
 org/groupId/models/exceptions/KunTekstException.class
-org/groupId/models/exceptions/LokaleOversiktException.class
 org/groupId/models/exceptions/KunTallException.class
 module-info.class
 org/groupId/models/Billett.class

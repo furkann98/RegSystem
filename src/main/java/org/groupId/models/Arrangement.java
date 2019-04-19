@@ -1,5 +1,6 @@
 package org.groupId.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Arrangement {
@@ -11,7 +12,7 @@ public class Arrangement {
     private String navn;
     private String artist;
     private String program;
-    private Date tidspunkt;
+    private LocalDate tidspunkt;
     private int billettPris;
     private int billettSalg;
 
@@ -20,7 +21,7 @@ public class Arrangement {
     private String antallLedige;
 
     // KONSTRUKTØR
-    public Arrangement(Person kontaktPerson, Lokale lokale, String type, String navn, String artist, String program, Date tidspunkt, int billettPris, int billettSalg) {
+    public Arrangement(Person kontaktPerson, Lokale lokale, String type, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg) {
         this.kontaktPerson = kontaktPerson;
         this.lokale = lokale;
         this.type = type;
@@ -79,7 +80,7 @@ public class Arrangement {
         return programTekst;
     }
 
-    public Date getTidspunkt() {
+    public LocalDate getTidspunkt() {
         return tidspunkt;
     }
 

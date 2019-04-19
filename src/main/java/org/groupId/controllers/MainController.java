@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 //import org.groupId.models.Arrangement;
 //import org.groupId.models.Lokale;
 import org.groupId.models.*;
+import org.groupId.models.exceptions.Feilhaandtering;
 
 import java.net.URL;
 import java.util.Date;
@@ -21,14 +22,22 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
 	//DATAFELT
+	Feilhaandtering feilhaandtering = new Feilhaandtering();
+
+	// lokale
 	public Lokale LOKALE;
 	public ObservableList<Lokale> lokalerObservableList;
 
+	// arrangement
 	public Arrangement arrangement;
 	public ObservableList<Lokale> arrangementLokaleObservableList;
 	public ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
 
+	// annet
 	public Alert errorAlert;
+
+
+
 
 	//DATAFELT FXML
 
@@ -56,8 +65,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	public Button btnFullfoorLokalId, btnFjernLokal;
-
-
 
 
 	//Arrangement
@@ -94,19 +101,25 @@ public class MainController implements Initializable {
 
 		lokalerObservableList = lstViewLokal.getItems();
 		arrangementLokaleObservableList = cbLokal.getItems();
+		arrangementTableViewStruktur();
+
+
+		//Testverdier
 
 		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
 		leggTilLokal(new Lokale("Trosterud","Teater", 150));
 		leggTilLokal(new Lokale("Haugerud","Sal", 300));
 
 
-
-
 		Lokale test1 = new Lokale("lokale", "KINO", 124);
 		Person test2 = new Person("ole",95959595,"hei@Oslomet.no","", test1,"Dette er en test");
-		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest","Drake","dette er en konsert", new Date(2015,12,11,1100,1200),25,10);
+		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", new Date(2015,12,11,1100,1200),25,10);
 
 		arrangementObservablelist.add(arrangement);
+
+		LokalFeilhaandtering();
+
+
 	}
 
 
@@ -117,7 +130,6 @@ public class MainController implements Initializable {
 	}
 
 	public void btnSeLokaler(ActionEvent actionEvent) {  //Hovedside
-		System.out.println("hehehehhe");
 		tabPane.getSelectionModel().select(tabPaneLokale);
 
 	}
@@ -174,10 +186,11 @@ public class MainController implements Initializable {
 		}
 	}
 
+	//KNAPPER - ARRANGEMENT
+
 
 
 	//METODER
-
 
 	// Lokal
 
@@ -214,6 +227,14 @@ public class MainController implements Initializable {
 		txtLokalNavn.setText("");
 		txtLokalType.setText("");
 		txtLokalAntallPlasser.setText("");
+	}
+
+	public void LokalFeilhaandtering () {
+		//txtLokalAntallPlasser
+		feilhaandtering.KunBokstaver(txtLokalNavn);
+		feilhaandtering.KunBokstaver(txtLokalType);
+
+
 	}
 
 
@@ -260,7 +281,7 @@ public class MainController implements Initializable {
 
 
 
-	//FEILMELDING
+	//Feilhåndetering
 	public void feilMelding(String melding){
 		errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setHeaderText("Feilmelding!");

@@ -33,7 +33,7 @@ public class Arrangement {
         this.programTekst = program;
         this.kontaktPersonNavn = kontaktPerson.getNavn();
 
-        if(!(artist == "")){
+        if(!(artist == "" || artist == null)){
             this.programTekst += "\n" + "Dagens artist er: " + artist;
         }
 

@@ -6,6 +6,7 @@
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/KunTekstException.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/Feilhaandtering.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Arrangement.java
+/Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/exceptions/IngenObjectException.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Billett.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Person.java
 /Users/furkan/Desktop/ProgUtvikling/RegSystem/src/main/java/org/groupId/models/Lokale.java

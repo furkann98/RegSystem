@@ -16,6 +16,7 @@ import org.groupId.models.*;
 import org.groupId.models.exceptions.Feilhaandtering;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -73,6 +74,9 @@ public class MainController implements Initializable {
 	public ComboBox<Lokale> cbLokal;
 
 	@FXML
+	public ComboBox<Person> cbKontaktperson;
+
+	@FXML
 	public TableView<Arrangement> tableArrangement;
 
 	@FXML
@@ -109,7 +113,7 @@ public class MainController implements Initializable {
 		arrangementLokaleObservableList = cbLokal.getItems();
 
 		arrangementTableViewStruktur(); // Kobler objektet med tableview
-		feilhaandteringListener(); // kobler alle bokser til en listener
+		//feilhaandteringListener(); // kobler alle bokser til en listener
 
 
 		//Testverdier
@@ -124,8 +128,6 @@ public class MainController implements Initializable {
 		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", DatePickerArrangement.getValue(),25,10);
 
 		arrangementObservablelist.add(arrangement);
-
-		System.out.println(DatePickerArrangement.getValue() == null);
 
 	}
 
@@ -212,16 +214,21 @@ public class MainController implements Initializable {
 
 	public void btnLagArrangement(ActionEvent actionEvent) {
 		if(ArrangementFeilhaandtering()){
-			Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
-			Person person = new Person("ole",95959595,"hei@Oslomet.no","", lokale,"Dette er en test");
-			arrangement = new Arrangement(person,lokale , lokale.getType(),
-					txtArrangementNavn.getText(),txtArrangementArtist.getText(),
-					txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
-					Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
+				Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
+				Person person = new Person("ole",95959595,"hei@Oslomet.no","", lokale,"Dette er en test");
+				arrangement = new Arrangement(person,lokale , lokale.getType(),
+						txtArrangementNavn.getText(),txtArrangementArtist.getText(),
+						txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
+						Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
 
-			arrangementObservablelist.add(arrangement);
+				arrangementObservablelist.add(arrangement);
+
+			cbLokal.getSelectionModel().clearSelection();
+
 
 		}
+
+
 
 	}
 
@@ -289,11 +296,23 @@ public class MainController implements Initializable {
 
 	}
 
+	public void tomLagArrangement(){
+		//cbLokal.valueProperty().set(null);
+		DatePickerArrangement.setValue(LocalDate.now());
+		txtArrangementNavn.clear();
+		txtArrangementProgram.clear();
+		txtArrangementArtist.clear();
+		//cbKontaktperson
+		txtArrangementBillPris.clear();
+		txtArrangementBillSalg.clear();
+
+	}
 
 
 
 
 
+/*
 
 	//Feilhåndetering
 	public void feilhaandteringListener(){
@@ -310,25 +329,42 @@ public class MainController implements Initializable {
 		feilhaandtering.ListenerKunTall(txtArrangementBillSalg);
 
 	}
+*/
 
 	public boolean LokalFeilhaandtering () {
-		if(feilhaandtering.KunBokstaver(txtLokalNavn) &&
-			feilhaandtering.KunBokstaver(txtLokalType) &&
-			feilhaandtering.KunTall(txtLokalAntallPlasser) ){
+		String feilmelding = "";
+
+		feilmelding += feilhaandtering.KunBokstaver(txtLokalNavn);
+		feilmelding += feilhaandtering.KunBokstaver(txtLokalType);
+		feilmelding += feilhaandtering.KunTall(txtLokalAntallPlasser);
+
+		System.out.println(feilmelding);
+
+		if(feilmelding.isEmpty()){
 			return true;
 		} else{
+			feilMelding(feilmelding);
 			return false;
 		}
 	}
 
 	public boolean ArrangementFeilhaandtering () {
-		if(		feilhaandtering.KunBokstaver(txtArrangementNavn) &&
-				feilhaandtering.KunBokstaverTextArea(txtArrangementProgram) &&
-				feilhaandtering.KunBokstaver(txtArrangementArtist) &&
-				feilhaandtering.KunTall(txtArrangementBillPris) &&
-				feilhaandtering.KunTall(txtArrangementBillSalg)){
+		String feilmelding = "";
+
+		feilmelding += feilhaandtering.IngenObjektValgt(cbLokal);
+		feilmelding += feilhaandtering.IngenDatoValgt(DatePickerArrangement);
+		feilmelding += feilhaandtering.KunBokstaver(txtArrangementNavn);
+		feilmelding += feilhaandtering.KunBokstaverTextArea(txtArrangementProgram);
+		feilmelding += feilhaandtering.KunBokstaver(txtArrangementArtist);
+		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
+		feilmelding += feilhaandtering.KunTall(txtArrangementBillSalg);
+
+		System.out.println(feilmelding);
+
+		if(feilmelding.isEmpty()){
 			return true;
 		} else{
+			feilMelding(feilmelding);
 			return false;
 		}
 	}
@@ -336,6 +372,7 @@ public class MainController implements Initializable {
 
 
 	public void feilMelding(String melding){
+		//SE OM MAN KAN FORANDRE STØRELSE OG FIKSE LAYOUT
 		errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setHeaderText("Feilmelding!");
 		errorAlert.setContentText(melding);

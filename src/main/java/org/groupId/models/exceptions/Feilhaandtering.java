@@ -2,11 +2,9 @@ package org.groupId.models.exceptions;
 
 import java.util.regex.Pattern;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.groupId.controllers.MainController;
+import org.groupId.models.Lokale;
 import org.groupId.models.exceptions.*;
 
 public class Feilhaandtering {
@@ -18,63 +16,88 @@ public class Feilhaandtering {
 
 
     //KONTROLL
-    public boolean KunBokstaver(TextField input) {
-        System.out.println("sjekker  -  " + input.getId());
-
+    public String KunBokstaver(TextField input) {
         try {
-            System.out.println("TRY: prøver");
             if(!bokstavRegex.matcher(input.getText()).matches()){
                 throw new KunTekstException("Du må fylle " + input.getId() + " med bare bokstaver");
             }else{
-                System.out.println("Riktig REGEX");
                 textFieldFarge(input, "#FFFFFF");
-                return true;
+                return "";
             }
 
         }catch (KunTekstException e){
             exceptionCatch(input,e.getMessage());
-            return false;
+            return e.getMessage() + "\n\n";
         }
     }
 
-    public boolean KunTall(TextField input) {
-        System.out.println("sjekker  -  " + input.getId());
-
+    public String KunTall(TextField input) {
         try {
-            System.out.println("TRY: prøver");
             if(!tallRegex.matcher(input.getText()).matches()){
                 throw new KunTallException("Du må fylle " + input.getId() + " med bare tall");
             }else{
                 textFieldFarge(input, "#FFFFFF");
-                return true;
+                return "";
             }
 
         }catch (KunTallException e){
             exceptionCatch(input,e.getMessage());
-            return false;
+            return e.getMessage() + "\n\n";
 
         }
     }
 
-    public boolean KunBokstaverTextArea(TextArea input) {
-        System.out.println("sjekker  -  " + input.getId());
-
+    public String KunBokstaverTextArea(TextArea input) {
         try {
-            System.out.println("TRY: prøver");
             if(!bokstavRegex.matcher(input.getText()).matches()){
                 throw new KunTekstException("Du må fylle " + input.getId() + " med bare bokstaver");
             }else{
-                System.out.println("Riktig REGEX");
                 input.setStyle("-fx-background-color: #FFFFFF");
-                return true;
+                return "";
             }
 
         }catch (KunTekstException e){
             System.out.print("CATCH: fant feil  --  ");
-            input.setStyle("-fx-background-color: #B4391F");
-            feilMelding(e.getMessage());
+            //input.setStyle("-fx-background-color: #B4391F");
+            //feilMelding(e.getMessage());
             input.setStyle("-fx-background-color: #E74725");
-            return false;
+            return e.getMessage() + "\n\n";
+        }
+    }
+
+    public String IngenObjektValgt(ComboBox input){
+        try{
+            if(input.getSelectionModel().selectedItemProperty().isNull().get()){
+                throw new IngenObjectException("Du må Velge et objekt i: " + input.getId());
+            } else{
+                input.setStyle("-fx-background-color: #FFFFFF");
+                return "";
+            }
+
+
+        }catch (IngenObjectException e){
+            //input.setStyle("-fx-background-color: #B4391F");
+            //feilMelding(e.getMessage());
+            input.setStyle("-fx-background-color: #E74725");
+            return e.getMessage() + "\n\n";
+        }
+    }
+
+    public String IngenDatoValgt(DatePicker input){
+        try{
+            if(input.getValue() == null){
+                throw new IngenObjectException("Du må Velge en dato i " + input.getId());
+            } else{
+                input.setStyle("-fx-background-color: #FFFFFF");
+                return "";
+            }
+
+
+        }catch (IngenObjectException e){
+            //input.setStyle("-fx-background-color: #B4391F");
+            //feilMelding(e.getMessage());
+            input.setStyle("-fx-background-color: #E74725");
+            return e.getMessage() + "\n\n";
         }
     }
 
@@ -110,8 +133,8 @@ public class Feilhaandtering {
 
     public void exceptionCatch(TextField input, String feilmelding){
         System.out.print("CATCH: fant feil  --  ");
-        textFieldFarge(input, "#B4391F");
-        feilMelding(feilmelding);
+        //textFieldFarge(input, "#B4391F");
+        //feilMelding(feilmelding);
         textFieldFarge(input, "#E74725");
     }
 

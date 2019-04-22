@@ -175,7 +175,7 @@
                      </Text>
                      <TextField fx:id="txtArrangementAntPlasser" editable="false" layoutX="134.0" layoutY="123.0" prefHeight="35.0" prefWidth="153.0" styleClass="txtNull" stylesheets="@Stylesheet.css" />
                      <DatePicker fx:id="DatePickerArrangement" editable="false" layoutX="111.0" layoutY="221.0" />
-                     <Button layoutX="779.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnLagArrangement" prefHeight="32.0" prefWidth="182.0" text="Klikk for å fullføre">
+                     <Button layoutX="798.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnLagArrangement" prefHeight="32.0" prefWidth="182.0" text="Klikk for å fullføre">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -201,6 +201,11 @@
                        </columns>
                      </TableView>
                      <TextArea fx:id="txtArrangementProgram" layoutX="420.0" layoutY="132.0" prefHeight="86.0" prefWidth="237.0" />
+                     <Button layoutX="661.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnRedigerArrangement" prefHeight="37.0" prefWidth="93.0" text="Rediger">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Button>
                   </children></AnchorPane>
             </content>
          </Tab>

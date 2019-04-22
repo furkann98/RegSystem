@@ -223,7 +223,7 @@ public class MainController implements Initializable {
 
 				arrangementObservablelist.add(arrangement);
 
-			cbLokal.getSelectionModel().clearSelection();
+			tomLagArrangement();
 
 
 		}
@@ -233,6 +233,35 @@ public class MainController implements Initializable {
 	}
 
 
+	public void btnRedigerArrangement(ActionEvent actionEvent) {
+
+
+		Arrangement test = tableArrangement.getSelectionModel().getSelectedItem();
+		txtArrangementNavn.setText(test.getNavn());
+		txtArrangementArtist.setText(test.getArtist());
+		txtArrangementProgram.setText(test.getProgram());
+		DatePickerArrangement.setValue(test.getTidspunkt());
+		txtArrangementBillPris.setText(String.valueOf(test.getBillettPris()));
+		txtArrangementBillSalg.setText(String.valueOf(test.getBillettSalg()));
+
+		cbLokal.getSelectionModel().select(test.getLokale());
+
+
+		//SLETTE METODE
+
+		//MÅ PUTTE I EN SLETTEMETODE
+		//
+		arrangementObservablelist.remove(test);
+
+		/*
+		ObservableList<Arrangement> selectedArrangement, alleArrangement;
+		alleArrangement = tableArrangement.getItems();
+		selectedArrangement = tableArrangement.getSelectionModel().getSelectedItems();
+
+		selectedArrangement.forEach(alleArrangement::remove);
+		*/
+		/////
+	}
 
 	public void tableArrangementOnMouseClicked(MouseEvent mouseEvent) {
 

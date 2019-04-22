@@ -65,16 +65,11 @@
                         <font>
                            <Font size="16.0" />
                         </font></Button>
-                     <Button fx:id="btnFullfoorLokalId" layoutX="423.0" layoutY="603.0" mnemonicParsing="false" onAction="#btnFullfoorLokal" text="Fullfør" visible="false">
-                        <font>
-                           <Font size="16.0" />
-                        </font>
-                     </Button>
-                     <HBox fx:id="hBoxNyttLokale" layoutX="356.0" layoutY="471.0" prefHeight="80.0" prefWidth="209.0" visible="false">
+                     <HBox fx:id="hBoxNyttLokale" layoutX="356.0" layoutY="471.0" prefHeight="138.0" prefWidth="209.0">
                         <children>
                            <VBox prefHeight="0.0" prefWidth="98.0">
                               <children>
-                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Navn">
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Navn" wrappingWidth="101.7109375">
                                     <font>
                                        <Font size="16.0" />
                                     </font>
@@ -89,6 +84,11 @@
                                        <Font size="16.0" />
                                     </font>
                                  </Text>
+                                 <Button fx:id="btnAvbrytLokal" mnemonicParsing="false" onAction="#btnFullfoorLokal" text="Fullfør">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Button>
                               </children>
                            </VBox>
                            <VBox prefHeight="76.0" prefWidth="103.0">
@@ -96,6 +96,11 @@
                                  <TextField fx:id="txtLokalNavn" />
                                  <TextField fx:id="txtLokalType" />
                                  <TextField fx:id="txtLokalAntallPlasser" />
+                                 <Button fx:id="btnFullfoorLokalId" mnemonicParsing="false" onAction="#btnFullfoorLokal" text="Fullfør">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Button>
                               </children>
                            </VBox>
                         </children>
@@ -147,7 +152,6 @@
                            <Font size="16.0" />
                         </font>
                      </Text>
-                     <TextField fx:id="txtArrangementProgram" alignment="TOP_LEFT" layoutX="420.0" layoutY="129.0" prefHeight="84.0" prefWidth="238.0" />
                      <Text layoutX="347.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lag Arrangement">
                         <font>
                            <Font size="40.0" />
@@ -196,6 +200,7 @@
                            <TableColumn fx:id="TCAntall" prefWidth="145.0" text="Antall Ledig" />
                        </columns>
                      </TableView>
+                     <TextArea fx:id="txtArrangementProgram" layoutX="420.0" layoutY="132.0" prefHeight="86.0" prefWidth="237.0" />
                   </children></AnchorPane>
             </content>
          </Tab>

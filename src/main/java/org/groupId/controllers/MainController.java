@@ -77,7 +77,10 @@ public class MainController implements Initializable {
 
 	@FXML
 	public TextField txtArrangementAntPlasser, txtArrangementType, txtArrangementNavn,
-			txtArrangementProgram, txtArrangementArtist, txtArrangementBillPris, txtArrangementBillSalg;
+			txtArrangementArtist, txtArrangementBillPris, txtArrangementBillSalg;
+
+	@FXML
+	public TextArea txtArrangementProgram;
 
 	@FXML
 	public TableColumn<Arrangement, String> TCNavn, TCProgram, TCPris, TCAntall, TCPerson;
@@ -121,6 +124,8 @@ public class MainController implements Initializable {
 		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", DatePickerArrangement.getValue(),25,10);
 
 		arrangementObservablelist.add(arrangement);
+
+		System.out.println(DatePickerArrangement.getValue() == null);
 
 	}
 
@@ -299,7 +304,7 @@ public class MainController implements Initializable {
 
 		//Arrangement - legg til arrangment
 		feilhaandtering.ListenerKunBokstaver(txtArrangementNavn);
-		feilhaandtering.ListenerKunBokstaver(txtArrangementProgram);
+		feilhaandtering.ListenerKunBokstaverTextArea(txtArrangementProgram);
 		feilhaandtering.ListenerKunBokstaver(txtArrangementArtist);
 		feilhaandtering.ListenerKunTall(txtArrangementBillPris);
 		feilhaandtering.ListenerKunTall(txtArrangementBillSalg);
@@ -318,7 +323,7 @@ public class MainController implements Initializable {
 
 	public boolean ArrangementFeilhaandtering () {
 		if(		feilhaandtering.KunBokstaver(txtArrangementNavn) &&
-				feilhaandtering.KunBokstaver(txtArrangementProgram) &&
+				feilhaandtering.KunBokstaverTextArea(txtArrangementProgram) &&
 				feilhaandtering.KunBokstaver(txtArrangementArtist) &&
 				feilhaandtering.KunTall(txtArrangementBillPris) &&
 				feilhaandtering.KunTall(txtArrangementBillSalg)){

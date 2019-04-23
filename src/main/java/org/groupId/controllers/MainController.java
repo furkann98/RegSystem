@@ -183,6 +183,8 @@ public class MainController implements Initializable {
 
 		lokalerObservableList.remove(redigerLokale);
 
+		visLokalleggTil();
+
 	}
 
 

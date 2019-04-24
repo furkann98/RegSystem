@@ -149,7 +149,7 @@ public class MainController implements Initializable {
 	}
 
 
-
+/*
 	//KNAPPER - HOVEDSIDE
 	public void exitApplication(ActionEvent actionEvent) {
 		Platform.exit();
@@ -168,7 +168,7 @@ public class MainController implements Initializable {
 		tabPane.getSelectionModel().select(tabPaneBillettsalg);
 	}
 
-
+*/
 
 	//KNAPPER - LOKALE
 

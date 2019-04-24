@@ -234,6 +234,24 @@ public class MainController implements Initializable {
 		visLokalleggTil();
 	}
 
+
+	public void btnRedigerLokal(ActionEvent actionEvent) { //Lokale
+
+		//visLokalleggTil();
+
+		Lokale redigerLokale = lstViewLokal.getSelectionModel().getSelectedItem();
+		txtLokalNavn.setText(redigerLokale.getNavn());
+
+		txtLokalType.setText(redigerLokale.getType());
+		txtLokalAntallPlasser.setText(String.valueOf(redigerLokale.getAntallPlasser()));
+
+		lokalerObservableList.remove(redigerLokale);
+
+		visLokalleggTil();
+
+	}
+
+
 	public void btnFullfoorLokal(ActionEvent actionEvent) { //Lokale
 		if(LokalFeilhaandtering()){
 			if(LOKALE.isEmpty()){
@@ -313,6 +331,7 @@ public class MainController implements Initializable {
 
 	public void btnRedigerArrangement(ActionEvent actionEvent) {
 
+<<<<<<< HEAD
 		Arrangement test = tableArrangement.getSelectionModel().getSelectedItem();
 		txtArrangementNavn.setText(test.getNavn());
 		txtArrangementArtist.setText(test.getArtist());
@@ -320,14 +339,30 @@ public class MainController implements Initializable {
 		DatePickerArrangement.setValue(test.getTidspunkt());
 		txtArrangementBillPris.setText(String.valueOf(test.getBillettPris()));
 		txtArrangementBillSalg.setText(String.valueOf(test.getBillettSalg()));
+=======
 
-		cbLokal.getSelectionModel().select(test.getLokale());
+		Arrangement redigerArrangement = tableArrangement.getSelectionModel().getSelectedItem();
+		txtArrangementNavn.setText(redigerArrangement.getNavn());
+		txtArrangementArtist.setText(redigerArrangement.getArtist());
+		txtArrangementProgram.setText(redigerArrangement.getProgram());
+		DatePickerArrangement.setValue(redigerArrangement.getTidspunkt());
+		txtArrangementBillPris.setText(String.valueOf(redigerArrangement.getBillettPris()));
+		txtArrangementBillSalg.setText(String.valueOf(redigerArrangement.getBillettSalg()));
+>>>>>>> 129b7057ffe9710332aa2826d57e673c54bf14fc
+
+		cbLokal.getSelectionModel().select(redigerArrangement.getLokale());
 
 		arrangementObservablelist.remove(test);
 
 		btnRedigerArrangement.setDisable(true);
 		btnSlettArrangement.setDisable(true);
 
+<<<<<<< HEAD
+=======
+		//MÅ PUTTE I EN SLETTEMETODE
+		//
+		arrangementObservablelist.remove(redigerArrangement);
+>>>>>>> 129b7057ffe9710332aa2826d57e673c54bf14fc
 
 	}
 

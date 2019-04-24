@@ -37,6 +37,9 @@ public class MainController implements Initializable {
 	public ObservableList<Lokale> arrangementLokaleObservableList;
 	public ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
 
+	// person
+	public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
+
 	// annet
 	public Alert errorAlert;
 
@@ -157,6 +160,8 @@ public class MainController implements Initializable {
 		// Kobler objektet med tableview
 		lokaleTableViewStruktur();
 		arrangementTableViewStruktur();
+		personTableViewStruktur();
+
 
 
 		//Testverdier
@@ -167,34 +172,13 @@ public class MainController implements Initializable {
 
 
 		Lokale test1 = new Lokale("lokale", "KINO", 124);
-		Person test2 = new Person("ole",95959595,"hei@Oslomet.no","", test1,"Dette er en test");
+		Person test2 = new Person("ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
 		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest","Khalid","dette er en konsert", DatePickerArrangement.getValue(),25,10);
 
 		arrangementObservablelist.add(arrangement);
 
+		personObservableList.add(test2);
 	}
-
-
-/*
-	//KNAPPER - HOVEDSIDE
-	public void exitApplication(ActionEvent actionEvent) {
-		Platform.exit();
-	}
-
-	public void btnSeLokaler(ActionEvent actionEvent) {  //Hovedside
-		tabPane.getSelectionModel().select(tabPaneLokale);
-
-	}
-
-	public void btnArrangement(ActionEvent actionEvent) { //Hovedside
-		tabPane.getSelectionModel().select(tabPaneArrangement);
-	}
-
-	public void btnBillettsalg(ActionEvent actionEvent) { //Hovedside
-		tabPane.getSelectionModel().select(tabPaneBillettsalg);
-	}
-
-*/
 
 	//KNAPPER - LOKALE
 
@@ -328,7 +312,6 @@ public class MainController implements Initializable {
 
 		} catch (NullPointerException e){
 			System.out.println("combobox feil");
-			//feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
 		}
 
 	}
@@ -336,7 +319,7 @@ public class MainController implements Initializable {
 	public void btnLagArrangement(ActionEvent actionEvent) {
 		if(ArrangementFeilhaandtering()){
 				Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
-				Person person = new Person("ole",95959595,"hei@Oslomet.no","", lokale,"Dette er en test");
+				Person person = new Person("ole","95959595","hei@Oslomet.no","", "Dette er en test");
 				arrangement = new Arrangement(person,lokale , lokale.getType(),
 						txtArrangementNavn.getText(),txtArrangementArtist.getText(),
 						txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
@@ -345,13 +328,9 @@ public class MainController implements Initializable {
 				arrangementObservablelist.add(arrangement);
 
 			tomLagArrangement();
-			//cbLokal.;
 
 
 		}
-
-
-
 	}
 
 
@@ -367,8 +346,6 @@ public class MainController implements Initializable {
 
 		cbLokal.getSelectionModel().select(redigerArrangement.getLokale());
 
-		//MÅ PUTTE I EN SLETTEMETODE
-		//
 		arrangementObservablelist.remove(redigerArrangement);
 
 		btnRedigerArrangement.setDisable(true);
@@ -393,11 +370,18 @@ public class MainController implements Initializable {
 		}
 	}
 
+	//KONTAKPERSON - KNAPPER
+	public void btnPersonRediger(ActionEvent actionEvent) {
+	}
+
+	public void btnPersonLeggTil(ActionEvent actionEvent) {
+	}
+
+	public void btnPersonSlett(ActionEvent actionEvent) {
+	}
 
 
-	//METODER
-
-	// Lokal
+	// METODER - LOKAL
 
 	public void leggTilLokal(Lokale nyttLokal){
 		LOKALE.leggTilLokal(nyttLokal);
@@ -444,7 +428,7 @@ public class MainController implements Initializable {
 
 
 
-	// Arrangement
+	// METODER - ARRANGEMENT
 	public void arrangementTableViewStruktur(){
 		tableArrangement.setItems(arrangementObservablelist);
 
@@ -471,8 +455,23 @@ public class MainController implements Initializable {
 	}
 
 
+	// METODER - KONTAKTPERSON
+	public void personTableViewStruktur(){
+		tablePerson.setItems(personObservableList);
 
-//Feilhåndetering
+		TCPersonNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+		TCPersonTlf.setCellValueFactory(new PropertyValueFactory<>("tlfNummer"));
+		TCPersonEpost.setCellValueFactory(new PropertyValueFactory<>("Epost"));
+		TCPersonNettside.setCellValueFactory(new PropertyValueFactory<>("nettside"));
+		TCPersonOpplysninger.setCellValueFactory(new PropertyValueFactory<>("opplysninger"));
+		TCPersonAntall.setCellValueFactory(new PropertyValueFactory<>("antallArrangementer"));
+
+
+	}
+
+
+
+//FEILHÅNDTERING
 
 /*
 	public void feilhaandteringListener(){
@@ -526,17 +525,7 @@ public class MainController implements Initializable {
 		}
 
 	}
-/*
-	public boolean tomTekst(String tekst){
-		if(tekst.isEmpty()){
-			return true;
-		} else{
-			feilMelding(tekst);
-			return false;
-		}
-	}
 
-*/
 
 	public void feilMelding(String melding){
 		//SE OM MAN KAN FORANDRE STØRELSE OG FIKSE LAYOUT

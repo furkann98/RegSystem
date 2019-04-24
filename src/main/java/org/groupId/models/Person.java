@@ -1,7 +1,5 @@
 package org.groupId.models;
 
-import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 
 public class Person {
@@ -10,22 +8,23 @@ public class Person {
     private ArrayList<Person> personer = new ArrayList<>();
 
     private String navn;
-    private int telefonfNummer;
+    private String tlfNummer;
     private String Epost;
     private String nettside;
     private ArrayList<Arrangement> arrangementer;
-    private Lokale lokale;
     private String opplysninger;
+
+    private String antallArrangementer =  "Ingen arrangementer";
+
 
 
     // KONSTRUKTØR
 
-    public Person(String navn, int telefonfNummer, String epost, String nettside, Lokale lokale, String opplysninger) {
+    public Person(String navn, String tlfNummer, String epost, String nettside, String opplysninger) {
         this.navn = navn;
-        this.telefonfNummer = telefonfNummer;
+        this.tlfNummer = tlfNummer;
         this.Epost = epost;
         this.nettside = nettside;
-        this.lokale = lokale;
         this.opplysninger = opplysninger;
     }
 
@@ -41,8 +40,8 @@ public class Person {
         return navn;
     }
 
-    public int getTelefonfNummer() {
-        return telefonfNummer;
+    public String getTlfNummer() {
+        return tlfNummer;
     }
 
     public String getEpost() {
@@ -53,12 +52,26 @@ public class Person {
         return nettside;
     }
 
-    public Lokale getLokale() {
-        return lokale;
-    }
-
     public String getOpplysninger() {
         return opplysninger;
     }
 
+    public void LeggTilArrangement(Arrangement arrangement){
+        arrangementer.add(arrangement);
+        antallArrangementer =  arrangementer.size() + " arrangementer";
+    }
+
+    public void FjernArrangement(Arrangement arrangement){
+        arrangementer.remove(arrangement);
+        if(arrangementer.isEmpty()){
+            antallArrangementer =  "Ingen arrangementer";
+        }else {
+            antallArrangementer =  arrangementer.size() + " arrangementer";
+
+        }
+    }
+
+    public String getAntallArrangementer() {
+        return antallArrangementer;
+    }
 }

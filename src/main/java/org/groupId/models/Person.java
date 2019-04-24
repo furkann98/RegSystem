@@ -11,7 +11,7 @@ public class Person {
     private String tlfNummer;
     private String Epost;
     private String nettside;
-    private ArrayList<Arrangement> arrangementer;
+    private ArrayList<Arrangement> arrangementer = new ArrayList<>();
     private String opplysninger;
 
     private String antallArrangementer =  "Ingen arrangementer";
@@ -62,7 +62,9 @@ public class Person {
 
     public void LeggTilArrangement(Arrangement arrangement){
         arrangementer.add(arrangement);
+        System.out.println(arrangementer.toString());
         antallArrangementer =  arrangementer.size() + " arrangementer";
+        System.out.println(antallArrangementer);
     }
 
     public void FjernArrangement(Arrangement arrangement){

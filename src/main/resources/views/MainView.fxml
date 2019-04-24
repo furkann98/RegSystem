@@ -246,8 +246,8 @@
                      <TextField fx:id="txtPersonTlf" layoutX="154.0" layoutY="162.0" prefHeight="35.0" prefWidth="240.0" />
                      <TextField fx:id="txtPersonEpost" layoutX="154.0" layoutY="213.0" prefHeight="35.0" prefWidth="240.0" />
                      <TextField fx:id="txtPersonNettside" layoutX="154.0" layoutY="266.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TextArea fx:id="txtPersonOversikt" layoutX="472.0" layoutY="335.0" prefHeight="92.0" prefWidth="456.0" />
-                     <TableView fx:id="tablePersonArrangement" layoutX="463.0" layoutY="445.0" prefHeight="136.0" prefWidth="474.0">
+                     <TextArea fx:id="txtPersonOversikt" editable="false" layoutX="472.0" layoutY="335.0" prefHeight="92.0" prefWidth="456.0" visible="false" />
+                     <TableView fx:id="tablePersonArrangement" layoutX="463.0" layoutY="445.0" prefHeight="136.0" prefWidth="474.0" visible="false">
                        <columns>
                          <TableColumn fx:id="TCPersonArrangementNavn" prefWidth="108.0" text="Navn" />
                          <TableColumn fx:id="TCPersonArrangementLokale" prefWidth="103.0" text="Lokale" />
@@ -260,7 +260,6 @@
                          <TableColumn fx:id="TCPersonTlf" prefWidth="75.0" text="Telefon" />
                            <TableColumn fx:id="TCPersonEpost" prefWidth="75.0" text="Epost" />
                            <TableColumn fx:id="TCPersonNettside" prefWidth="75.0" text="Nettside" />
-                           <TableColumn fx:id="TCPersonOpplysninger" prefWidth="135.0" text="Opplysning" />
                            <TableColumn fx:id="TCPersonAntall" minWidth="50.0" prefWidth="112.0" text="Antall Arr." />
                        </columns>
                      </TableView>

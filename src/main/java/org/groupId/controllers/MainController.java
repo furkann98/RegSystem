@@ -181,6 +181,8 @@ public class MainController implements Initializable {
 		arrangementObservablelist.add(arrangement);
 
 		personObservableList.add(test2);
+
+		personArrangementObserableList.add(arrangement);
 	}
 
 	//KNAPPER - LOKALE

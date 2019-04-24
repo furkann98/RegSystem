@@ -17,7 +17,9 @@ import org.groupId.models.exceptions.Feilhaandtering;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -28,6 +30,7 @@ public class MainController implements Initializable {
 	// lokale
 	public Lokale LOKALE;
 	public ObservableList<Lokale> lokalerObservableList;
+	public ObservableList<Arrangement> lokalersArrangement = FXCollections.observableArrayList();
 
 	// arrangement
 	public Arrangement arrangement;
@@ -67,6 +70,15 @@ public class MainController implements Initializable {
 	@FXML
 	public Button btnFullfoorLokalId, btnFjernLokal;
 
+	@FXML
+	public TableView<Arrangement> tableLokale;
+
+	@FXML
+	public TableColumn<Arrangement, String> TCNavnLokale, TCAntallLokale, TCPersonLokale;
+
+	@FXML
+	public TableColumn<Arrangement, LocalDate> TCDatoLokale;
+
 
 	//Arrangement
 
@@ -98,6 +110,9 @@ public class MainController implements Initializable {
 	@FXML
 	public DatePicker DatePickerArrangement;
 
+	@FXML
+	public Button btnRedigerArrangement, btnSlettArrangement;
+
 
 
 
@@ -109,11 +124,13 @@ public class MainController implements Initializable {
 
 		LOKALE = new Lokale();
 
+		//Kobler observablelist med combobox
 		lokalerObservableList = lstViewLokal.getItems();
 		arrangementLokaleObservableList = cbLokal.getItems();
 
-		arrangementTableViewStruktur(); // Kobler objektet med tableview
-		//feilhaandteringListener(); // kobler alle bokser til en listener
+		// Kobler objektet med tableview
+		lokaleTableViewStruktur();
+		arrangementTableViewStruktur();
 
 
 		//Testverdier
@@ -125,7 +142,7 @@ public class MainController implements Initializable {
 
 		Lokale test1 = new Lokale("lokale", "KINO", 124);
 		Person test2 = new Person("ole",95959595,"hei@Oslomet.no","", test1,"Dette er en test");
-		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest",null,"dette er en konsert", DatePickerArrangement.getValue(),25,10);
+		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest","Khalid","dette er en konsert", DatePickerArrangement.getValue(),25,10);
 
 		arrangementObservablelist.add(arrangement);
 
@@ -156,13 +173,60 @@ public class MainController implements Initializable {
 	//KNAPPER - LOKALE
 
 	public void btnFjernLokal(ActionEvent actionEvent) { //Lokale
-		fjernLokal(lstViewLokal.getSelectionModel().getSelectedIndex());
+		//Hjelpe-Variabler
+		int indeks = lstViewLokal.getSelectionModel().getSelectedIndex();
+		Lokale lokal = lstViewLokal.getSelectionModel().getSelectedItem();
+		Boolean slett = false;
+		String arrangement = "Disse arrangementene vil bli slettet: \n\n";
+
+		//Sjekker arrangementer som er linka til Lokale
+		for (int i = 0; i < arrangementObservablelist.size(); i++) {
+			if(arrangementObservablelist.get(i).getLokale().equals(lokalerObservableList.get(indeks))){
+				slett = true;
+				arrangement += arrangementObservablelist.get(i).getNavn() + "\n\n";
+			}
+		}
+
+		//Dersom lokalet har arrangementer
+		if(slett){
+			errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+			errorAlert.setHeaderText("Er du sikker?");
+			errorAlert.setContentText(arrangement);
+
+
+			//OK-if eller Cancel-else
+			Optional<ButtonType> result = errorAlert.showAndWait();
+			if (result.get() == ButtonType.OK){
+				try{
+					System.out.println("inne i TRY");
+					fjernLokal(indeks);
+					System.out.println("Forbi fjern");
+
+					int size = arrangementObservablelist.size();
+					System.out.println("size: " + size);
+					for (int i = 0; i < size; i++) {
+						System.out.println("inne i Løkka");
+						if(arrangementObservablelist.get(i).getLokale().equals(lokal)){
+							System.out.println("inne i for IF");
+							System.out.println(arrangementObservablelist.remove(i));
+						}
+					}
+				}catch (NullPointerException e){
+					System.out.println("fant exception");
+
+				}
+			} else {
+				fjernLokal(indeks);
+			}
+
+		}
 
 		if(LOKALE.isEmpty()){
 			btnFjernLokal.setDisable(true);
 		}
 
 		tomTextArea();
+		skjulLokalleggTil();
 	}
 
 
@@ -178,24 +242,36 @@ public class MainController implements Initializable {
 			Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
 			leggTilLokal(nyttLokal);
 			skjulLokalleggTil();
-			tomFulfoorLokal();
 		}
 
 
+	}
+
+	public void btnAvbrytLokal(ActionEvent actionEvent) {
+		skjulLokalleggTil();
 	}
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
 
+
 		try{
 			Lokale info = lstViewLokal.getSelectionModel().getSelectedItem();
 			info.getOversikt(txtFlowLokalOverskrift,txtFlowLokal);
-			//txtFlowLokalOverskrift.setText(info.getTKNavn());
-			//txtFlowLokal.setText("Type: " + info.getType() + "\n" + "Antall Plasser: " + info.getAntallPlasser());
+			lokalersArrangement.clear();
 
+			for (int i = 0; i < arrangementObservablelist.size() ; i++) {
+				if(arrangementObservablelist.get(i).getLokale().equals(info)){
+					lokalersArrangement.add(arrangementObservablelist.get(i));
+				}
+
+			}
+			skjulLokalleggTil();
 		} catch (NullPointerException e){
-			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
+			feilMelding("Velg et lokalet eller vennligst lag et lokalet før du klikker videre. :)");
 		}
 	}
+
+
 
 	//KNAPPER - ARRANGEMENT
 	public void cbLokalOnAction(ActionEvent actionEvent) {
@@ -207,7 +283,8 @@ public class MainController implements Initializable {
 
 
 		} catch (NullPointerException e){
-			feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
+			System.out.println("combobox feil");
+			//feilMelding("Det finnes ingen lokale, dermed er det ikke mulig å se oversikten. Vennligst lag et lokalet før du klikker videre. :)" + "\n" + "TAMAM TAMAM");
 		}
 
 	}
@@ -224,6 +301,7 @@ public class MainController implements Initializable {
 				arrangementObservablelist.add(arrangement);
 
 			tomLagArrangement();
+			//cbLokal.;
 
 
 		}
@@ -235,7 +313,6 @@ public class MainController implements Initializable {
 
 	public void btnRedigerArrangement(ActionEvent actionEvent) {
 
-
 		Arrangement test = tableArrangement.getSelectionModel().getSelectedItem();
 		txtArrangementNavn.setText(test.getNavn());
 		txtArrangementArtist.setText(test.getArtist());
@@ -246,25 +323,29 @@ public class MainController implements Initializable {
 
 		cbLokal.getSelectionModel().select(test.getLokale());
 
-
-		//SLETTE METODE
-
-		//MÅ PUTTE I EN SLETTEMETODE
-		//
 		arrangementObservablelist.remove(test);
 
-		/*
-		ObservableList<Arrangement> selectedArrangement, alleArrangement;
-		alleArrangement = tableArrangement.getItems();
-		selectedArrangement = tableArrangement.getSelectionModel().getSelectedItems();
+		btnRedigerArrangement.setDisable(true);
+		btnSlettArrangement.setDisable(true);
 
-		selectedArrangement.forEach(alleArrangement::remove);
-		*/
-		/////
+
+	}
+
+	public void btnSlettArrangement(ActionEvent actionEvent) {
+		arrangementObservablelist.remove(tableArrangement.getSelectionModel().getSelectedItem());
+
+		btnRedigerArrangement.setDisable(true);
+		btnSlettArrangement.setDisable(true);
 	}
 
 	public void tableArrangementOnMouseClicked(MouseEvent mouseEvent) {
-
+		if(tableArrangement.getSelectionModel().getSelectedItem() != null){
+			btnRedigerArrangement.setDisable(false);
+			btnSlettArrangement.setDisable(false);
+		}else {
+			btnRedigerArrangement.setDisable(true);
+			btnSlettArrangement.setDisable(true);
+		}
 	}
 
 
@@ -293,6 +374,9 @@ public class MainController implements Initializable {
 	public void skjulLokalleggTil(){
 		hBoxNyttLokale.setVisible(false);
 		btnFullfoorLokalId.setVisible(false);
+		txtLokalNavn.setText("");
+		txtLokalType.setText("");
+		txtLokalAntallPlasser.setText("");
 	}
 
 	public void tomTextArea(){
@@ -302,11 +386,15 @@ public class MainController implements Initializable {
 		txtArrangementType.clear();
 	}
 
-	public void tomFulfoorLokal() {
-		txtLokalNavn.setText("");
-		txtLokalType.setText("");
-		txtLokalAntallPlasser.setText("");
+	public void lokaleTableViewStruktur(){
+		tableLokale.setItems(lokalersArrangement);
+
+		TCNavnLokale.setCellValueFactory(new PropertyValueFactory<>("navn"));
+		TCPersonLokale.setCellValueFactory(new PropertyValueFactory<>("kontaktPersonNavn"));
+		TCAntallLokale.setCellValueFactory(new PropertyValueFactory<>("antallLedige"));
+		TCDatoLokale.setCellValueFactory(new PropertyValueFactory<>("tidspunkt"));
 	}
+
 
 
 
@@ -339,11 +427,9 @@ public class MainController implements Initializable {
 
 
 
-
+//Feilhåndetering
 
 /*
-
-	//Feilhåndetering
 	public void feilhaandteringListener(){
 		//Lokale - legg til lokal
 		feilhaandtering.ListenerKunBokstaver(txtLokalNavn);
@@ -367,8 +453,6 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.KunBokstaver(txtLokalType);
 		feilmelding += feilhaandtering.KunTall(txtLokalAntallPlasser);
 
-		System.out.println(feilmelding);
-
 		if(feilmelding.isEmpty()){
 			return true;
 		} else{
@@ -388,17 +472,26 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillSalg);
 
-		System.out.println(feilmelding);
-
+		//Sjekker om vi har feil.
 		if(feilmelding.isEmpty()){
 			return true;
 		} else{
 			feilMelding(feilmelding);
 			return false;
 		}
+
+	}
+/*
+	public boolean tomTekst(String tekst){
+		if(tekst.isEmpty()){
+			return true;
+		} else{
+			feilMelding(tekst);
+			return false;
+		}
 	}
 
-
+*/
 
 	public void feilMelding(String melding){
 		//SE OM MAN KAN FORANDRE STØRELSE OG FIKSE LAYOUT

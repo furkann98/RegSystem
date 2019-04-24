@@ -215,10 +215,10 @@ public class MainController implements Initializable {
 					System.out.println("fant exception");
 
 				}
-			} else {
-				fjernLokal(indeks);
 			}
 
+		}else {
+			fjernLokal(indeks);
 		}
 
 		if(LOKALE.isEmpty()){
@@ -331,16 +331,6 @@ public class MainController implements Initializable {
 
 	public void btnRedigerArrangement(ActionEvent actionEvent) {
 
-<<<<<<< HEAD
-		Arrangement test = tableArrangement.getSelectionModel().getSelectedItem();
-		txtArrangementNavn.setText(test.getNavn());
-		txtArrangementArtist.setText(test.getArtist());
-		txtArrangementProgram.setText(test.getProgram());
-		DatePickerArrangement.setValue(test.getTidspunkt());
-		txtArrangementBillPris.setText(String.valueOf(test.getBillettPris()));
-		txtArrangementBillSalg.setText(String.valueOf(test.getBillettSalg()));
-=======
-
 		Arrangement redigerArrangement = tableArrangement.getSelectionModel().getSelectedItem();
 		txtArrangementNavn.setText(redigerArrangement.getNavn());
 		txtArrangementArtist.setText(redigerArrangement.getArtist());
@@ -348,21 +338,15 @@ public class MainController implements Initializable {
 		DatePickerArrangement.setValue(redigerArrangement.getTidspunkt());
 		txtArrangementBillPris.setText(String.valueOf(redigerArrangement.getBillettPris()));
 		txtArrangementBillSalg.setText(String.valueOf(redigerArrangement.getBillettSalg()));
->>>>>>> 129b7057ffe9710332aa2826d57e673c54bf14fc
 
 		cbLokal.getSelectionModel().select(redigerArrangement.getLokale());
 
-		arrangementObservablelist.remove(test);
-
-		btnRedigerArrangement.setDisable(true);
-		btnSlettArrangement.setDisable(true);
-
-<<<<<<< HEAD
-=======
 		//MÅ PUTTE I EN SLETTEMETODE
 		//
 		arrangementObservablelist.remove(redigerArrangement);
->>>>>>> 129b7057ffe9710332aa2826d57e673c54bf14fc
+
+		btnRedigerArrangement.setDisable(true);
+		btnSlettArrangement.setDisable(true);
 
 	}
 

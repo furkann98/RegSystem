@@ -201,12 +201,12 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                     <Button layoutX="557.0" layoutY="572.0" mnemonicParsing="false" text="Rediger">
+                     <Button fx:id="btnPersonRediger" layoutX="537.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnPersonRediger" text="Rediger">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Button>
-                     <Button layoutX="228.0" layoutY="553.0" mnemonicParsing="false" text="Legg til">
+                     <Button fx:id="btnPersonLeggTil" layoutX="224.0" layoutY="572.0" mnemonicParsing="false" onAction="#btnPersonLeggTil" text="Legg til">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -236,27 +236,34 @@
                            <Font size="16.0" />
                         </font>
                      </Text>
-                     <TextField layoutX="154.0" layoutY="118.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TextArea layoutX="156.0" layoutY="364.0" prefHeight="162.0" prefWidth="246.0" promptText="Skriv ned opplysninger og evt andre tilknytninger" />
-                     <Button layoutX="846.0" layoutY="572.0" mnemonicParsing="false" text="Slett">
+                     <TextField fx:id="txtPersonNavn" layoutX="154.0" layoutY="118.0" prefHeight="35.0" prefWidth="240.0" />
+                     <TextArea fx:id="txtPersonOpplysninger" layoutX="156.0" layoutY="364.0" prefHeight="162.0" prefWidth="246.0" promptText="Skriv ned opplysninger og evt andre tilknytninger" />
+                     <Button fx:id="btnPersonSlett" layoutX="826.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnPersonSlett" text="Slett">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Button>
-                     <TextField layoutX="154.0" layoutY="162.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TextField layoutX="154.0" layoutY="213.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TextField layoutX="154.0" layoutY="266.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TableView layoutX="419.0" layoutY="115.0" prefHeight="208.0" prefWidth="546.0" stylesheets="@Stylesheet.css">
+                     <TextField fx:id="txtPersonTlf" layoutX="154.0" layoutY="162.0" prefHeight="35.0" prefWidth="240.0" />
+                     <TextField fx:id="txtPersonEpost" layoutX="154.0" layoutY="213.0" prefHeight="35.0" prefWidth="240.0" />
+                     <TextField fx:id="txtPersonNettside" layoutX="154.0" layoutY="266.0" prefHeight="35.0" prefWidth="240.0" />
+                     <TableView fx:id="tablePerson" layoutX="427.0" layoutY="44.0" prefHeight="208.0" prefWidth="546.0" stylesheets="@Stylesheet.css">
                        <columns>
-                         <TableColumn prefWidth="75.0" text="Navn" />
-                         <TableColumn prefWidth="75.0" text="Telefon" />
-                           <TableColumn prefWidth="75.0" text="Epost" />
-                           <TableColumn prefWidth="75.0" text="Nettside" />
-                           <TableColumn prefWidth="135.0" text="Opplysning" />
-                           <TableColumn minWidth="50.0" prefWidth="112.0" text="Antall Arr." />
+                         <TableColumn fx:id="TCPersonNavn" prefWidth="75.0" text="Navn" />
+                         <TableColumn fx:id="TCPersonTlf" prefWidth="75.0" text="Telefon" />
+                           <TableColumn fx:id="TCPersonEpost" prefWidth="75.0" text="Epost" />
+                           <TableColumn fx:id="TCPersonNettside" prefWidth="75.0" text="Nettside" />
+                           <TableColumn fx:id="TCPersonOpplysninger" prefWidth="135.0" text="Opplysning" />
+                           <TableColumn fx:id="TCPersonAntall" minWidth="50.0" prefWidth="112.0" text="Antall Arr." />
                        </columns>
                      </TableView>
-                     <TextArea layoutX="445.0" layoutY="338.0" prefHeight="200.0" prefWidth="495.0" />
+                     <TextArea fx:id="txtPersonOversikt" layoutX="472.0" layoutY="335.0" prefHeight="92.0" prefWidth="456.0" />
+                     <TableView fx:id="tablePersonArrangement" layoutX="463.0" layoutY="445.0" prefHeight="136.0" prefWidth="474.0">
+                       <columns>
+                         <TableColumn fx:id="TCPersonArrangementNavn" prefWidth="108.0" text="Navn" />
+                         <TableColumn fx:id="TCPersonArrangementLokale" prefWidth="103.0" text="Lokale" />
+                           <TableColumn fx:id="TCPersonArrangementDato" prefWidth="123.0" text="Dato" />
+                       </columns>
+                     </TableView>
                   </children></AnchorPane>
             </content>
          </Tab>

@@ -114,6 +114,32 @@ public class MainController implements Initializable {
 	public Button btnRedigerArrangement, btnSlettArrangement;
 
 
+	//Kontaktperson
+
+	@FXML
+	public TextField txtPersonNavn, txtPersonTlf, txtPersonEpost, txtPersonNettside;
+
+	@FXML
+	public TextArea txtPersonOpplysninger, txtPersonOversikt;
+
+	@FXML
+	public TableView<Person> tablePerson;
+
+	@FXML
+	public TableColumn<Person, String> TCPersonNavn, TCPersonTlf, TCPersonEpost,
+			TCPersonNettside, TCPersonOpplysninger, TCPersonAntall;
+
+
+	@FXML
+	public TableView<Arrangement> tablePersonArrangement;
+
+	@FXML
+	public TableColumn<Arrangement,String> TCPersonArrangementNavn, TCPersonArrangementLokale;
+
+	@FXML
+	public TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
+
+
 
 
 

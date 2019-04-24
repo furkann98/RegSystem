@@ -8,10 +8,12 @@ public class Person {
 
     // DATAFELT
     private ArrayList<Person> personer = new ArrayList<>();
+
     private String navn;
     private int telefonfNummer;
     private String Epost;
     private String nettside;
+    private ArrayList<Arrangement> arrangementer;
     private Lokale lokale;
     private String opplysninger;
 

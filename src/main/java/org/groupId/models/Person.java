@@ -56,6 +56,10 @@ public class Person {
         return opplysninger;
     }
 
+    public ArrayList<Arrangement> getArrangementer(){return arrangementer;}
+
+
+
     public void LeggTilArrangement(Arrangement arrangement){
         arrangementer.add(arrangement);
         antallArrangementer =  arrangementer.size() + " arrangementer";

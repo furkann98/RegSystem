@@ -40,6 +40,8 @@ public class MainController implements Initializable {
 	// person
 	public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
 
+	public ObservableList<Arrangement> personArrangementObserableList = FXCollections.observableArrayList();
+
 	// annet
 	public Alert errorAlert;
 
@@ -161,6 +163,7 @@ public class MainController implements Initializable {
 		lokaleTableViewStruktur();
 		arrangementTableViewStruktur();
 		personTableViewStruktur();
+		personArrangementTableViewStruktur();
 
 
 
@@ -326,6 +329,7 @@ public class MainController implements Initializable {
 						Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
 
 				arrangementObservablelist.add(arrangement);
+				arrangement.getKontaktPerson().LeggTilArrangement(arrangement);
 
 			tomLagArrangement();
 
@@ -380,6 +384,15 @@ public class MainController implements Initializable {
 	public void btnPersonSlett(ActionEvent actionEvent) {
 	}
 
+	public void tablePersonArrangementOnMouseClicked(MouseEvent mouseEvent) {
+		personArrangementObserableList.clear();
+		if(tablePerson.getSelectionModel().getSelectedItem() != null){
+			ArrayList<Arrangement> test = tablePerson.getSelectionModel().getSelectedItem().getArrangementer();
+			for (Arrangement a : test) {
+				personArrangementObserableList.add(a);
+			}
+		}
+	}
 
 	// METODER - LOKAL
 
@@ -465,6 +478,16 @@ public class MainController implements Initializable {
 		TCPersonNettside.setCellValueFactory(new PropertyValueFactory<>("nettside"));
 		TCPersonOpplysninger.setCellValueFactory(new PropertyValueFactory<>("opplysninger"));
 		TCPersonAntall.setCellValueFactory(new PropertyValueFactory<>("antallArrangementer"));
+
+
+	}
+
+	public void personArrangementTableViewStruktur(){
+		tablePersonArrangement.setItems(personArrangementObserableList);
+
+		TCPersonArrangementNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+		TCPersonArrangementLokale.setCellValueFactory(new PropertyValueFactory<>("lokale"));
+		TCPersonArrangementDato.setCellValueFactory(new PropertyValueFactory<>("tidspunkt"));
 
 
 	}

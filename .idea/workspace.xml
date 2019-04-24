@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f33512b5-fe76-4144-855c-32dce0eb2dc4" name="Default Changelist" comment="Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/RegSystem-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/RegSystem-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1231">
-              <caret line="474" column="34" selection-start-line="474" selection-start-column="34" selection-end-line="474" selection-end-column="34" />
+            <state relative-caret-position="276">
+              <caret line="233" column="50" selection-start-line="233" selection-start-column="50" selection-end-line="233" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6250#6251#0" expanded="true" />
@@ -44,9 +33,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+            <state relative-caret-position="165">
+              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
               <folding>
+                <element signature="e#581#582#0" expanded="true" />
                 <element signature="e#615#616#0" expanded="true" />
               </folding>
             </state>
@@ -354,7 +344,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556122000831" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556122928061" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ProgUtviklingSemesterOppg" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -466,7 +456,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131422000" />
+    <option name="totallyTimeSpent" value="132163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -660,16 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding>
-            <element signature="e#615#616#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/exceptions/KunTallException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -705,6 +685,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -719,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1231">
-          <caret line="474" column="34" selection-start-line="474" selection-start-column="34" selection-end-line="474" selection-end-column="34" />
+        <state relative-caret-position="276">
+          <caret line="233" column="50" selection-start-line="233" selection-start-column="50" selection-end-line="233" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6250#6251#0" expanded="true" />

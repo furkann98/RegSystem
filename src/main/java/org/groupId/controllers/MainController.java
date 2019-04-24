@@ -229,9 +229,9 @@ public class MainController implements Initializable {
 					fjernLokal(indeks);
 					System.out.println("Forbi fjern");
 
-					int size = arrangementObservablelist.size();
-					System.out.println("size: " + size);
-					for (int i = 0; i < size; i++) {
+
+					int size = arrangementObservablelist.size() - 1;
+					for (int i = size; i >= 0; i--) {
 						System.out.println("inne i Løkka");
 						if(arrangementObservablelist.get(i).getLokale().equals(lokal)){
 							System.out.println("inne i for IF");

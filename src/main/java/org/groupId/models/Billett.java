@@ -11,6 +11,8 @@ public class Billett {
 
 
 
+    
+
     // KONSTRUKTØR
 
     public Billett(Arrangement arrangement,String telefonNummer,int plassNummer) {

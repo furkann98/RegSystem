@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f33512b5-fe76-4144-855c-32dce0eb2dc4" name="Default Changelist" comment="Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/RegSystem-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/RegSystem-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/exceptions/Feilhaandtering.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/exceptions/Feilhaandtering.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MainView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="222" column="67" lean-forward="true" selection-start-line="222" selection-start-column="67" selection-end-line="222" selection-end-column="67" />
+            <state relative-caret-position="8328">
+              <caret line="708" column="33" lean-forward="true" selection-start-line="708" selection-start-column="33" selection-end-line="708" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7273#7274#0" expanded="true" />
@@ -79,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+            <state relative-caret-position="709">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1463#1464#0" expanded="true" />
@@ -142,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lokal</find>
       <find>txtfl</find>
       <find>txtflowlokalover</find>
       <find>txtarra</find>
@@ -172,6 +164,7 @@
       <find>textarea</find>
       <find>System</find>
       <find>TCPersonTlf</find>
+      <find>add</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,11 +238,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="y" value="133" />
-    <option name="width" value="2386" />
-    <option name="height" value="1612" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -289,42 +281,6 @@
               <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,6 +300,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556206017027" />
@@ -458,13 +415,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152822000" />
+    <option name="totallyTimeSpent" value="153912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25250357" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25250357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -473,7 +430,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49828297" weight="0.32697546" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.2629428" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.2629428" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896908" weight="0.39976275" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -716,8 +673,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="222" column="67" lean-forward="true" selection-start-line="222" selection-start-column="67" selection-end-line="222" selection-end-column="67" />
+        <state relative-caret-position="8328">
+          <caret line="708" column="33" lean-forward="true" selection-start-line="708" selection-start-column="33" selection-end-line="708" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7273#7274#0" expanded="true" />
@@ -730,8 +687,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+        <state relative-caret-position="709">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1463#1464#0" expanded="true" />

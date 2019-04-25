@@ -52,13 +52,14 @@
     -fx-text-alignment: center;
 }
 */
+/*
 .text-area
 {
     -fx-font-size: 18;
     -fx-background-color: Grey;
     -fx-text-fill: BlACK;
 
-}
+}*/
 .txtArea
 {
     -fx-font-size: 12;
@@ -67,28 +68,33 @@
 }
 .txtArea *.text
 {
-    -fx-opacity: 1;
+    -fx-text-alignment: left;
+   /* -fx-opacity: 1;*/
 }
-
+/*
 .text-area *.text
 {
     -fx-opacity: 1;
 
 
-}
+} */
 /*
 .text-area .content {
     -fx-background-color:Grey;
 
 }
 */
-#txtAreaOversikt {
+.txtAreaOversikt {
 
     -fx-text-alignment: center;
-    -fx-text-fill: BlACK;
-    -fx-opacity: 1;
     -fx-font-size: 24;
 
+}
+.txtAreaOversikt .text
+{
+    -fx-text-alignment: center;
+    -fx-text-fill: BlACK;
+   /* -fx-opacity: 1; */
 }
 
 .txtNull {

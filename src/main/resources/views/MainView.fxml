@@ -247,7 +247,7 @@
                      <TextField fx:id="txtPersonTlf" layoutX="154.0" layoutY="162.0" prefHeight="35.0" prefWidth="240.0" />
                      <TextField fx:id="txtPersonEpost" layoutX="154.0" layoutY="213.0" prefHeight="35.0" prefWidth="240.0" />
                      <TextField fx:id="txtPersonNettside" layoutX="154.0" layoutY="266.0" prefHeight="35.0" prefWidth="240.0" />
-                     <TextArea fx:id="txtPersonOversikt" editable="false" layoutX="472.0" layoutY="335.0" prefHeight="92.0" prefWidth="456.0" visible="false" />
+                     <TextArea fx:id="txtPersonOversikt" editable="false" layoutX="472.0" layoutY="335.0" prefHeight="92.0" prefWidth="456.0" styleClass="txtArea" stylesheets="@Stylesheet.css" visible="false" />
                      <TableView fx:id="tablePersonArrangement" layoutX="463.0" layoutY="445.0" prefHeight="136.0" prefWidth="474.0" visible="false">
                        <columns>
                          <TableColumn fx:id="TCPersonArrangementNavn" prefWidth="108.0" text="Navn" />
@@ -271,7 +271,7 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                     <ComboBox layoutX="415.0" layoutY="26.0" prefWidth="150.0" promptText="Arrrangement" />
+                     <ComboBox fx:id="cbBillettArrangement" layoutX="407.0" layoutY="14.0" prefWidth="150.0" promptText="Arrrangement" />
                      <TableView fx:id="tableBillett" layoutX="24.0" layoutY="105.0" prefHeight="498.0" prefWidth="349.0">
                        <columns>
                          <TableColumn fx:id="TCBillettArangement" prefWidth="93.5" text="Arrangement" />
@@ -279,9 +279,18 @@
                            <TableColumn fx:id="TCBillettTlf" prefWidth="120.0" text="Telefonnummer" />
                        </columns>
                      </TableView>
-                     <Button layoutX="143.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnBillettFjern" text="Fjern" />
-                     <Button layoutX="234.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnBillettRediger" text="Rediger" />
-                     <Button layoutX="615.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnBillettKjoop" text="Kjøp Billett" />
+                     <Button layoutX="64.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnBillettFjern" text="Fjern">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button layoutX="234.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnBillettRediger" text="Rediger">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button layoutX="613.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnBillettKjoop" text="Kjøp Billett">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
                      <TextField fx:id="txtBillettTlf" layoutX="588.0" layoutY="271.0" />
                      <Spinner fx:id="txtBillettAntall" layoutX="588.0" layoutY="314.0" />
                      <Text layoutX="470.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefonnummer">
@@ -290,10 +299,16 @@
                         </font>
                      </Text>
                      <Text fx:id="txtBillettMax" layoutX="751.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max" wrappingWidth="100.388671875" />
-                     <Text layoutX="373.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato" />
-                     <TextField fx:id="txtBillettDato" layoutX="416.0" layoutY="64.0" />
-                     <Text layoutX="374.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokale" />
-                     <TextField fx:id="tctBillettLokale" layoutX="417.0" layoutY="105.0" />
+                     <Text layoutX="373.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Text>
+                     <TextField fx:id="txtBillettDato" layoutX="425.0" layoutY="64.0" />
+                     <Text layoutX="374.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokale">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Text>
+                     <TextField fx:id="tctBillettLokale" layoutX="426.0" layoutY="105.0" />
                      <Text layoutX="500.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall">
                         <font>
                            <Font size="16.0" />

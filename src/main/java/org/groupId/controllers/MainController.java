@@ -169,6 +169,7 @@ public class MainController implements Initializable {
 		lokalerObservableList = lstViewLokal.getItems();
 		arrangementLokaleObservableList = cbLokal.getItems();
 		arrangementPersonObservableList = cbKontaktperson.getItems();
+		billettArrangementObservableList = cbBillettArrangement.getItems();
 
 		// Kobler objektet med tableview
 		lokaleTableViewStruktur();
@@ -180,6 +181,7 @@ public class MainController implements Initializable {
 
 		//Testverdier
 		DatePickerArrangement.setValue(LocalDate.now());
+		TESTDATA();
 
 
 
@@ -221,21 +223,14 @@ public class MainController implements Initializable {
 			Optional<ButtonType> result = errorAlert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				try{
-					System.out.println("inne i TRY");
 					fjernLokal(indeks);
-					System.out.println("Forbi fjern");
-
-
 					int size = arrangementObservablelist.size() - 1;
 					for (int i = size; i >= 0; i--) {
-						System.out.println("inne i Løkka");
 						if(arrangementObservablelist.get(i).getLokale().equals(lokal)){
-							System.out.println("inne i for IF");
-							System.out.println(arrangementObservablelist.remove(i));
+							fjernArrangement(arrangementObservablelist.get(i));
 						}
 					}
 				}catch (NullPointerException e){
-					System.out.println("fant exception");
 
 				}
 			}
@@ -384,10 +379,8 @@ public class MainController implements Initializable {
 					txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
 					Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
 
-			arrangementObservablelist.add(arrangement);
-			person.LeggTilArrangement(arrangement);
+			leggTilArrangement(arrangement);
 			tablePerson.refresh();
-
 			tomLagArrangement();
 
 
@@ -415,7 +408,14 @@ public class MainController implements Initializable {
 	}
 
 	public void btnSlettArrangement(ActionEvent actionEvent) {
-		arrangementObservablelist.remove(tableArrangement.getSelectionModel().getSelectedItem());
+		Arrangement arrangement = tableArrangement.getSelectionModel().getSelectedItem();
+
+		fjernArrangement(arrangement);
+
+		tablePersonArrangement.refresh();
+		tablePerson.refresh();
+		tableLokale.refresh();
+		tableArrangement.refresh();
 
 		btnRedigerArrangement.setDisable(true);
 		btnSlettArrangement.setDisable(true);
@@ -459,8 +459,17 @@ public class MainController implements Initializable {
 
 	}
 
-	public void leggTilArrangement(){
+	public void leggTilArrangement(Arrangement arrangement){
+		arrangementObservablelist.add(arrangement);
+		billettArrangementObservableList.add(arrangement);
+		arrangement.getKontaktPerson().LeggTilArrangement(arrangement);
 
+	}
+
+	public void fjernArrangement(Arrangement arrangement){
+		arrangementObservablelist.remove(arrangement);
+		billettArrangementObservableList.remove(arrangement);
+		arrangement.getKontaktPerson().FjernArrangement(arrangement);
 	}
 
 	//KNAPPER - KONTAKTPERSON
@@ -683,14 +692,26 @@ public class MainController implements Initializable {
 		leggTilLokal(teater);
 		leggTilLokal(foredrag);
 
-
 		Person ole = new Person("Ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
 		Person abdi = new Person("Abdi","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
 		Person ali = new Person("Ali","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");
 
+		leggTilPerson(ole);
+		leggTilPerson(abdi);
+		leggTilPerson(ali);
+
 		Arrangement arr1 = new Arrangement(ole, konsert, konsert.getType(),"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT!", DatePickerArrangement.getValue(),250,100);
 		Arrangement arr2 = new Arrangement(abdi, konsert, konsert.getType(),"Konsert med Drake","Drake","Konsert av Drake, GAALT!", DatePickerArrangement.getValue(),400,50);
 		Arrangement arr3 = new Arrangement(ali, foredrag, foredrag.getType(),"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
+
+
+		leggTilArrangement(arr1);
+		leggTilArrangement(arr2);
+		leggTilArrangement(arr3);
+
+
+
+
 
 
 

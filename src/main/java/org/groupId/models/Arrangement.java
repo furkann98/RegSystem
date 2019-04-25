@@ -45,6 +45,12 @@ public class Arrangement {
 
     // METODER
 
+
+    @Override
+    public String toString() {
+        return navn;
+    }
+
     public Person getKontaktPerson() {
         return kontaktPerson;
     }

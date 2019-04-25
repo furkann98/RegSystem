@@ -271,7 +271,7 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                     <ComboBox layoutX="415.0" layoutY="26.0" prefWidth="150.0" promptText="Arrrangement" />
+                     <ComboBox fx:id="cbBillettArrangement" layoutX="415.0" layoutY="26.0" prefWidth="150.0" promptText="Arrrangement" />
                      <TableView fx:id="tableBillett" layoutX="24.0" layoutY="105.0" prefHeight="498.0" prefWidth="349.0">
                        <columns>
                          <TableColumn fx:id="TCBillettArangement" prefWidth="93.5" text="Arrangement" />

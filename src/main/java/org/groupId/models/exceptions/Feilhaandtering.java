@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 import javafx.scene.control.*;
 import org.groupId.controllers.MainController;
+import org.groupId.models.Arrangement;
 import org.groupId.models.Lokale;
 import org.groupId.models.exceptions.*;
 
@@ -26,7 +27,7 @@ public class Feilhaandtering {
             }
 
         }catch (KunTekstException e){
-            exceptionCatch(input,e.getMessage());
+            exceptionCatch(input);
             return e.getMessage() + "\n\n";
         }
     }
@@ -41,7 +42,7 @@ public class Feilhaandtering {
             }
 
         }catch (KunTallException e){
-            exceptionCatch(input,e.getMessage());
+            exceptionCatch(input);
             return e.getMessage() + "\n\n";
 
         }
@@ -94,10 +95,28 @@ public class Feilhaandtering {
 
 
         }catch (IngenObjectException e){
-            //input.setStyle("-fx-background-color: #B4391F");
-            //feilMelding(e.getMessage());
             input.setStyle("-fx-background-color: #E74725");
             return e.getMessage() + "\n\n";
+        }
+    }
+
+    public String AntallBillett(TextField input, TextField inputMax){
+        try {
+            System.out.println(input.getText());
+            System.out.println(inputMax.getText());
+
+            if((Integer.valueOf(input.getText()) < 0) || (Integer.valueOf(input.getText()) > Integer.valueOf(inputMax.getText()))){
+                throw new AntallBillettException("Antall billetter må være i intervallet mellom: [0 , " + inputMax.getText() + "]");
+            }else{
+                textFieldFarge(input, "#FFFFFF");
+                return "";
+            }
+
+        }catch (AntallBillettException e){
+            System.out.println("er inne i catch");
+            exceptionCatch(input);
+            return e.getMessage() + "\n\n";
+
         }
     }
 
@@ -110,38 +129,14 @@ public class Feilhaandtering {
         });
     }
 
-    public void ListenerKunTall(TextField input){
-        input.focusedProperty().addListener((arg0,gammelV,nyV) -> {
-            if(!nyV){
-                KunTall(input);
-            }
-        });
-    }
-    public void ListenerKunBokstaverTextArea(TextArea input){
-        input.focusedProperty().addListener((arg0,gammelV,nyV) -> {
-            if(!nyV){
-                KunBokstaverTextArea(input);
-            }
-        });
-    }
-
-
     //Feilhåndetering
+
     public void textFieldFarge(TextField input, String farge){
         input.setStyle("-fx-background-color: " + farge);
     }
 
-    public void exceptionCatch(TextField input, String feilmelding){
-        System.out.print("CATCH: fant feil  --  ");
-        //textFieldFarge(input, "#B4391F");
-        //feilMelding(feilmelding);
+    public void exceptionCatch(TextField input){
         textFieldFarge(input, "#E74725");
     }
 
-    public void feilMelding(String melding){
-        errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setHeaderText("Feilmelding!");
-        errorAlert.setContentText(melding);
-        errorAlert.showAndWait();
-    }
 }

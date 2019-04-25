@@ -40,7 +40,10 @@ public class MainController implements Initializable {
 	public Person person;
 	public ObservableList<Person> arrangementPersonObservableList;
 	public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
-	public ObservableList<Arrangement> personArrangementObserableList = FXCollections.observableArrayList();
+	public ObservableList<Arrangement> personArrangementObservableList = FXCollections.observableArrayList();
+
+	// Billett
+	public ObservableList<Arrangement> billettArrangementObservableList;
 
 	// annet
 	public Alert errorAlert;
@@ -137,7 +140,6 @@ public class MainController implements Initializable {
 	public TableColumn<Person, String> TCPersonNavn, TCPersonTlf, TCPersonEpost,
 			TCPersonNettside, TCPersonAntall;
 
-
 	@FXML
 	public TableView<Arrangement> tablePersonArrangement;
 
@@ -146,6 +148,11 @@ public class MainController implements Initializable {
 
 	@FXML
 	public TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
+
+	// Billett
+
+	@FXML
+	public ComboBox<Arrangement> cbBillettArrangement;
 
 
 
@@ -175,33 +182,7 @@ public class MainController implements Initializable {
 		DatePickerArrangement.setValue(LocalDate.now());
 
 
-		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
-		leggTilLokal(new Lokale("Trosterud","Teater", 150));
-		leggTilLokal(new Lokale("Haugerud - Konsert","Konsert", 300));
-		leggTilLokal(new Lokale("Haugerud - Sal","Sal", 300));
 
-		Lokale test1 = new Lokale("Haugerud - Konsert", "Konsert", 300);
-		Lokale test2 = new Lokale("Lindeberg", "Kino", 125);
-		Lokale test3 = new Lokale("Haugerud - Sal", "Sal", 300);
-		Person test4 = new Person("Ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
-		Person test5 = new Person("Petter","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
-		Person test6 = new Person("Thomas","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");
-
-		arrangement = new Arrangement(test4,test1 , test1.getType(),"Konsert","Khalid","Konsert av Khalid", DatePickerArrangement.getValue(),250,100);
-		arrangementObservablelist.add(arrangement);
-
-		arrangement = new Arrangement(test5,test2 , test2.getType(),"Captain Marvel","","Kino kveld, se Captain Marvel", DatePickerArrangement.getValue(),200,125);
-		arrangementObservablelist.add(arrangement);
-
-		arrangement = new Arrangement(test6,test3 , test3.getType(),"IBM Møte","","IBM Årlige møte", DatePickerArrangement.getValue(),0,300);
-
-		arrangementObservablelist.add(arrangement);
-
-		leggTilPerson(test4);
-		leggTilPerson(test5);
-		leggTilPerson(test6);
-
-		//personArrangementObserableList.add(arrangement);
 	}
 
 
@@ -478,6 +459,10 @@ public class MainController implements Initializable {
 
 	}
 
+	public void leggTilArrangement(){
+
+	}
+
 	//KNAPPER - KONTAKTPERSON
 	public void btnPersonRediger(ActionEvent actionEvent) {
 
@@ -531,13 +516,13 @@ public class MainController implements Initializable {
 	}
 
 	public void tablePersonArrangementOnMouseClicked(MouseEvent mouseEvent) {
-		personArrangementObserableList.clear();
+		personArrangementObservableList.clear();
 		if(tablePerson.getSelectionModel().getSelectedItem() != null){
 			txtPersonOversikt.setText(tablePerson.getSelectionModel().getSelectedItem().getOpplysninger());
 
 			ArrayList<Arrangement> test = tablePerson.getSelectionModel().getSelectedItem().getArrangementer();
 			for (Arrangement a : test) {
-				personArrangementObserableList.add(a);
+				personArrangementObservableList.add(a);
 			}
 			btnPersonRediger.setDisable(false);
 			btnPersonSlett.setDisable(false);
@@ -565,7 +550,7 @@ public class MainController implements Initializable {
 	}
 
 	public void personArrangementTableViewStruktur(){
-		tablePersonArrangement.setItems(personArrangementObserableList);
+		tablePersonArrangement.setItems(personArrangementObservableList);
 
 		TCPersonArrangementNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
 		TCPersonArrangementLokale.setCellValueFactory(new PropertyValueFactory<>("lokale"));
@@ -609,22 +594,6 @@ public class MainController implements Initializable {
 
 //FEILHÅNDTERING
 
-/*
-	public void feilhaandteringListener(){
-		//Lokale - legg til lokal
-		feilhaandtering.ListenerKunBokstaver(txtLokalNavn);
-		feilhaandtering.ListenerKunBokstaver(txtLokalType);
-		feilhaandtering.ListenerKunTall(txtLokalAntallPlasser);
-
-		//Arrangement - legg til arrangment
-		feilhaandtering.ListenerKunBokstaver(txtArrangementNavn);
-		feilhaandtering.ListenerKunBokstaverTextArea(txtArrangementProgram);
-		feilhaandtering.ListenerKunBokstaver(txtArrangementArtist);
-		feilhaandtering.ListenerKunTall(txtArrangementBillPris);
-		feilhaandtering.ListenerKunTall(txtArrangementBillSalg);
-
-	}
-*/
 
 	public boolean LokalFeilhaandtering () {
 		String feilmelding = "";
@@ -652,6 +621,7 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.IngenObjektValgt(cbKontaktperson);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillSalg);
+		feilmelding += feilhaandtering.AntallBillett(txtArrangementBillSalg, txtArrangementAntPlasser);
 
 		//Sjekker om vi har feil.
 		if(feilmelding.isEmpty()){
@@ -697,5 +667,32 @@ public class MainController implements Initializable {
 	}
 
 	public void btnBillettKjoop(ActionEvent actionEvent) {
+	}
+
+
+	//TESTFELT
+
+	public void TESTDATA(){
+		Lokale konsert = new Lokale("Konsert", "Sal", 500);
+		Lokale kino = new Lokale("Kino", "Kinosal", 200);
+		Lokale teater = new Lokale("Teater", "Sal", 300);
+		Lokale foredrag = new Lokale("Foredrag", "Sal",50);
+
+		leggTilLokal(konsert);
+		leggTilLokal(kino);
+		leggTilLokal(teater);
+		leggTilLokal(foredrag);
+
+
+		Person ole = new Person("Ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
+		Person abdi = new Person("Abdi","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
+		Person ali = new Person("Ali","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");
+
+		Arrangement arr1 = new Arrangement(ole, konsert, konsert.getType(),"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT!", DatePickerArrangement.getValue(),250,100);
+		Arrangement arr2 = new Arrangement(abdi, konsert, konsert.getType(),"Konsert med Drake","Drake","Konsert av Drake, GAALT!", DatePickerArrangement.getValue(),400,50);
+		Arrangement arr3 = new Arrangement(ali, foredrag, foredrag.getType(),"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
+
+
+
 	}
 }

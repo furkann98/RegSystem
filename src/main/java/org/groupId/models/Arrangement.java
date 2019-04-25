@@ -15,6 +15,7 @@ public class Arrangement {
     private LocalDate tidspunkt;
     private int billettPris;
     private int billettSalg;
+    private int antallLedigeInt;
 
     private String kontaktPersonNavn;
     private String programTekst;
@@ -38,8 +39,8 @@ public class Arrangement {
             this.programTekst += "\n" + "Dagens artist er: " + artist;
         }
 
-        int ledige = this.lokale.getAntallPlasser() - billettSalg;
-        this.antallLedige = ledige + " av " + lokale.getAntallPlasser();
+        antallLedigeInt = this.lokale.getAntallPlasser() - billettSalg;
+        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
     }
 
     // METODER
@@ -90,5 +91,15 @@ public class Arrangement {
 
     public int getBillettSalg() {
         return billettSalg;
+    }
+
+    public void leggTilBillett(){
+        antallLedigeInt ++;
+        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
+
+    }
+    public void fjernBillett(){
+        antallLedigeInt--;
+        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
     }
 }

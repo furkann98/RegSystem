@@ -453,7 +453,7 @@ public class MainController implements Initializable {
 		txtArrangementNavn.clear();
 		txtArrangementProgram.clear();
 		txtArrangementArtist.clear();
-		//cbKontaktperson
+		//cbKontaktperson.setValue(0);
 		txtArrangementBillPris.clear();
 		txtArrangementBillSalg.clear();
 
@@ -471,6 +471,9 @@ public class MainController implements Initializable {
 		billettArrangementObservableList.remove(arrangement);
 		arrangement.getKontaktPerson().FjernArrangement(arrangement);
 	}
+
+
+
 
 	//KNAPPER - KONTAKTPERSON
 	public void btnPersonRediger(ActionEvent actionEvent) {
@@ -518,8 +521,6 @@ public class MainController implements Initializable {
 	public void btnPersonSlett(ActionEvent actionEvent) {
 		if(tablePerson.getSelectionModel().getSelectedItem() != null){
 			fjernPerson(tablePerson.getSelectionModel().getSelectedItem());
-
-		}else{
 
 		}
 	}
@@ -600,8 +601,23 @@ public class MainController implements Initializable {
 	}
 
 
+	// KNAPPER - BILLETT
 
-//FEILHÅNDTERING
+	public void btnBillettFjern(ActionEvent actionEvent) {
+	}
+
+	public void btnBillettRediger(ActionEvent actionEvent) {
+	}
+
+	public void btnBillettKjoop(ActionEvent actionEvent) {
+	}
+
+	// METODE - BILLETT
+
+
+
+
+	//FEILHÅNDTERING
 
 
 	public boolean LokalFeilhaandtering () {
@@ -669,14 +685,6 @@ public class MainController implements Initializable {
 	}
 
 
-	public void btnBillettFjern(ActionEvent actionEvent) {
-	}
-
-	public void btnBillettRediger(ActionEvent actionEvent) {
-	}
-
-	public void btnBillettKjoop(ActionEvent actionEvent) {
-	}
 
 
 	//TESTFELT

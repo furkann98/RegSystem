@@ -11,7 +11,7 @@ public class Billett {
 
 
 
-    
+
 
     // KONSTRUKTØR
 

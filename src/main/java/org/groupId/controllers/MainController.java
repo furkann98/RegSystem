@@ -690,5 +690,12 @@ public class MainController implements Initializable {
 	}
 
 
+	public void btnBillettFjern(ActionEvent actionEvent) {
+	}
 
+	public void btnBillettRediger(ActionEvent actionEvent) {
+	}
+
+	public void btnBillettKjoop(ActionEvent actionEvent) {
+	}
 }

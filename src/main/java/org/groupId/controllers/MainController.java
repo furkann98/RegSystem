@@ -175,16 +175,29 @@ public class MainController implements Initializable {
 
 		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
 		leggTilLokal(new Lokale("Trosterud","Teater", 150));
-		leggTilLokal(new Lokale("Haugerud","Sal", 300));
+		leggTilLokal(new Lokale("Haugerud - Konsert","Konsert", 300));
+		leggTilLokal(new Lokale("Haugerud - Sal","Sal", 300));
 
+		Lokale test1 = new Lokale("Haugerud - Konsert", "Konsert", 125);
+		Lokale test2 = new Lokale("Lindeberg", "Kino", 125);
+		Lokale test3 = new Lokale("Haugerud - Sal", "Sal", 125);
+		Person test4 = new Person("Ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
+		Person test5 = new Person("Petter","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
+		Person test6 = new Person("Thomas","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");
 
-		Lokale test1 = new Lokale("lokale", "KINO", 124);
-		Person test2 = new Person("ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
-		arrangement = new Arrangement(test2,test1 , test1.getType(),"Fest","Khalid","dette er en konsert", DatePickerArrangement.getValue(),25,10);
+		arrangement = new Arrangement(test4,test1 , test1.getType(),"Konsert","Khalid","Konsert av Khalid", DatePickerArrangement.getValue(),250,100);
+		arrangementObservablelist.add(arrangement);
+
+		arrangement = new Arrangement(test5,test2 , test2.getType(),"Captain Marvel","","Kino kveld, se Captain Marvel", DatePickerArrangement.getValue(),200,125);
+		arrangementObservablelist.add(arrangement);
+
+		arrangement = new Arrangement(test6,test3 , test3.getType(),"IBM Møte","","IBM Årlige møte", DatePickerArrangement.getValue(),0,300);
 
 		arrangementObservablelist.add(arrangement);
 
-		leggTilPerson(test2);
+		leggTilPerson(test4);
+		leggTilPerson(test5);
+		leggTilPerson(test6);
 
 		//personArrangementObserableList.add(arrangement);
 	}
@@ -465,6 +478,34 @@ public class MainController implements Initializable {
 
 	//KNAPPER - KONTAKTPERSON
 	public void btnPersonRediger(ActionEvent actionEvent) {
+
+		Person redigerPerson  = tablePerson.getSelectionModel().getSelectedItem();
+		txtPersonNavn.setText(redigerPerson.getNavn());
+		txtPersonTlf.setText(redigerPerson.getTlfNummer());
+		txtPersonEpost.setText(redigerPerson.getEpost());
+		txtPersonNettside.setText(redigerPerson.getNettside());
+		txtPersonOpplysninger.setText(redigerPerson.getOpplysninger());
+
+		//arrangementPersonObservableList.remove(redigerPerson);
+		personObservableList.remove(redigerPerson);
+
+		txtPersonOversikt.clear();
+
+		tablePerson.refresh();
+
+		txtPersonOversikt.setVisible(false);
+		tablePersonArrangement.setVisible(false);
+
+/*
+		Lokale redigerLokale = lstViewLokal.getSelectionModel().getSelectedItem();
+		txtLokalNavn.setText(redigerLokale.getNavn());
+
+		txtLokalType.setText(redigerLokale.getType());
+		txtLokalAntallPlasser.setText(String.valueOf(redigerLokale.getAntallPlasser()));
+
+		lokalerObservableList.remove(redigerLokale);
+
+		visLokalleggTil();*/
 	}
 
 	public void btnPersonLeggTil(ActionEvent actionEvent) {

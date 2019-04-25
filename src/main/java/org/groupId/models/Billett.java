@@ -5,21 +5,18 @@ import java.util.Date;
 public class Billett {
 
     // DATAFELT
+    private Arrangement arrangement;
+    private String telefonNummer;
     private int plassNummer;
-    private String lokale;
-    private Date tidspunkt;
-    private int pris;
-    private int telefonNummer;
+
 
 
     // KONSTRUKTØR
 
-    public Billett(int plassNummer, String lokale, Date tidspunkt, int pris, int telefonNummer) {
-        this.plassNummer = plassNummer;
-        this.lokale = lokale;
-        this.tidspunkt = tidspunkt;
-        this.pris = pris;
+    public Billett(Arrangement arrangement,String telefonNummer,int plassNummer) {
+        this.arrangement = arrangement;
         this.telefonNummer = telefonNummer;
+        this.plassNummer = plassNummer;
     }
 
     // METODER
@@ -28,19 +25,12 @@ public class Billett {
         return plassNummer;
     }
 
-    public String getLokale() {
-        return lokale;
-    }
 
-    public Date getTidspunkt() {
-        return tidspunkt;
-    }
-
-    public int getPris() {
-        return pris;
-    }
-
-    public int getTelefonNummer() {
+    public String getTelefonNummer() {
         return telefonNummer;
+    }
+
+    public Arrangement getArrangement() {
+        return arrangement;
     }
 }

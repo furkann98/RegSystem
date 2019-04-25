@@ -82,13 +82,18 @@
 
 }
 */
-#txtAreaOversikt {
+.txtAreaOversikt {
 
-    -fx-text-alignment: center;
+
     -fx-text-fill: BlACK;
     -fx-opacity: 1;
     -fx-font-size: 24;
 
+}
+
+.txtAreaOversikt .text
+{
+    -fx-text-alignment: center;
 }
 
 .txtNull {
@@ -101,6 +106,11 @@
     -fx-background-color: transparent;
 }*/
 
+.table-view
+{
+    -fx-border-color: darkgrey;
+}
+
 .table-view .column-header-background .label{
     -fx-background-color: transparent;
     -fx-text-fill: white;
@@ -111,24 +121,21 @@
 }
 
 .table-view .table-cell{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 .table-view:focused{
     -fx-background-color: transparent;
 }
 
-.table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, grey; /*#616161 */
+.table-row-cell{ /*.table-row-cell:odd /**/
+
+    -fx-background-color: -fx-table-cell-border-color, lightgrey; /*#616161 */ /* grey*/
     -fx-background-insets: 0, 0 0 1 0;
 
 }
 
-.table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, darkgrey; /*#424242 */
-    -fx-background-insets: 0, 0 0 1 0;
 
-}
 
 .table-row-cell:selected {
     -fx-background-color: #005797;

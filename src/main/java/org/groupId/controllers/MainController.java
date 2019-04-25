@@ -172,15 +172,17 @@ public class MainController implements Initializable {
 
 
 		//Testverdier
+		DatePickerArrangement.setValue(LocalDate.now());
+
 
 		leggTilLokal(new Lokale("Lindeberg","Kino", 100));
 		leggTilLokal(new Lokale("Trosterud","Teater", 150));
 		leggTilLokal(new Lokale("Haugerud - Konsert","Konsert", 300));
 		leggTilLokal(new Lokale("Haugerud - Sal","Sal", 300));
 
-		Lokale test1 = new Lokale("Haugerud - Konsert", "Konsert", 125);
+		Lokale test1 = new Lokale("Haugerud - Konsert", "Konsert", 300);
 		Lokale test2 = new Lokale("Lindeberg", "Kino", 125);
-		Lokale test3 = new Lokale("Haugerud - Sal", "Sal", 125);
+		Lokale test3 = new Lokale("Haugerud - Sal", "Sal", 300);
 		Person test4 = new Person("Ole","95959595","hei@Oslomet.no","www.test.no","Dette er en test");
 		Person test5 = new Person("Petter","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
 		Person test6 = new Person("Thomas","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");

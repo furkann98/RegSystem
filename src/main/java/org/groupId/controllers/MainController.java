@@ -9,8 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-//import org.groupId.models.Arrangement;
-//import org.groupId.models.Lokale;
 import org.groupId.models.*;
 import org.groupId.models.exceptions.Feilhaandtering;
 
@@ -27,7 +25,7 @@ public class MainController implements Initializable {
 	Feilhaandtering feilhaandtering = new Feilhaandtering();
 
 	// lokale
-	public Lokale LOKALE;
+	public Lokale LOKALE = new Lokale();
 	public ObservableList<Lokale> lokalerObservableList;
 	public ObservableList<Arrangement> lokalersArrangement = FXCollections.observableArrayList();
 
@@ -43,7 +41,10 @@ public class MainController implements Initializable {
 	public ObservableList<Arrangement> personArrangementObservableList = FXCollections.observableArrayList();
 
 	// Billett
+	public Billett billett = new Billett();
 	public ObservableList<Arrangement> billettArrangementObservableList;
+	public ObservableList<Billett> billettRegisterArrangement = FXCollections.observableArrayList();
+
 
 	// annet
 	public Alert errorAlert;
@@ -150,9 +151,21 @@ public class MainController implements Initializable {
 	public TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
 
 	// Billett
+	@FXML
+	public TableView<Billett> tableBillett;
+
+	@FXML
+	public TableColumn<Billett, String> TCBillettArrangement, TCBillettSete, TCBillettTlf;
 
 	@FXML
 	public ComboBox<Arrangement> cbBillettArrangement;
+
+	@FXML
+	public TextField txtBillettDato, txtBillettLokale, txtBillettTlf; //txtBillettMax - lage textfield
+
+
+	@FXML
+	public Spinner spinnerBillettAntall;
 
 
 
@@ -162,8 +175,6 @@ public class MainController implements Initializable {
 	//INITIALIZE
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-
-		LOKALE = new Lokale();
 
 		//Kobler observablelist med combobox
 		lokalerObservableList = lstViewLokal.getItems();
@@ -176,6 +187,7 @@ public class MainController implements Initializable {
 		arrangementTableViewStruktur();
 		personTableViewStruktur();
 		personArrangementTableViewStruktur();
+		billettTableViewStruktur();
 
 
 
@@ -364,7 +376,6 @@ public class MainController implements Initializable {
 
 
 		} catch (NullPointerException e){
-			System.out.println("combobox feil");
 		}
 
 	}
@@ -374,13 +385,13 @@ public class MainController implements Initializable {
 			Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
 			Person person = cbKontaktperson.getSelectionModel().getSelectedItem();
 			//new Person("ole","95959595","hei@Oslomet.no","", "Dette er en test");
-			arrangement = new Arrangement(person,lokale , lokale.getType(),
-					txtArrangementNavn.getText(),txtArrangementArtist.getText(),
-					txtArrangementProgram.getText(), DatePickerArrangement.getValue(),
-					Integer.valueOf(txtArrangementBillPris.getText()),Integer.valueOf(txtArrangementBillSalg.getText()));
+			arrangement = new Arrangement(person, lokale, txtArrangementNavn.getText(),
+					txtArrangementArtist.getText(), txtArrangementProgram.getText(),
+					DatePickerArrangement.getValue(), Integer.valueOf(txtArrangementBillPris.getText())
+					,Integer.valueOf(txtArrangementBillSalg.getText())
+			);
 
 			leggTilArrangement(arrangement);
-			tablePerson.refresh();
 			tomLagArrangement();
 
 
@@ -460,6 +471,8 @@ public class MainController implements Initializable {
 	}
 
 	public void leggTilArrangement(Arrangement arrangement){
+		billett.lagBillett(arrangement, arrangement.getKontaktPerson().getTlfNummer(), Integer.valueOf(arrangement.getBillettSalg()));
+
 		arrangementObservablelist.add(arrangement);
 		billettArrangementObservableList.add(arrangement);
 		arrangement.getKontaktPerson().LeggTilArrangement(arrangement);
@@ -602,6 +615,27 @@ public class MainController implements Initializable {
 
 
 	// KNAPPER - BILLETT
+	public void cbBillettArrangement(ActionEvent actionEvent) {
+		if(cbBillettArrangement.getSelectionModel().getSelectedItem() != null){
+			txtBillettDato.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getTidspunkt().toString());
+			txtBillettLokale.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getLokale().getNavn());
+
+			if(!billett.getBillettRegister().isEmpty()){
+
+				billettRegisterArrangement.clear();
+
+				for (Billett b : billett.getBillettRegister()) {
+					if(b.getArrangement().equals(cbBillettArrangement.getSelectionModel().getSelectedItem())){
+						billettRegisterArrangement.add(b);
+					}
+				}
+				tableBillett.refresh();
+			}
+		} else{
+			txtBillettDato.clear();
+			txtBillettLokale.clear();
+		}
+	}
 
 	public void btnBillettFjern(ActionEvent actionEvent) {
 	}
@@ -610,9 +644,22 @@ public class MainController implements Initializable {
 	}
 
 	public void btnBillettKjoop(ActionEvent actionEvent) {
+		billett.lagBillett(cbBillettArrangement.getSelectionModel().getSelectedItem(), txtBillettTlf.getText(), 5);
+		tableArrangement.refresh();
+		tablePersonArrangement.refresh();
+		tableBillett.refresh();
 	}
 
 	// METODE - BILLETT
+
+	public void billettTableViewStruktur(){
+		tableBillett.setItems(billettRegisterArrangement);
+
+		TCBillettArrangement.setCellValueFactory(new PropertyValueFactory<>("arrangementNavn"));
+		TCBillettSete.setCellValueFactory(new PropertyValueFactory<>("sete"));
+		TCBillettTlf.setCellValueFactory(new PropertyValueFactory<>("telefonNummer"));
+
+	}
 
 
 
@@ -646,7 +693,7 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.IngenObjektValgt(cbKontaktperson);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillSalg);
-		feilmelding += feilhaandtering.AntallBillett(txtArrangementBillSalg, txtArrangementAntPlasser);
+		//feilmelding += feilhaandtering.AntallBillett(txtArrangementBillSalg, txtArrangementAntPlasser);
 
 		//Sjekker om vi har feil.
 		if(feilmelding.isEmpty()){
@@ -708,9 +755,9 @@ public class MainController implements Initializable {
 		leggTilPerson(abdi);
 		leggTilPerson(ali);
 
-		Arrangement arr1 = new Arrangement(ole, konsert, konsert.getType(),"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT!", DatePickerArrangement.getValue(),250,100);
-		Arrangement arr2 = new Arrangement(abdi, konsert, konsert.getType(),"Konsert med Drake","Drake","Konsert av Drake, GAALT!", DatePickerArrangement.getValue(),400,50);
-		Arrangement arr3 = new Arrangement(ali, foredrag, foredrag.getType(),"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
+		Arrangement arr1 = new Arrangement(ole, konsert,"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT!", DatePickerArrangement.getValue(),250,100);
+		Arrangement arr2 = new Arrangement(abdi, konsert,"Konsert med Drake","Drake","Konsert av Drake, GAALT!", DatePickerArrangement.getValue(),400,50);
+		Arrangement arr3 = new Arrangement(ali, foredrag,"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
 
 
 		leggTilArrangement(arr1);
@@ -724,4 +771,6 @@ public class MainController implements Initializable {
 
 
 	}
+
+
 }

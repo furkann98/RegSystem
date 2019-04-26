@@ -58,7 +58,6 @@ public class Feilhaandtering {
             }
 
         }catch (KunTekstException e){
-            System.out.print("CATCH: fant feil  --  ");
             //input.setStyle("-fx-background-color: #B4391F");
             //feilMelding(e.getMessage());
             input.setStyle("-fx-background-color: #E74725");
@@ -102,9 +101,6 @@ public class Feilhaandtering {
 
     public String AntallBillett(TextField input, TextField inputMax){
         try {
-            System.out.println(input.getText());
-            System.out.println(inputMax.getText());
-
             if((Integer.valueOf(input.getText()) < 0) || (Integer.valueOf(input.getText()) > Integer.valueOf(inputMax.getText()))){
                 throw new AntallBillettException("Antall billetter må være i intervallet mellom: [0 , " + inputMax.getText() + "]");
             }else{
@@ -113,7 +109,6 @@ public class Feilhaandtering {
             }
 
         }catch (AntallBillettException e){
-            System.out.println("er inne i catch");
             exceptionCatch(input);
             return e.getMessage() + "\n\n";
 

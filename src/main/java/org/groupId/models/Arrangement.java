@@ -17,15 +17,17 @@ public class Arrangement {
     private int billettSalg;
     private int antallLedigeInt;
 
+    private int antallSolgte;
+
     private String kontaktPersonNavn;
     private String programTekst;
     private String antallLedige;
 
     // KONSTRUKTØR
-    public Arrangement(Person kontaktPerson, Lokale lokale, String type, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg) {
+    public Arrangement(Person kontaktPerson, Lokale lokale, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg) {
         this.kontaktPerson = kontaktPerson;
         this.lokale = lokale;
-        this.type = type;
+        this.type = lokale.getType();
         this.navn = navn;
         this.artist = artist;
         this.program = program;
@@ -35,11 +37,15 @@ public class Arrangement {
         this.programTekst = program;
         this.kontaktPersonNavn = kontaktPerson.getNavn();
 
+
         if(!(artist == "" || artist == null)){
             this.programTekst += "\n" + "Dagens artist er: " + artist;
         }
 
-        antallLedigeInt = this.lokale.getAntallPlasser() - billettSalg;
+
+        this.antallSolgte = billettSalg;
+
+        antallLedigeInt = lokale.getAntallPlasser() - antallSolgte;
         this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
     }
 
@@ -99,13 +105,23 @@ public class Arrangement {
         return billettSalg;
     }
 
-    public void leggTilBillett(){
-        antallLedigeInt ++;
-        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
+    public int getAntallSolgte(){
+        return antallSolgte;
+    }
+
+    public int getAntallLedigeInt() {
+        return antallLedigeInt;
+    }
+
+    public void leggTilBillett(int antall){
+        this.antallSolgte += antall;
+        System.out.println(antallSolgte);
+        this.antallLedige = (lokale.getAntallPlasser() - antallSolgte) + " av " + lokale.getAntallPlasser();
+        System.out.println(antallLedige);
 
     }
-    public void fjernBillett(){
-        antallLedigeInt--;
-        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
+    public void fjernBillett(int antall){
+        this.antallSolgte -= antall;
+        this.antallLedige = (lokale.getAntallPlasser() - antallSolgte) + " av " + lokale.getAntallPlasser();
     }
 }

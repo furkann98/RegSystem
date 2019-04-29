@@ -67,12 +67,10 @@ public class Lokale {
 
     public void leggTilLokal(Lokale lokal){
         lokaler.add(lokal);
-        System.out.println("ARRAYLIST:  " + lokaler.toString());
     }
 
     public void fjernLokal(int valgtLokalIndex){
         lokaler.remove(valgtLokalIndex);
-        System.out.println("ARRAYLIST:  " + lokaler.toString());
     }
 
     public ArrayList<Lokale> getArrayList(){

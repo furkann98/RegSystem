@@ -1,0 +1,8 @@
+NAVN;TYPE;ANTALL;
+Konsert;Sal;500
+Kino;Kinosal;200
+Teater;Sal;300
+Foredrag;Sal;50;NAVN;TLF;EPOST;NETTSIDE;OPPLYSNINGER;
+Ole;95959595;hei@Oslomet.no;www.test.no;Dette er en test;
+Abdi;25255555;Petter@Oslomet.no;Ingen;Dette er en test2;
+Ali;23543092;Thomas@Oslomet.no;www.test.no;Dette er en test3;

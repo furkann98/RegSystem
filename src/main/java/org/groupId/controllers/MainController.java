@@ -10,8 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.groupId.models.*;
-import org.groupId.models.exceptions.Feilhaandtering;
+import org.groupId.models.Feilhaandtering;
+import org.groupId.models.Lagring.Save;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,25 +31,27 @@ public class MainController implements Initializable {
 	public ObservableList<Lokale> lokalerObservableList;
 	public ObservableList<Arrangement> lokalersArrangement = FXCollections.observableArrayList();
 
-	// arrangement
-	public Arrangement arrangement;
+	// ARRANGEMENT
+	public Arrangement ARRANGEMENT = new Arrangement();
 	public ObservableList<Lokale> arrangementLokaleObservableList;
 	public ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
 
-	// person
-	public Person person;
+	// PERSON
+	public Person PERSON = new Person();
 	public ObservableList<Person> arrangementPersonObservableList;
 	public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
 	public ObservableList<Arrangement> personArrangementObservableList = FXCollections.observableArrayList();
 
 	// Billett
-	public Billett billett = new Billett();
+	public Billett BILLETT = new Billett();
 	public ObservableList<Arrangement> billettArrangementObservableList;
 	public ObservableList<Billett> billettRegisterArrangement = FXCollections.observableArrayList();
 
-
 	// annet
 	public Alert errorAlert;
+
+	// save
+	private Save save = new Save();
 
 
 
@@ -150,7 +154,12 @@ public class MainController implements Initializable {
 	@FXML
 	public TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
 
+
 	// Billett
+
+	@FXML
+	public Button btnBillettKjop;
+
 	@FXML
 	public TableView<Billett> tableBillett;
 
@@ -163,9 +172,11 @@ public class MainController implements Initializable {
 	@FXML
 	public TextField txtBillettDato, txtBillettLokale, txtBillettTlf; //txtBillettMax - lage textfield
 
+	@FXML
+	public Label lblBillettDato, lblBillettLokale, lblBillettMax;
 
 	@FXML
-	public Spinner spinnerBillettAntall;
+	public Spinner<Integer> spinnerBillettAntall;
 
 
 
@@ -385,7 +396,7 @@ public class MainController implements Initializable {
 			Lokale lokale = cbLokal.getSelectionModel().getSelectedItem();
 			Person person = cbKontaktperson.getSelectionModel().getSelectedItem();
 			//new Person("ole","95959595","hei@Oslomet.no","", "Dette er en test");
-			arrangement = new Arrangement(person, lokale, txtArrangementNavn.getText(),
+			Arrangement arrangement = new Arrangement(person, lokale, txtArrangementNavn.getText(),
 					txtArrangementArtist.getText(), txtArrangementProgram.getText(),
 					DatePickerArrangement.getValue(), Integer.valueOf(txtArrangementBillPris.getText())
 					,Integer.valueOf(txtArrangementBillSalg.getText())
@@ -471,8 +482,9 @@ public class MainController implements Initializable {
 	}
 
 	public void leggTilArrangement(Arrangement arrangement){
-		billett.lagBillett(arrangement, arrangement.getKontaktPerson().getTlfNummer(), Integer.valueOf(arrangement.getBillettSalg()));
+		BILLETT.lagBillett(arrangement, arrangement.getKontaktPerson().getTlfNummer(), Integer.valueOf(arrangement.getBillettSalg()));
 
+		ARRANGEMENT.leggTilArrangement(arrangement);
 		arrangementObservablelist.add(arrangement);
 		billettArrangementObservableList.add(arrangement);
 		arrangement.getKontaktPerson().LeggTilArrangement(arrangement);
@@ -480,6 +492,7 @@ public class MainController implements Initializable {
 	}
 
 	public void fjernArrangement(Arrangement arrangement){
+		ARRANGEMENT.fjernArrangement(arrangement);
 		arrangementObservablelist.remove(arrangement);
 		billettArrangementObservableList.remove(arrangement);
 		arrangement.getKontaktPerson().FjernArrangement(arrangement);
@@ -522,7 +535,7 @@ public class MainController implements Initializable {
 
 	public void btnPersonLeggTil(ActionEvent actionEvent) {
 		if(PersonFeilhaandtering()) {
-			person = new Person(txtPersonNavn.getText(), txtPersonTlf.getText(), txtPersonEpost.getText(),
+			Person person = new Person(txtPersonNavn.getText(), txtPersonTlf.getText(), txtPersonEpost.getText(),
 					txtPersonNettside.getText(), txtPersonOpplysninger.getText());
 
 			leggTilPerson(person);
@@ -532,9 +545,47 @@ public class MainController implements Initializable {
 	}
 
 	public void btnPersonSlett(ActionEvent actionEvent) {
-		if(tablePerson.getSelectionModel().getSelectedItem() != null){
-			fjernPerson(tablePerson.getSelectionModel().getSelectedItem());
 
+
+		//Dersom lokalet har arrangementer
+		if(tablePerson.getSelectionModel().getSelectedItem() != null){
+			int indeks = tablePerson.getSelectionModel().getSelectedIndex();
+			Person person = tablePerson.getSelectionModel().getSelectedItem();
+			Boolean slett = false;
+			String arrangement = "Disse arrangementene vil bli slettet: \n\n";
+
+			//Sjekker arrangementer som er linka til Person
+			for (int i = 0; i < arrangementObservablelist.size(); i++) {
+				if(arrangementObservablelist.get(i).getKontaktPerson().equals(personObservableList.get(indeks))){
+					slett = true;
+					arrangement += arrangementObservablelist.get(i).getNavn() + "\n\n";
+				}
+			}
+
+			if(slett){
+				errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+				errorAlert.setHeaderText("Er du sikker?");
+				errorAlert.setContentText(arrangement);
+
+				//OK-if eller Cancel-else
+				Optional<ButtonType> result = errorAlert.showAndWait();
+				if (result.get() == ButtonType.OK){
+					try{
+						fjernPerson(person);
+						int size = arrangementObservablelist.size() - 1;
+						for (int i = size; i >= 0; i--) {
+							if(arrangementObservablelist.get(i).getKontaktPerson().equals(person)){
+								fjernArrangement(arrangementObservablelist.get(i));
+							}
+						}
+					}catch (NullPointerException e){
+
+					}
+				}
+
+			}else {
+				fjernPerson(person);
+			}
 		}
 	}
 
@@ -582,12 +633,15 @@ public class MainController implements Initializable {
 	}
 
 	public void leggTilPerson(Person person){
+
+		PERSON.leggTilPerson(person);
 		arrangementPersonObservableList.add(person);
 		personObservableList.add(person);
 	}
 
 	public void fjernPerson(Person person){
 
+		PERSON.fjernPerson(person);
 		arrangementPersonObservableList.remove(person);
 		personObservableList.remove(person);
 
@@ -619,18 +673,7 @@ public class MainController implements Initializable {
 		if(cbBillettArrangement.getSelectionModel().getSelectedItem() != null){
 			txtBillettDato.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getTidspunkt().toString());
 			txtBillettLokale.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getLokale().getNavn());
-
-			if(!billett.getBillettRegister().isEmpty()){
-
-				billettRegisterArrangement.clear();
-
-				for (Billett b : billett.getBillettRegister()) {
-					if(b.getArrangement().equals(cbBillettArrangement.getSelectionModel().getSelectedItem())){
-						billettRegisterArrangement.add(b);
-					}
-				}
-				tableBillett.refresh();
-			}
+			oppdaterBillett();
 		} else{
 			txtBillettDato.clear();
 			txtBillettLokale.clear();
@@ -638,16 +681,21 @@ public class MainController implements Initializable {
 	}
 
 	public void btnBillettFjern(ActionEvent actionEvent) {
+		if(tableBillett.getSelectionModel().getSelectedItem() != null){
+			BILLETT.fjernBillett(tableBillett.getSelectionModel().getSelectedItem());
+			spinnerStruktur(cbBillettArrangement.getSelectionModel().getSelectedItem().getAntallLedigeInt());
+
+			oppdaterBillett();
+		}
 	}
 
 	public void btnBillettRediger(ActionEvent actionEvent) {
 	}
 
 	public void btnBillettKjoop(ActionEvent actionEvent) {
-		billett.lagBillett(cbBillettArrangement.getSelectionModel().getSelectedItem(), txtBillettTlf.getText(), 5);
-		tableArrangement.refresh();
-		tablePersonArrangement.refresh();
-		tableBillett.refresh();
+		BILLETT.lagBillett(cbBillettArrangement.getSelectionModel().getSelectedItem(), txtBillettTlf.getText(), spinnerBillettAntall.getValue());
+		oppdaterBillett();
+		spinnerStruktur(cbBillettArrangement.getSelectionModel().getSelectedItem().getAntallLedigeInt());
 	}
 
 	// METODE - BILLETT
@@ -661,8 +709,65 @@ public class MainController implements Initializable {
 
 	}
 
+	public void spinnerStruktur(int maks){
+		System.out.println("spinneren blir satt til maks " + maks);
+		if(maks != 0){
+			SpinnerValueFactory<Integer> valueFactory =
+					new SpinnerValueFactory.IntegerSpinnerValueFactory(1, maks, 1);
+
+			spinnerBillettAntall.setValueFactory(valueFactory);
+
+			lblBillettMax.setText("Max " + maks);
+			visBillettUtsolgt();
+
+		}else{
+			skjulBillettUtsolgt();
+
+		}
+
+	}
+
+	public void skjulBillettUtsolgt(){
+		btnBillettKjop.setDisable(true);
+		txtBillettTlf.setDisable(true);
+		spinnerBillettAntall.setDisable(true);
+		lblBillettMax.setText("UTSOLGT");
+	}
+
+	public void visBillettUtsolgt(){
+		btnBillettKjop.setDisable(false);
+		txtBillettTlf.setDisable(false);
+		spinnerBillettAntall.setDisable(false);
+	}
+
+	public void oppdaterBillett(){
+		if(!BILLETT.getBillettRegister().isEmpty()){
+
+			billettRegisterArrangement.clear();
+
+			for (Billett b : BILLETT.getBillettRegister()) {
+				if(b.getArrangement().equals(cbBillettArrangement.getSelectionModel().getSelectedItem())){
+					billettRegisterArrangement.add(b);
+				}
+			}
+			spinnerStruktur(cbBillettArrangement.getSelectionModel().getSelectedItem().getAntallLedigeInt());
+
+			refreshTabeller();
+		}
+
+	}
 
 
+
+	//ANNET
+	public void refreshTabeller(){
+		tableBillett.refresh();
+		tablePerson.refresh();
+		tableArrangement.refresh();
+		tableLokale.refresh();
+		tablePersonArrangement.refresh();
+
+	}
 
 	//FEILHÅNDTERING
 
@@ -773,4 +878,9 @@ public class MainController implements Initializable {
 	}
 
 
+	//LAGRING
+
+	public void btnLagring(ActionEvent actionEvent) throws IOException {
+		save.csvLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+	}
 }

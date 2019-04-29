@@ -1,4 +1,4 @@
-package org.groupId.models.exceptions;
+package org.groupId.models;
 
 import java.util.regex.Pattern;
 
@@ -13,6 +13,7 @@ public class Feilhaandtering {
     //DATAFELT
     private Pattern bokstavRegex = Pattern.compile("[a-zæøåA-ZÆØÅ ]{1,100}");
     private Pattern tallRegex = Pattern.compile("[0-9]{1,10}");
+    private Pattern tlfRegex = Pattern.compile("[0-9]{8}");
     private Alert errorAlert;
 
 
@@ -65,6 +66,21 @@ public class Feilhaandtering {
         }
     }
 
+    public String kunTlf(TextField input) {
+        try {
+            if(!tlfRegex.matcher(input.getText()).matches()){
+                throw new TelefonNummerException("Du må fylle " + input.getId() + " med et telefonnummer.");
+            }else{
+                textFieldFarge(input, "#FFFFFF");
+                return "";
+            }
+
+        }catch (TelefonNummerException e){
+            exceptionCatch(input);
+            return e.getMessage() + "\n\n";
+        }
+    }
+
     public String IngenObjektValgt(ComboBox input){
         try{
             if(input.getSelectionModel().selectedItemProperty().isNull().get()){
@@ -102,7 +118,7 @@ public class Feilhaandtering {
     public String AntallBillett(TextField input, TextField inputMax){
         try {
             if((Integer.valueOf(input.getText()) < 0) || (Integer.valueOf(input.getText()) > Integer.valueOf(inputMax.getText()))){
-                throw new AntallBillettException("Antall billetter må være i intervallet mellom: [0 , " + inputMax.getText() + "]");
+                throw new AntallBillettException("Antall forhåndssolgte billetter må være i intervallet mellom: [0 , " + inputMax.getText() + "]");
             }else{
                 textFieldFarge(input, "#FFFFFF");
                 return "";

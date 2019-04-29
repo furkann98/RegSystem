@@ -1,10 +1,7 @@
 package org.groupId.models;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-
-import java.util.Date;
 
 public class Billett {
 
@@ -13,7 +10,7 @@ public class Billett {
     // DATAFELT
     private Arrangement arrangement;
     private String telefonNummer;
-    private int plassNummer;
+    private int antall;
 
     private ObservableList<Billett> billettRegister = FXCollections.observableArrayList();
     private String arrangementNavn;
@@ -31,13 +28,23 @@ public class Billett {
         this.arrangement = arrangement;
         this.telefonNummer = telefonNummer;
         this.arrangementNavn = arrangement.getNavn();
+        this.antall = antall;
         this.sete = antall + " stk";
+
+        arrangement.leggTilSalg(antall);
+
+        System.out.println("lager BILLETT til: " + arrangement.getNavn() + "   --  " + sete);
     }
 
     // METODER
     public void lagBillett(Arrangement arrangement, String telefonNummer, int antall){
         billettRegister.add(new Billett(arrangement,telefonNummer,antall));
-        arrangement.leggTilBillett(5);
+        //ARRANGEMENT.leggTilSalg(antall);
+    }
+
+    public void fjernBillett(Billett b){
+        b.getArrangement().fjernSalg(b.getAntall());
+        billettRegister.remove(b);
     }
 
     public ObservableList<Billett> getBillettRegister() {
@@ -52,8 +59,12 @@ public class Billett {
         return sete;
     }
 
+    public int getAntall() {
+        return antall;
+    }
+
     public int getPlassNummer() {
-        return plassNummer;
+        return antall;
     }
 
     public String getTelefonNummer() {

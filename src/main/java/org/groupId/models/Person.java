@@ -19,6 +19,8 @@ public class Person {
 
 
     // KONSTRUKTØR
+    public Person(){
+    }
 
     public Person(String navn, String tlfNummer, String epost, String nettside, String opplysninger) {
         this.navn = navn;
@@ -75,6 +77,18 @@ public class Person {
             antallArrangementer =  arrangementer.size() + " arrangementer";
 
         }
+    }
+
+    public void leggTilPerson(Person person){
+        personer.add(person);
+    }
+
+    public void fjernPerson(Person person){
+        personer.remove(person);
+    }
+
+    public ArrayList<Person> getPersoner(){
+        return personer;
     }
 
     public String getAntallArrangementer() {

@@ -1,12 +1,15 @@
+org/groupId/models/Feilhaandtering.class
+org/groupId/models/Lagring/Lagring.class
 org/groupId/controllers/TestController.class
 org/groupId/models/Lokale.class
 org/groupId/RegSystem.class
 org/groupId/controllers/MainController.class
 org/groupId/models/Arrangement.class
-org/groupId/models/exceptions/Feilhaandtering.class
 org/groupId/models/Person.class
+org/groupId/models/exceptions/TelefonNummerException.class
 org/groupId/models/exceptions/KunTekstException.class
 org/groupId/models/exceptions/IngenObjectException.class
+org/groupId/models/Lagring/Save.class
 org/groupId/models/exceptions/KunTallException.class
 module-info.class
 org/groupId/models/Billett.class

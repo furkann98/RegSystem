@@ -32,7 +32,7 @@
 
 .tab-label:selected, .tab:selected
 {
-    -fx-background-color: lightblue;
+    -fx-background-color: LightGREY;
 }
 
 

@@ -6,14 +6,14 @@ public class Person {
 
     // DATAFELT
     private ArrayList<Person> personer = new ArrayList<>();
+    private ArrayList<Arrangement> arrangementer = new ArrayList<>();
 
     private String navn;
     private String tlfNummer;
     private String Epost;
     private String nettside;
-    private ArrayList<Arrangement> arrangementer = new ArrayList<>();
-    private String opplysninger;
 
+    private String opplysninger;
     private String antallArrangementer =  "Ingen arrangementer";
 
 
@@ -94,4 +94,13 @@ public class Person {
     public String getAntallArrangementer() {
         return antallArrangementer;
     }
+/*
+    public int getIndeks(){
+        for (int i = 0; i < personer.size() ; i++) {
+            if()
+        }
+        return personer.
+    }
+
+ */
 }

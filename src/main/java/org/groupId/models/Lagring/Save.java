@@ -29,20 +29,46 @@ public class Save implements Lagring {
     @Override
     public void csvLagring(String kilde, Lokale lokale, Person person, Arrangement arrangement, Billett billett) throws IOException {
         try {
-            //Lokale
             skriver = new PrintWriter(new FileWriter(kilde));
-            skriver.append("NAVN;TYPE;ANTALL;");
 
-            for (Lokale l : lokale.getArrayList()) {
+            //Lokale
+            skriver.append("LOKALE");
+            //skriver.append("NAVN;TYPE;ANTALL;");
+
+            for (Lokale l : lokale.getLokaler()) {
                 skriverLokale(skriver,l);
             }
-            
+
+
             //Personer
-            skriver.append(";NAVN;TLF;EPOST;NETTSIDE;OPPLYSNINGER;");
+            skriver.append("\nPERSONER");
+            //skriver.append("NAVN;TLF;EPOST;NETTSIDE;OPPLYSNINGER;");
 
             for (Person p : person.getPersoner()) {
                 skriverPerson(skriver,p);
             }
+            //Person kontaktPerson, Lokale lokale, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg
+
+
+            //Arrangement
+            skriver.append("\nARRANGEMENT");
+            //skriver.append("PERSON;LOKALE;NAVN;ARTIST;PROGRAM;TIDSPUNKT;BILLETTPRIS;BILLETTSALG;");
+
+            for (Arrangement a : arrangement.getArrangementer()) {
+                skriverArrangement(skriver,a, person, lokale);
+            }
+
+
+            //Billett
+            skriver.append("\nBILLETT");
+            //skriver.append("ARRANGEMENT;TELEFONNUMMER;ANTALL;");
+
+            for (Billett b : billett.getBilletter()) {
+                skriverBillett(skriver,b, arrangement);
+            }
+
+
+
 
         } catch (IOException e){
             System.out.println("Fant feil");
@@ -76,6 +102,31 @@ public class Save implements Lagring {
         skriver.append(person.getNettside()).append(";");
         skriver.append(person.getOpplysninger()).append(";");
     }
+
+    public void skriverArrangement(PrintWriter skriver, Arrangement arrangement, Person person, Lokale lokale){
+        skriver.append("\n");
+        skriver.append(String.valueOf(person.getPersoner().indexOf(arrangement.getKontaktPerson()))).append(";");
+        skriver.append(String.valueOf(lokale.getLokaler().indexOf(arrangement.getLokale()))).append(";");
+        skriver.append(arrangement.getNavn()).append(";");
+        skriver.append(arrangement.getArtist()).append(";");
+        skriver.append(arrangement.getProgram()).append(";");
+        skriver.append(String.valueOf(arrangement.getTidspunkt())).append(";");
+        skriver.append(String.valueOf(arrangement.getBillettPris())).append(";");
+        skriver.append(String.valueOf(arrangement.getBillettSalg())).append(";");
+
+
+
+    }
+
+    public void skriverBillett(PrintWriter skriver, Billett billett, Arrangement arrangement){
+        skriver.append("\n");
+        skriver.append(String.valueOf(arrangement.getArrangementer().indexOf(billett.getArrangement()))).append(";");
+        skriver.append(billett.getTelefonNummer()).append(";");
+        skriver.append(String.valueOf(billett.getAntall())).append(";");
+    }
+
+
+
 
 
 

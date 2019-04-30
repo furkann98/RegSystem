@@ -1,7 +1,5 @@
 package org.groupId.models;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 public class Billett {
 
@@ -12,7 +10,7 @@ public class Billett {
     private String telefonNummer;
     private int antall;
 
-    private ObservableList<Billett> billettRegister = FXCollections.observableArrayList();
+    private ArrayList<Billett> billetter = new ArrayList<>();
     private String arrangementNavn;
     private String sete;
 
@@ -38,17 +36,17 @@ public class Billett {
 
     // METODER
     public void lagBillett(Arrangement arrangement, String telefonNummer, int antall){
-        billettRegister.add(new Billett(arrangement,telefonNummer,antall));
+        billetter.add(new Billett(arrangement,telefonNummer,antall));
         //ARRANGEMENT.leggTilSalg(antall);
     }
 
     public void fjernBillett(Billett b){
         b.getArrangement().fjernSalg(b.getAntall());
-        billettRegister.remove(b);
+        billetter.remove(b);
     }
 
-    public ObservableList<Billett> getBillettRegister() {
-        return billettRegister;
+    public ArrayList<Billett> getBilletter() {
+        return billetter;
     }
 
     public String getArrangementNavn() {

@@ -66,6 +66,7 @@ public class Lokale {
     }
 
     public void leggTilLokal(Lokale lokal){
+        System.out.println(lokal.getNavn());
         lokaler.add(lokal);
     }
 
@@ -73,7 +74,7 @@ public class Lokale {
         lokaler.remove(valgtLokalIndex);
     }
 
-    public ArrayList<Lokale> getArrayList(){
+    public ArrayList<Lokale> getLokaler(){
         return lokaler;
     }
 

@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.groupId.models.*;
 import org.groupId.models.Feilhaandtering;
+import org.groupId.models.Lagring.Load;
 import org.groupId.models.Lagring.Save;
 
 import java.io.IOException;
@@ -23,160 +24,176 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+	/*
+	//MANGLENDE
+
+	- THREAD På loading og saving
+	- jobj lagring og loading
+	- CSS av fxml
+	- Strutktur på fxml
+	- ekstra Tab for save/load
+	- fikse feilhåndtering - tlf - epost osv.
+
+	 */
+
+
 	//DATAFELT
-	Feilhaandtering feilhaandtering = new Feilhaandtering();
+	private Feilhaandtering feilhaandtering = new Feilhaandtering();
+	private Save save = new Save();
+	private Load load = new Load();
+
 
 	// lokale
-	public Lokale LOKALE = new Lokale();
-	public ObservableList<Lokale> lokalerObservableList;
-	public ObservableList<Arrangement> lokalersArrangement = FXCollections.observableArrayList();
+	private Lokale LOKALE = new Lokale();
+	private ObservableList<Lokale> lokalerObservableList;
+	private ObservableList<Arrangement> lokalersArrangement = FXCollections.observableArrayList();
 
 	// ARRANGEMENT
-	public Arrangement ARRANGEMENT = new Arrangement();
-	public ObservableList<Lokale> arrangementLokaleObservableList;
-	public ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
+	private Arrangement ARRANGEMENT = new Arrangement();
+	private ObservableList<Lokale> arrangementLokaleObservableList;
+	private ObservableList<Arrangement> arrangementObservablelist = FXCollections.observableArrayList();
 
 	// PERSON
-	public Person PERSON = new Person();
-	public ObservableList<Person> arrangementPersonObservableList;
-	public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
-	public ObservableList<Arrangement> personArrangementObservableList = FXCollections.observableArrayList();
+	private Person PERSON = new Person();
+	private ObservableList<Person> arrangementPersonObservableList;
+	private ObservableList<Person> personObservableList = FXCollections.observableArrayList();
+	private ObservableList<Arrangement> personArrangementObservableList = FXCollections.observableArrayList();
 
 	// Billett
-	public Billett BILLETT = new Billett();
-	public ObservableList<Arrangement> billettArrangementObservableList;
-	public ObservableList<Billett> billettRegisterArrangement = FXCollections.observableArrayList();
+	private Billett BILLETT = new Billett();
+	private ObservableList<Arrangement> billettArrangementObservableList;
+	private ObservableList<Billett> billettRegisterArrangement = FXCollections.observableArrayList();
 
 	// annet
-	public Alert errorAlert;
-
-	// save
-	private Save save = new Save();
+	private Alert errorAlert;
 
 
 
 
 	//DATAFELT FXML
-
+/*
 	//Tabpane
 	@FXML
-	public TabPane tabPane;
+	private TabPane tabPane;
 
 	@FXML
-	public Tab tabPaneLokale, tabPaneArrangement, tabPaneBillettsalg;
+	private Tab tabPaneLokale, tabPaneArrangement, tabPaneBillettsalg;
 
-
+*/
 	//Lokale
 
 	@FXML
-	public ListView<Lokale> lstViewLokal;
+	private ListView<Lokale> lstViewLokal;
 
 	@FXML
-	public TextField txtLokalNavn, txtLokalAntallPlasser, txtLokalType;
+	private TextField txtLokalNavn, txtLokalAntallPlasser, txtLokalType;
 
 	@FXML
-	public TextArea txtFlowLokal, txtFlowLokalOverskrift;
+	private TextArea txtFlowLokal, txtFlowLokalOverskrift;
 
 	@FXML
-	public HBox hBoxNyttLokale;
+	private HBox hBoxNyttLokale;
 
 	@FXML
-	public Button btnFullfoorLokalId, btnFjernLokal;
+	private Button btnFullfoorLokalId, btnFjernLokal;
 
 	@FXML
-	public TableView<Arrangement> tableLokale;
+	private TableView<Arrangement> tableLokale;
 
 	@FXML
-	public TableColumn<Arrangement, String> TCNavnLokale, TCAntallLokale, TCPersonLokale;
+	private TableColumn<Arrangement, String> TCNavnLokale, TCAntallLokale, TCPersonLokale;
 
 	@FXML
-	public TableColumn<Arrangement, LocalDate> TCDatoLokale;
+	private TableColumn<Arrangement, LocalDate> TCDatoLokale;
 
 
 	//Arrangement
 
 	@FXML
-	public ComboBox<Lokale> cbLokal;
+	private ComboBox<Lokale> cbLokal;
 
 	@FXML
-	public ComboBox<Person> cbKontaktperson;
+	private ComboBox<Person> cbKontaktperson;
 
 	@FXML
-	public TableView<Arrangement> tableArrangement;
+	private TableView<Arrangement> tableArrangement;
 
 	@FXML
-	public TextField txtArrangementAntPlasser, txtArrangementType, txtArrangementNavn,
+	private TextField txtArrangementAntPlasser, txtArrangementType, txtArrangementNavn,
 			txtArrangementArtist, txtArrangementBillPris, txtArrangementBillSalg;
 
 	@FXML
-	public TextArea txtArrangementProgram;
+	private TextArea txtArrangementProgram;
 
 	@FXML
-	public TableColumn<Arrangement, String> TCNavn, TCProgram, TCPris, TCAntall, TCPerson;
+	private TableColumn<Arrangement, String> TCNavn, TCProgram, TCPris, TCAntall, TCPerson;
 
 	@FXML
-	public TableColumn<Arrangement, Lokale> TCLokale;
+	private TableColumn<Arrangement, Lokale> TCLokale;
 
 	@FXML
-	public TableColumn<Arrangement, Date> TCDato;
+	private TableColumn<Arrangement, Date> TCDato;
 
 	@FXML
-	public DatePicker DatePickerArrangement;
+	private DatePicker DatePickerArrangement;
 
 	@FXML
-	public Button btnRedigerArrangement, btnSlettArrangement;
+	private Button btnRedigerArrangement, btnSlettArrangement;
 
 
 	//Kontaktperson
 
 	@FXML
-	public Button btnPersonSlett, btnPersonRediger, btnPersonLeggTil;
+	private Button btnPersonSlett, btnPersonRediger; //btnPersonLeggTil
 
 	@FXML
-	public TextField txtPersonNavn, txtPersonTlf, txtPersonEpost, txtPersonNettside;
+	private TextField txtPersonNavn, txtPersonTlf, txtPersonEpost, txtPersonNettside;
 
 	@FXML
-	public TextArea txtPersonOpplysninger, txtPersonOversikt;
+	private TextArea txtPersonOpplysninger, txtPersonOversikt;
 
 	@FXML
-	public TableView<Person> tablePerson;
+	private TableView<Person> tablePerson;
 
 	@FXML
-	public TableColumn<Person, String> TCPersonNavn, TCPersonTlf, TCPersonEpost,
+	private TableColumn<Person, String> TCPersonNavn, TCPersonTlf, TCPersonEpost,
 			TCPersonNettside, TCPersonAntall;
 
 	@FXML
-	public TableView<Arrangement> tablePersonArrangement;
+	private TableView<Arrangement> tablePersonArrangement;
 
 	@FXML
-	public TableColumn<Arrangement,String> TCPersonArrangementNavn, TCPersonArrangementLokale;
+	private TableColumn<Arrangement,String> TCPersonArrangementNavn, TCPersonArrangementLokale;
 
 	@FXML
-	public TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
+	private TableColumn<Arrangement, LocalDate> TCPersonArrangementDato;
 
 
 	// Billett
 
 	@FXML
-	public Button btnBillettKjop;
+	private Button btnBillettKjop;
 
 	@FXML
-	public TableView<Billett> tableBillett;
+	private HBox HBoxBillettKjop;
 
 	@FXML
-	public TableColumn<Billett, String> TCBillettArrangement, TCBillettSete, TCBillettTlf;
+	private TableView<Billett> tableBillett;
 
 	@FXML
-	public ComboBox<Arrangement> cbBillettArrangement;
+	private TableColumn<Billett, String> TCBillettArrangement, TCBillettSete, TCBillettTlf;
 
 	@FXML
-	public TextField txtBillettDato, txtBillettLokale, txtBillettTlf; //txtBillettMax - lage textfield
+	private ComboBox<Arrangement> cbBillettArrangement;
 
 	@FXML
-	public Label lblBillettDato, lblBillettLokale, lblBillettMax;
+	private TextField txtBillettDato, txtBillettLokale, txtBillettTlf;
 
 	@FXML
-	public Spinner<Integer> spinnerBillettAntall;
+	private Label lblBillettDato, lblBillettLokale, lblBillettMax;
+
+	@FXML
+	private Spinner<Integer> spinnerBillettAntall;
 
 
 
@@ -225,6 +242,7 @@ public class MainController implements Initializable {
 		int indeks = lstViewLokal.getSelectionModel().getSelectedIndex();
 		Lokale lokal = lstViewLokal.getSelectionModel().getSelectedItem();
 		Boolean slett = false;
+		StringBuilder slettedeArrangement = new StringBuilder();
 		String arrangement = "Disse arrangementene vil bli slettet: \n\n";
 
 		//Sjekker arrangementer som er linka til Lokale
@@ -254,7 +272,7 @@ public class MainController implements Initializable {
 						}
 					}
 				}catch (NullPointerException e){
-
+					e.getMessage();
 				}
 			}
 
@@ -266,13 +284,14 @@ public class MainController implements Initializable {
 			btnFjernLokal.setDisable(true);
 		}
 
-		tomTextArea();
+		skjulLokaleOversikt();
 		skjulLokalleggTil();
 	}
 
 
 	public void btnLeggTilLokal(ActionEvent actionEvent) { //Lokale
 		visLokalleggTil();
+		skjulLokaleOversikt();
 	}
 
 
@@ -289,6 +308,7 @@ public class MainController implements Initializable {
 		lokalerObservableList.remove(redigerLokale);
 
 		visLokalleggTil();
+		skjulLokaleOversikt();
 
 	}
 
@@ -301,6 +321,7 @@ public class MainController implements Initializable {
 			Lokale nyttLokal = new Lokale(txtLokalNavn.getText(),txtLokalType.getText(), Integer.parseInt(txtLokalAntallPlasser.getText()));
 			leggTilLokal(nyttLokal);
 			skjulLokalleggTil();
+			skjulLokaleOversikt();
 		}
 
 
@@ -308,6 +329,7 @@ public class MainController implements Initializable {
 
 	public void btnAvbrytLokal(ActionEvent actionEvent) {
 		skjulLokalleggTil();
+		skjulLokaleOversikt();
 	}
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
@@ -325,6 +347,8 @@ public class MainController implements Initializable {
 
 			}
 			skjulLokalleggTil();
+			visLokaleOversikt();
+
 		} catch (NullPointerException e){
 			feilMelding("Velg et lokalet eller vennligst lag et lokalet før du klikker videre. :)");
 		}
@@ -334,24 +358,24 @@ public class MainController implements Initializable {
 
 	// METODER - LOKALE
 
-	public void leggTilLokal(Lokale nyttLokal){
+	private void leggTilLokal(Lokale nyttLokal){
 		LOKALE.leggTilLokal(nyttLokal);
 		lokalerObservableList.add(nyttLokal);
 		arrangementLokaleObservableList.add(nyttLokal);
 	}
 
-	public void fjernLokal(int indeks){
+	private void fjernLokal(int indeks){
 		LOKALE.fjernLokal(indeks);
 		lokalerObservableList.remove(indeks);
 		arrangementLokaleObservableList.remove(indeks);
 	}
 
-	public void visLokalleggTil(){
+	private void visLokalleggTil(){
 		hBoxNyttLokale.setVisible(true);
 		btnFullfoorLokalId.setVisible(true);
 	}
 
-	public void skjulLokalleggTil(){
+	private void skjulLokalleggTil(){
 		hBoxNyttLokale.setVisible(false);
 		btnFullfoorLokalId.setVisible(false);
 		txtLokalNavn.setText("");
@@ -359,14 +383,29 @@ public class MainController implements Initializable {
 		txtLokalAntallPlasser.setText("");
 	}
 
-	public void tomTextArea(){
+
+	private void skjulLokaleOversikt(){
 		txtFlowLokal.clear();
 		txtFlowLokalOverskrift.clear();
 		txtArrangementAntPlasser.clear();
 		txtArrangementType.clear();
+
+		txtFlowLokal.setVisible(false);
+		txtFlowLokalOverskrift.setVisible(false);
+		tableLokale.setVisible(false);
+		txtArrangementAntPlasser.clear();
+
 	}
 
-	public void lokaleTableViewStruktur(){
+	private void visLokaleOversikt(){
+
+		txtFlowLokal.setVisible(true);
+		txtFlowLokalOverskrift.setVisible(true);
+		tableLokale.setVisible(true);
+
+	}
+
+	private void lokaleTableViewStruktur(){
 		tableLokale.setItems(lokalersArrangement);
 
 		TCNavnLokale.setCellValueFactory(new PropertyValueFactory<>("navn"));
@@ -579,7 +618,7 @@ public class MainController implements Initializable {
 							}
 						}
 					}catch (NullPointerException e){
-
+						e.getMessage();
 					}
 				}
 
@@ -595,9 +634,10 @@ public class MainController implements Initializable {
 			txtPersonOversikt.setText(tablePerson.getSelectionModel().getSelectedItem().getOpplysninger());
 
 			ArrayList<Arrangement> test = tablePerson.getSelectionModel().getSelectedItem().getArrangementer();
-			for (Arrangement a : test) {
-				personArrangementObservableList.add(a);
-			}
+			personArrangementObservableList.addAll(test);
+			//for (Arrangement a : test) {
+			//	personArrangementObservableList.add(a);
+			//}
 			btnPersonRediger.setDisable(false);
 			btnPersonSlett.setDisable(false);
 			txtPersonOversikt.setVisible(true);
@@ -611,7 +651,7 @@ public class MainController implements Initializable {
 	}
 
 	// METODER - KONTAKTPERSON
-	public void personTableViewStruktur(){
+	private void personTableViewStruktur(){
 		tablePerson.setItems(personObservableList);
 
 		TCPersonNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
@@ -623,7 +663,7 @@ public class MainController implements Initializable {
 
 	}
 
-	public void personArrangementTableViewStruktur(){
+	private void personArrangementTableViewStruktur(){
 		tablePersonArrangement.setItems(personArrangementObservableList);
 
 		TCPersonArrangementNavn.setCellValueFactory(new PropertyValueFactory<>("navn"));
@@ -632,14 +672,14 @@ public class MainController implements Initializable {
 
 	}
 
-	public void leggTilPerson(Person person){
+	private void leggTilPerson(Person person){
 
 		PERSON.leggTilPerson(person);
 		arrangementPersonObservableList.add(person);
 		personObservableList.add(person);
 	}
 
-	public void fjernPerson(Person person){
+	private void fjernPerson(Person person){
 
 		PERSON.fjernPerson(person);
 		arrangementPersonObservableList.remove(person);
@@ -653,13 +693,13 @@ public class MainController implements Initializable {
 		tomPersonOversikt();
 	}
 
-	public void tomPersonOversikt(){
+	private void tomPersonOversikt(){
 		txtPersonOversikt.clear();
 		txtPersonOversikt.setVisible(false);
 		tablePersonArrangement.setVisible(false);
 	}
 
-	public void tomPersonRegistrering(){
+	private void tomPersonRegistrering(){
 		txtPersonNavn.clear();
 		txtPersonTlf.clear();
 		txtPersonEpost.clear();
@@ -674,6 +714,7 @@ public class MainController implements Initializable {
 			txtBillettDato.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getTidspunkt().toString());
 			txtBillettLokale.setText(cbBillettArrangement.getSelectionModel().getSelectedItem().getLokale().getNavn());
 			oppdaterBillett();
+			visBillettKjop();
 		} else{
 			txtBillettDato.clear();
 			txtBillettLokale.clear();
@@ -700,7 +741,11 @@ public class MainController implements Initializable {
 
 	// METODE - BILLETT
 
-	public void billettTableViewStruktur(){
+	private void visBillettKjop(){
+		HBoxBillettKjop.setVisible(true);
+	}
+
+	private void billettTableViewStruktur(){
 		tableBillett.setItems(billettRegisterArrangement);
 
 		TCBillettArrangement.setCellValueFactory(new PropertyValueFactory<>("arrangementNavn"));
@@ -709,7 +754,7 @@ public class MainController implements Initializable {
 
 	}
 
-	public void spinnerStruktur(int maks){
+	private void spinnerStruktur(int maks){
 		System.out.println("spinneren blir satt til maks " + maks);
 		if(maks != 0){
 			SpinnerValueFactory<Integer> valueFactory =
@@ -727,25 +772,25 @@ public class MainController implements Initializable {
 
 	}
 
-	public void skjulBillettUtsolgt(){
+	private void skjulBillettUtsolgt(){
 		btnBillettKjop.setDisable(true);
 		txtBillettTlf.setDisable(true);
 		spinnerBillettAntall.setDisable(true);
 		lblBillettMax.setText("UTSOLGT");
 	}
 
-	public void visBillettUtsolgt(){
+	private void visBillettUtsolgt(){
 		btnBillettKjop.setDisable(false);
 		txtBillettTlf.setDisable(false);
 		spinnerBillettAntall.setDisable(false);
 	}
 
-	public void oppdaterBillett(){
-		if(!BILLETT.getBillettRegister().isEmpty()){
+	private void oppdaterBillett(){
+		if(!BILLETT.getBilletter().isEmpty()){
 
 			billettRegisterArrangement.clear();
 
-			for (Billett b : BILLETT.getBillettRegister()) {
+			for (Billett b : BILLETT.getBilletter()) {
 				if(b.getArrangement().equals(cbBillettArrangement.getSelectionModel().getSelectedItem())){
 					billettRegisterArrangement.add(b);
 				}
@@ -760,7 +805,7 @@ public class MainController implements Initializable {
 
 
 	//ANNET
-	public void refreshTabeller(){
+	private void refreshTabeller(){
 		tableBillett.refresh();
 		tablePerson.refresh();
 		tableArrangement.refresh();
@@ -772,7 +817,7 @@ public class MainController implements Initializable {
 	//FEILHÅNDTERING
 
 
-	public boolean LokalFeilhaandtering () {
+	private boolean LokalFeilhaandtering () {
 		String feilmelding = "";
 
 		feilmelding += feilhaandtering.KunBokstaver(txtLokalNavn);
@@ -787,7 +832,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	public boolean ArrangementFeilhaandtering () {
+	private boolean ArrangementFeilhaandtering () {
 		String feilmelding = "";
 
 		feilmelding += feilhaandtering.IngenObjektValgt(cbLokal);
@@ -810,7 +855,7 @@ public class MainController implements Initializable {
 
 	}
 
-	public boolean PersonFeilhaandtering () {
+	private boolean PersonFeilhaandtering () {
 		String feilmelding = "";
 
 		feilmelding += feilhaandtering.KunBokstaver(txtPersonNavn);
@@ -828,7 +873,7 @@ public class MainController implements Initializable {
 	}
 
 
-	public void feilMelding(String melding){
+	private void feilMelding(String melding){
 		//SE OM MAN KAN FORANDRE STØRELSE OG FIKSE LAYOUT
 		errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setHeaderText("Feilmelding!");
@@ -841,7 +886,7 @@ public class MainController implements Initializable {
 
 	//TESTFELT
 
-	public void TESTDATA(){
+	private void TESTDATA(){
 		Lokale konsert = new Lokale("Konsert", "Sal", 500);
 		Lokale kino = new Lokale("Kino", "Kinosal", 200);
 		Lokale teater = new Lokale("Teater", "Sal", 300);
@@ -883,4 +928,26 @@ public class MainController implements Initializable {
 	public void btnLagring(ActionEvent actionEvent) throws IOException {
 		save.csvLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
 	}
+
+	public void btnOpplasting(ActionEvent actionEvent) throws IOException {
+		load.csvOpplasting("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+	}
+
+	public void clearLokale(){
+
+	}
+
+	public void clearArrangement(){
+
+	}
+
+	public void clearPerson(){
+
+	}
+
+	public void clearBillett(){
+
+	}
+
+
 }

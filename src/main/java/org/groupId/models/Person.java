@@ -64,9 +64,7 @@ public class Person {
 
     public void LeggTilArrangement(Arrangement arrangement){
         arrangementer.add(arrangement);
-        System.out.println(arrangementer.toString());
         antallArrangementer =  arrangementer.size() + " arrangementer";
-        System.out.println(antallArrangementer);
     }
 
     public void FjernArrangement(Arrangement arrangement){
@@ -94,13 +92,9 @@ public class Person {
     public String getAntallArrangementer() {
         return antallArrangementer;
     }
-/*
-    public int getIndeks(){
-        for (int i = 0; i < personer.size() ; i++) {
-            if()
-        }
-        return personer.
+
+    public void clear(){
+        personer.clear();
     }
 
- */
 }

@@ -96,13 +96,14 @@
                            <TableColumn fx:id="TCAntallLokale" prefWidth="102.0" text="Ledige Plasser" />
                        </columns>
                      </TableView>
-                     <Button layoutX="94.0" layoutY="511.0" mnemonicParsing="false" onAction="#btnRedigerLokal" text="Rediger">
+                     <Button fx:id="btnRedigerLokal" layoutX="94.0" layoutY="511.0" mnemonicParsing="false" onAction="#btnRedigerLokal" text="Rediger">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Button>
                      <Button layoutX="47.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnLagring" text="LAGRE" />
                      <Button layoutX="130.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnOpplasting" text="LAST OPP" />
+                     <Button layoutX="223.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnClearRegSystem" text="Clear" />
                   </children></AnchorPane>
          </content>
        </Tab>

@@ -1,5 +1,6 @@
 package org.groupId.models;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javafx.scene.control.*;
@@ -11,9 +12,12 @@ import org.groupId.models.exceptions.*;
 public class Feilhaandtering {
 
     //DATAFELT
-    private Pattern bokstavRegex = Pattern.compile("[a-zæøåA-ZÆØÅ ]{1,100}");
+    private Pattern navnRegex = Pattern.compile("[a-zæøåA-ZÆØÅ]{1,30}");
+    private Pattern bokstavRegex = Pattern.compile("[a-zæøåA-ZÆØÅ]{1,100}");
+    private Pattern tekstRegex = Pattern.compile("^[a-zA-Z0-9_.-]*${1,100}");
     private Pattern tallRegex = Pattern.compile("[0-9]{1,10}");
     private Pattern tlfRegex = Pattern.compile("[0-9]{8}");
+    private Pattern ePostRegex = Pattern.compile("[^(.+)@(.+)$]{1,50}");
     private Alert errorAlert;
 
 
@@ -41,7 +45,6 @@ public class Feilhaandtering {
                 textFieldFarge(input, "#FFFFFF");
                 return "";
             }
-
         }catch (KunTallException e){
             exceptionCatch(input);
             return e.getMessage() + "\n\n";
@@ -49,10 +52,10 @@ public class Feilhaandtering {
         }
     }
 
-    public String KunBokstaverTextArea(TextArea input) {
+    public String KunTekstTextArea(TextArea input) {
         try {
-            if(!bokstavRegex.matcher(input.getText()).matches()){
-                throw new KunTekstException("Du må fylle " + input.getId() + " med bare bokstaver");
+            if(!tekstRegex.matcher(input.getText()).matches()){
+                throw new KunTekstException("Du må fylle " + input.getId() + " med bare tekst og ikke tegn.");
             }else{
                 input.setStyle("-fx-background-color: #FFFFFF");
                 return "";
@@ -131,14 +134,86 @@ public class Feilhaandtering {
         }
     }
 
-    //LISTENER
-    public void ListenerKunBokstaver(TextField input){
-        input.focusedProperty().addListener((arg0,gammelV,nyV) -> {
-            if(!nyV){
-                KunBokstaver(input);
-            }
-        });
+/*
+    public boolean navnRegex(String tekst){
+        boolean godkjent = false;
+
+        if(navnRegex.matcher(tekst).matches()){
+            godkjent = true;
+        }
+
+        return godkjent;
     }
+*/
+
+    //Feilhåndtering ved loading
+    public boolean lokalLoadSjekk(String[] liste){
+        boolean godkjent = true;
+
+        if(liste.length != 3){
+            godkjent = false;
+        }else if(!navnRegex.matcher(liste[0]).matches()){
+            godkjent =  false;
+        }else if(!navnRegex.matcher(liste[1]).matches()){
+            godkjent = false;
+        }else if(!tallRegex.matcher(liste[2]).matches()){
+            godkjent = false;
+        }
+
+        return godkjent;
+    }
+
+    public boolean personLoadSjekk(String[] liste){
+        boolean godkjent = true;
+        /*
+
+        if(liste.length != 5){
+            godkjent = false;
+            System.out.println("FEIL: 1");
+        }else if(!navnRegex.matcher(liste[0]).matches()){
+            godkjent =  false;
+            System.out.println("FEIL: 2");
+        }else if(!tlfRegex.matcher(liste[1]).matches()){
+            godkjent = false;
+            System.out.println("FEIL: 3");
+        }
+
+        //Epost og nettisde og opplysninger
+
+         */
+        return godkjent;
+    }
+
+    public boolean arrangmentLoadSjekk(String[] liste, int lengdePerson, int lengdeLokaler, ArrayList<Lokale> lokaler){
+
+        boolean godkjent = true;
+        /*
+        if(liste.length != 8){
+            godkjent = false;
+            System.out.println("FEIL: 1");
+        }else if(Integer.valueOf(liste[0]) >= lengdePerson){
+            godkjent =  false;
+            System.out.println("FEIL: 2");
+        }else if(Integer.valueOf(liste[1]) >= lengdeLokaler){
+            godkjent = false;
+            System.out.println("FEIL: 3");
+        }else if(!navnRegex.matcher(liste[2]).matches()){
+            godkjent =  false;
+            System.out.println("FEIL: 4");
+        }else if(!navnRegex.matcher(liste[3]).matches()){
+            godkjent =  false;
+            System.out.println("FEIL: 5");
+        }else if(Integer.valueOf(liste[7]) > lokaler.get(Integer.valueOf(liste[1])).getAntallPlasser()){
+            godkjent =  false;
+            System.out.println("FEIL: 6");
+        }
+
+        //Epost og nettisde og opplysninger
+
+        */
+        return godkjent;
+    }
+
 
     //Feilhåndetering
 

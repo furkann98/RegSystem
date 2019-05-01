@@ -1,0 +1,17 @@
+LOKALE
+Konsert;Sal;500
+Kino;Kinosal;200
+Teater;Sal;300
+Foredrag;Sal;50
+PERSONER
+Ole;95959595;hei@Oslomet.no;www.test.no;Dette er en test;
+Abdi;25255555;Petter@Oslomet.no;Ingen;Dette er en test2;
+Ali;23543092;Thomas@Oslomet.no;www.test.no;Dette er en test3;
+ARRANGEMENT
+0;0;Konsert med Khalid;Khalid;Konsert av Khalid, GAALT!;2019-05-01;250;100;
+1;0;Konsert med Drake;Drake;Konsert av Drake, GAALT!;2019-05-01;400;50;
+2;3;Minnestund;;Minnestund for brødre;2019-05-01;0;20;
+BILLETT
+0;95959595;100;
+1;25255555;50;
+2;23543092;20;

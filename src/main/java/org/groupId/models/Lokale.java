@@ -66,7 +66,6 @@ public class Lokale {
     }
 
     public void leggTilLokal(Lokale lokal){
-        System.out.println(lokal.getNavn());
         lokaler.add(lokal);
     }
 
@@ -80,6 +79,10 @@ public class Lokale {
 
     public boolean isEmpty(){
         return lokaler.isEmpty();
+    }
+
+    public void clear(){
+        lokaler.clear();
     }
 
 

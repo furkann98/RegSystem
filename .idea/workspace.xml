@@ -2,26 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f33512b5-fe76-4144-855c-32dce0eb2dc4" name="Default Changelist" comment="Test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Opplasting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lagring.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/lagring.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Lagring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Lagring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Test.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/RegSystem-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/RegSystem-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/controllers/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Billett.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Billett.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Feilhaandtering.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Feilhaandtering.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Lagring/Load.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Lagring/Load.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Lagring/Save.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Lagring/Save.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Lokale.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Lokale.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/Stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/Test.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -43,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="716" column="29" selection-start-line="716" selection-start-column="29" selection-end-line="716" selection-end-column="29" />
+            <state relative-caret-position="3405">
+              <caret line="227" selection-start-line="227" selection-end-line="227" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#20859#20860#0" expanded="true" />
@@ -55,19 +60,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="141" column="22" lean-forward="true" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
+            <state relative-caret-position="143">
+              <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Opplasting.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="107" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="107" />
+            <state relative-caret-position="765">
+              <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="905">
+              <caret line="143" column="55" selection-start-line="143" selection-start-column="55" selection-end-line="143" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,10 +90,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="-337">
+              <caret line="181" column="8" selection-start-line="181" selection-start-column="8" selection-end-line="181" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6994#6995#0" expanded="true" />
+                <element signature="e#7058#7059#0" expanded="true" />
+                <element signature="e#7108#7109#0" expanded="true" />
+                <element signature="e#7156#7157#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,10 +108,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+            <state relative-caret-position="406">
+              <caret line="103" column="51" lean-forward="true" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4767#4768#0" expanded="true" />
+                <element signature="e#4844#4845#0" expanded="true" />
+                <element signature="e#4936#4937#0" expanded="true" />
+                <element signature="e#5016#5017#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,20 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="58" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Lagring.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="30">
+              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,18 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lagring.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/views/MainView.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="214" column="36" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
+            <state relative-caret-position="150">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -154,11 +170,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>knapper</find>
-      <find>fjern</find>
-      <find>person</find>
-      <find>kuntall</find>
-      <find>feilmelding</find>
       <find>feilhaand</find>
       <find>feilhaandteringListener</find>
       <find>lagar</find>
@@ -184,6 +195,11 @@
       <find>lagAr</find>
       <find>public</find>
       <find>HB</find>
+      <find>Spinner</find>
+      <find>printSta</find>
+      <find>thread</find>
+      <find>System.</find>
+      <find>lager</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -210,18 +226,19 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/exceptions/TelefonNummerException.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/exceptions/Feilhaandtering.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Save.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Lagring.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Opplasting.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" />
         <option value="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java" />
+        <option value="$PROJECT_DIR$/src/lagring.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" />
       </list>
     </option>
   </component>
@@ -329,16 +346,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="groupId" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="Lagring" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -478,13 +485,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202951000" />
+    <option name="totallyTimeSpent" value="228166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25608012" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25608012" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -493,7 +500,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49828297" weight="0.32561308" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.2629428" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.3119891" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896908" weight="0.39918256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -501,9 +508,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50446427" side_tool="true" weight="0.3250444" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50446427" side_tool="true" weight="0.32425067" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49931318" weight="0.32833788" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4955357" weight="0.3250444" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4955357" weight="0.32425067" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -515,7 +522,7 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25608012" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25608012" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -524,7 +531,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49828297" weight="0.32561308" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.2629428" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.3119891" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896908" weight="0.39918256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -532,9 +539,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50446427" side_tool="true" weight="0.3250444" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50446427" side_tool="true" weight="0.32425067" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49931318" weight="0.32833788" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4955357" weight="0.3250444" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4955357" weight="0.32425067" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -574,7 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class" />
     <entry file="file://$PROJECT_DIR$/VikariatSystem.iml" />
     <entry file="file://$PROJECT_DIR$/../Programutvikling/Spill FX/src/Logic/GameSave.java" />
     <entry file="file://$PROJECT_DIR$/../Programutvikling/Spill FX/src/Controller/GamePanelController.java" />
@@ -589,16 +595,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.fxml.jar!/javafx/fxml/Initializable.class" />
     <entry file="jar://$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/input/MouseEvent.class" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/ArrayList.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/11.0.2/javafx-controls-11.0.2-sources.jar!/javafx/scene/control/Button.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Test.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/TestKlasse.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/exceptions/LokaleOversiktException.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
@@ -677,13 +674,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        <state relative-caret-position="359">
+          <caret line="141" column="22" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/MainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="105" column="113" selection-start-line="105" selection-start-column="96" selection-end-line="105" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="495" column="19" selection-start-line="495" selection-start-column="19" selection-end-line="495" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21214">
+          <caret line="1214" column="17" lean-forward="true" selection-start-line="1214" selection-start-column="17" selection-end-line="1214" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Opplasting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="107" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="833" column="19" selection-start-line="833" selection-start-column="19" selection-end-line="833" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -709,107 +742,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Opplasting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="107" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/Untitled.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/Untitled2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="31" column="157" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="157" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-            <element signature="e#2428#2429#0" expanded="true" />
-            <element signature="e#2467#2468#0" expanded="true" />
-            <element signature="e#2570#2571#0" expanded="true" />
-            <element signature="e#2606#2607#0" expanded="true" />
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2690#2691#0" expanded="true" />
-            <element signature="e#2749#2750#0" expanded="true" />
-            <element signature="e#2775#2776#0" expanded="true" />
-            <element signature="e#2532#2533#0" expanded="true" />
-            <element signature="e#2570#2571#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1458#1459#0" expanded="true" />
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#1551#1552#0" expanded="true" />
-            <element signature="e#1581#1582#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/MainView.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Test.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="214" column="36" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="141" column="22" lean-forward="true" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="716" column="29" selection-start-line="716" selection-start-column="29" selection-end-line="716" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#20859#20860#0" expanded="true" />
-            <element signature="e#20866#20867#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lagring.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="195">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Save.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="58" />
+        <state relative-caret-position="30">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -818,8 +768,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="143">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3405">
+          <caret line="227" selection-start-line="227" selection-end-line="227" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#20859#20860#0" expanded="true" />
+            <element signature="e#20866#20867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="905">
+          <caret line="143" column="55" selection-start-line="143" selection-start-column="55" selection-end-line="143" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lagring/Load.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="103" column="51" lean-forward="true" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4767#4768#0" expanded="true" />
+            <element signature="e#4844#4845#0" expanded="true" />
+            <element signature="e#4936#4937#0" expanded="true" />
+            <element signature="e#5016#5017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lagring.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="181" column="8" selection-start-line="181" selection-start-column="8" selection-end-line="181" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6994#6995#0" expanded="true" />
+            <element signature="e#7058#7059#0" expanded="true" />
+            <element signature="e#7108#7109#0" expanded="true" />
+            <element signature="e#7156#7157#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

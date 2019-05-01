@@ -1,9 +1,6 @@
 package org.groupId.models.Lagring;
 
-import org.groupId.models.Arrangement;
-import org.groupId.models.Billett;
-import org.groupId.models.Lokale;
-import org.groupId.models.Person;
+import org.groupId.models.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,17 +15,17 @@ public class Load implements Opplasting {
 
     private BufferedReader br;
     private String feltGrense = ";";
+    private Feilhaandtering feilhaandtering = new Feilhaandtering();
 
 
-    ArrayList<Lokale> testLokale = new ArrayList<>();
-    ArrayList<Person> testPersoner = new ArrayList<>();
-    ArrayList<Arrangement> testArrangement = new ArrayList<>();
-    ArrayList<Billett> testBillett = new ArrayList<>();
+    ArrayList<Lokale> lokaler = new ArrayList<>();
+    ArrayList<Person> personer = new ArrayList<>();
+    ArrayList<Arrangement> arrangementer = new ArrayList<>();
+    ArrayList<Billett> billetter = new ArrayList<>();
 
     //Konstruktør
 
     public Load(){ }
-
 
 
     @Override
@@ -38,11 +35,14 @@ public class Load implements Opplasting {
         Boolean arrangementBoolean = false;
         Boolean billettBoolean = false;
 
+        lokaler.clear();
+        personer.clear();
+        arrangementer.clear();
+        billetter.clear();
+
 
         try {
             br = new BufferedReader(new FileReader(kilde));
-            System.out.println("INNE I TRY");
-
             String linje;
             while ((linje = br.readLine()) != null){
 
@@ -68,53 +68,67 @@ public class Load implements Opplasting {
                     continue;
                 }
 
+
                 String[] innlesing = linje.split(feltGrense);
 
+
                 if(lokaleBoolean){
-                    Lokale ny = new Lokale(innlesing[0],innlesing[1],Integer.valueOf(innlesing[2]));
-                    System.out.println(ny.getNavn() + "    " + ny.getType());
-                    testLokale.add(ny);
+                    if(feilhaandtering.lokalLoadSjekk(innlesing)){
+                        lokale = new Lokale(innlesing[0],innlesing[1],Integer.valueOf(innlesing[2]));
+                        lokaler.add(lokale);
+                    }else{
+                    }
+
+
 
                 }
 
                 if(personBoolean){
-                    Person ny = new Person(innlesing[0],innlesing[1],innlesing[2],innlesing[3],innlesing[4]);
-                    testPersoner.add(ny);
+                    if(feilhaandtering.personLoadSjekk(innlesing)){
+                        person = new Person(innlesing[0],innlesing[1],innlesing[2],innlesing[3],innlesing[4]);
+                        personer.add(person);
+                        System.out.println("la til Person");
+
+                    }else{
+                        System.out.println("fant feil i PErson");
+
+                    }
+
                 }
 
 
                 if(arrangementBoolean){
-                    Person p = testPersoner.get(Integer.valueOf(innlesing[0]));
-                    Lokale l = testLokale.get(Integer.valueOf(innlesing[1]));
-                    String navn = innlesing[2];
-                    String artist = innlesing[3];
-                    String program = innlesing[4];
-                    LocalDate tidspunkt = LocalDate.parse(innlesing[5]);
-                    int bPris = Integer.valueOf(innlesing[6]);
-                    int bSalg = Integer.valueOf(innlesing[7]);
+                    if(feilhaandtering.arrangmentLoadSjekk(innlesing,personer.size(),lokaler.size(),lokaler)){
+                        Person p = personer.get(Integer.valueOf(innlesing[0]));
+                        Lokale l = lokaler.get(Integer.valueOf(innlesing[1]));
+                        String navn = innlesing[2];
+                        String artist = innlesing[3];
+                        String program = innlesing[4];
+                        LocalDate tidspunkt = LocalDate.parse(innlesing[5]);
+                        int bPris = Integer.valueOf(innlesing[6]);
+                        int bSalg = Integer.valueOf(innlesing[7]);
 
-                    Arrangement ny = new Arrangement(p,l,navn,artist,program,tidspunkt,bPris,bSalg);
-                    testArrangement.add(ny);
+                        Arrangement a = new Arrangement(p,l,navn,artist,program,tidspunkt,bPris,bSalg);
+                        arrangementer.add(a);
+                    }else{
+                        System.out.println("feil i lokalet");
+                    }
+
                 }
 
                 if(billettBoolean){
+                    if(innlesing[0].matches("-1")){
+                        break;
+                    }else{
+                        Arrangement a = arrangementer.get(Integer.valueOf(innlesing[0]));
+                        String tlf = innlesing[1];
+                        int antall = Integer.valueOf(innlesing[2]);
 
-                    if(innlesing[0].matches("-1")){break;}
-
-                    Arrangement a = testArrangement.get(Integer.valueOf(innlesing[0]));
-                    String tlf = innlesing[1];
-                    int antall = Integer.valueOf(innlesing[2]);
-
-                    Billett ny = new Billett(a,tlf,antall);
-                    testBillett.add(ny);
+                        billett = new Billett(a,tlf,antall);
+                        billetter.add(billett);
+                    }
                 }
             }
-
-            System.out.println("Lokaler : " + testLokale.size());
-            System.out.println("Personer : " + testPersoner.size());
-            System.out.println("Arrangementer : " + testArrangement.size());
-            System.out.println("Billetter : " + testBillett.size());
-
         }catch (FileNotFoundException e){
             System.out.println("FileNotFoundException");
         }catch (IOException e){
@@ -129,5 +143,23 @@ public class Load implements Opplasting {
     }
 
     //Metoder
+
+    public ArrayList<Lokale> getLokaler() {
+        return lokaler;
+    }
+
+    public ArrayList<Person> getPersoner() {
+        return personer;
+    }
+
+    public ArrayList<Arrangement> getArrangementer() {
+        return arrangementer;
+    }
+
+    public ArrayList<Billett> getBilletter() {
+        return billetter;
+    }
+
+
 
 }

@@ -41,14 +41,16 @@ public class Arrangement {
         this.billettSalg = billettSalg;
         this.programTekst = program;
         this.kontaktPersonNavn = kontaktPerson.getNavn();
+        this.antallSolgte = 0;
 
         if(!(artist == "" || artist == null)){
             this.programTekst += "\n" + "Dagens artist er: " + artist;
         }
 
-        antallLedigeInt = lokale.getAntallPlasser() - antallSolgte;
+        this.antallLedigeInt = lokale.getAntallPlasser() - antallSolgte;
         this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
     }
+
 
     // METODER
 
@@ -129,11 +131,23 @@ public class Arrangement {
     public void leggTilSalg(int antall){
         this.antallSolgte += antall;
         this.antallLedigeInt = lokale.getAntallPlasser() - antallSolgte;
-        this.antallLedige = (lokale.getAntallPlasser() - antallSolgte) + " av " + lokale.getAntallPlasser();
+        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
     }
     public void fjernSalg(int antall){
         this.antallSolgte -= antall;
         this.antallLedigeInt = lokale.getAntallPlasser() - antallSolgte;
-        this.antallLedige = (lokale.getAntallPlasser() - antallSolgte) + " av " + lokale.getAntallPlasser();
+        this.antallLedige = antallLedigeInt + " av " + lokale.getAntallPlasser();
+    }
+
+    public void nullstillSalg(){
+        this.antallSolgte = 0;
+        this.antallLedigeInt = this.lokale.getAntallPlasser();
+        this.antallLedige = this.antallLedigeInt + " av " + this.lokale.getAntallPlasser();
+
+    }
+
+    public void clear(){
+        arrangementer.clear();
+        antallSolgte = 0;
     }
 }

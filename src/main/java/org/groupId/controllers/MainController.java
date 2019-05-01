@@ -1,5 +1,6 @@
 package org.groupId.controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,11 +10,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import org.groupId.models.*;
 import org.groupId.models.Feilhaandtering;
 import org.groupId.models.Lagring.Load;
 import org.groupId.models.Lagring.Save;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -41,7 +44,6 @@ public class MainController implements Initializable {
 	private Feilhaandtering feilhaandtering = new Feilhaandtering();
 	private Save save = new Save();
 	private Load load = new Load();
-
 
 	// lokale
 	private Lokale LOKALE = new Lokale();
@@ -95,7 +97,7 @@ public class MainController implements Initializable {
 	private HBox hBoxNyttLokale;
 
 	@FXML
-	private Button btnFullfoorLokalId, btnFjernLokal;
+	private Button btnFullfoorLokalId, btnFjernLokal, btnRedigerLokal;
 
 	@FXML
 	private TableView<Arrangement> tableLokale;
@@ -225,6 +227,7 @@ public class MainController implements Initializable {
 
 
 
+
 	}
 
 
@@ -334,8 +337,7 @@ public class MainController implements Initializable {
 
 	public void txtFlowOnMouseClicked(MouseEvent arg0){
 
-
-		try{
+		if(lstViewLokal.getSelectionModel().getSelectedItem() != null){
 			Lokale info = lstViewLokal.getSelectionModel().getSelectedItem();
 			info.getOversikt(txtFlowLokalOverskrift,txtFlowLokal);
 			lokalersArrangement.clear();
@@ -346,11 +348,14 @@ public class MainController implements Initializable {
 				}
 
 			}
+			btnFjernLokal.setDisable(false);
+			btnRedigerLokal.setDisable(false);
 			skjulLokalleggTil();
 			visLokaleOversikt();
+		}else {
+			btnFjernLokal.setDisable(true);
+			btnRedigerLokal.setDisable(true);
 
-		} catch (NullPointerException e){
-			feilMelding("Velg et lokalet eller vennligst lag et lokalet før du klikker videre. :)");
 		}
 	}
 
@@ -441,7 +446,7 @@ public class MainController implements Initializable {
 					,Integer.valueOf(txtArrangementBillSalg.getText())
 			);
 
-			leggTilArrangement(arrangement);
+			leggTilArrangementOgBillett(arrangement);
 			tomLagArrangement();
 
 
@@ -520,9 +525,13 @@ public class MainController implements Initializable {
 
 	}
 
-	public void leggTilArrangement(Arrangement arrangement){
+	public void leggTilArrangementOgBillett(Arrangement arrangement){
 		BILLETT.lagBillett(arrangement, arrangement.getKontaktPerson().getTlfNummer(), Integer.valueOf(arrangement.getBillettSalg()));
+		leggTilArrangement(arrangement);
 
+	}
+
+	public void leggTilArrangement(Arrangement arrangement){
 		ARRANGEMENT.leggTilArrangement(arrangement);
 		arrangementObservablelist.add(arrangement);
 		billettArrangementObservableList.add(arrangement);
@@ -730,9 +739,6 @@ public class MainController implements Initializable {
 		}
 	}
 
-	public void btnBillettRediger(ActionEvent actionEvent) {
-	}
-
 	public void btnBillettKjoop(ActionEvent actionEvent) {
 		BILLETT.lagBillett(cbBillettArrangement.getSelectionModel().getSelectedItem(), txtBillettTlf.getText(), spinnerBillettAntall.getValue());
 		oppdaterBillett();
@@ -755,8 +761,7 @@ public class MainController implements Initializable {
 	}
 
 	private void spinnerStruktur(int maks){
-		System.out.println("spinneren blir satt til maks " + maks);
-		if(maks != 0){
+		if(maks != 0 ){
 			SpinnerValueFactory<Integer> valueFactory =
 					new SpinnerValueFactory.IntegerSpinnerValueFactory(1, maks, 1);
 
@@ -766,6 +771,7 @@ public class MainController implements Initializable {
 			visBillettUtsolgt();
 
 		}else{
+			lblBillettMax.setText("UTSOLGT");
 			skjulBillettUtsolgt();
 
 		}
@@ -776,7 +782,6 @@ public class MainController implements Initializable {
 		btnBillettKjop.setDisable(true);
 		txtBillettTlf.setDisable(true);
 		spinnerBillettAntall.setDisable(true);
-		lblBillettMax.setText("UTSOLGT");
 	}
 
 	private void visBillettUtsolgt(){
@@ -802,8 +807,6 @@ public class MainController implements Initializable {
 
 	}
 
-
-
 	//ANNET
 	private void refreshTabeller(){
 		tableBillett.refresh();
@@ -813,6 +816,41 @@ public class MainController implements Initializable {
 		tablePersonArrangement.refresh();
 
 	}
+	public void clearRegSystem(){
+		//Lokale
+		LOKALE.clear();
+		lokalerObservableList.clear();
+		lokalersArrangement.clear();
+		skjulLokaleOversikt();
+		skjulLokalleggTil();
+		btnFjernLokal.setDisable(true);
+		btnRedigerLokal.setDisable(true);
+
+		//Arrangement
+		ARRANGEMENT.clear();
+		arrangementLokaleObservableList.clear();
+		arrangementObservablelist.clear();
+		arrangementPersonObservableList.clear();
+		tomLagArrangement();
+
+		//Person
+		PERSON.clear();
+		personObservableList.clear();
+		personArrangementObservableList.clear();
+		btnPersonSlett.setDisable(true);
+		btnPersonRediger.setDisable(true);
+		tomPersonOversikt();
+		tomPersonRegistrering();
+
+		//Billett
+		BILLETT.clear();
+		billettArrangementObservableList.clear();
+		billettRegisterArrangement.clear();
+		skjulBillettUtsolgt();
+		HBoxBillettKjop.setVisible(false);
+
+	}
+
 
 	//FEILHÅNDTERING
 
@@ -838,7 +876,7 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.IngenObjektValgt(cbLokal);
 		feilmelding += feilhaandtering.IngenDatoValgt(DatePickerArrangement);
 		feilmelding += feilhaandtering.KunBokstaver(txtArrangementNavn);
-		feilmelding += feilhaandtering.KunBokstaverTextArea(txtArrangementProgram);
+		feilmelding += feilhaandtering.KunTekstTextArea(txtArrangementProgram);
 		feilmelding += feilhaandtering.KunBokstaver(txtArrangementArtist);
 		feilmelding += feilhaandtering.IngenObjektValgt(cbKontaktperson);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
@@ -862,7 +900,7 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.KunTall(txtPersonTlf); //TELEFON REGEX
 		feilmelding += feilhaandtering.KunBokstaver(txtPersonEpost); //EPOST REGEX
 		feilmelding += feilhaandtering.KunBokstaver(txtPersonNettside);
-		feilmelding += feilhaandtering.KunBokstaverTextArea(txtPersonOpplysninger);
+		feilmelding += feilhaandtering.KunTekstTextArea(txtPersonOpplysninger);
 
 		if(feilmelding.isEmpty()){
 			return true;
@@ -910,9 +948,9 @@ public class MainController implements Initializable {
 		Arrangement arr3 = new Arrangement(ali, foredrag,"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
 
 
-		leggTilArrangement(arr1);
-		leggTilArrangement(arr2);
-		leggTilArrangement(arr3);
+		leggTilArrangementOgBillett(arr1);
+		leggTilArrangementOgBillett(arr2);
+		leggTilArrangementOgBillett(arr3);
 
 
 
@@ -924,30 +962,125 @@ public class MainController implements Initializable {
 
 
 	//LAGRING
-
 	public void btnLagring(ActionEvent actionEvent) throws IOException {
-		save.csvLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+		try {
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.setTitle("Lagre");
+			fileChooser.getExtensionFilters().addAll(
+					new FileChooser.ExtensionFilter("csv", "*.csv"),
+					new FileChooser.ExtensionFilter("jobj", "*.jobj")
+			);
+			File fil = fileChooser.showSaveDialog(null);
+
+			if(fil != null){
+				Thread lagreThread = new Thread(() -> {
+
+
+
+					String filnavn = fil.getPath(); //Valgt filechooser path
+
+					if (filnavn.endsWith(".csv")) {
+						try {
+							save.csvLagring(filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+						} catch (IOException e) {
+							//e.printStackTrace();
+						}
+
+					} else if (filnavn.endsWith(".jobj")) {
+						//	save.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+						System.out.println("ikke implementert");
+
+					} else {
+						System.out.println("cancel save");
+					}
+				});
+
+				//Starter thread
+				lagreThread.start();
+
+				try {
+					Thread.sleep(10_000);
+				} catch (InterruptedException e) {
+					//e.printStackTrace();
+				}
+			}
+		}catch (NullPointerException e){
+
+		}
 	}
 
 	public void btnOpplasting(ActionEvent actionEvent) throws IOException {
-		load.csvOpplasting("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+		try {
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.setTitle("Laste opp");
+
+			File fil = fileChooser.showOpenDialog(null);
+
+			if(fil != null){
+
+
+				Thread lagreThread;
+				lagreThread = new Thread(() -> {
+					Platform.runLater(()->{
+						String filnavn = fil.getPath(); //Valgt filechooser path
+
+						if (filnavn.endsWith(".csv")) {
+							try {
+								loadCSV(filnavn);
+							} catch (IOException e) {
+								//e.printStackTrace();
+							}
+
+						} else if (filnavn.endsWith(".jobj")) {
+							//	save.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+							System.out.println("ikke implementert");
+
+						}
+					});
+				});
+
+				//Starter thread
+				lagreThread.start();
+
+				try {
+					Thread.sleep(10_000);
+				} catch (InterruptedException e) {
+					//e.printStackTrace();
+				}
+			}else {
+				System.out.println("cancel save");
+			}
+		}catch (NullPointerException e){
+
+		}
 	}
 
-	public void clearLokale(){
+
+
+	public void loadCSV(String kilde) throws IOException{
+		//Tømmer hele systemet for verdier og GUI
+		clearRegSystem();
+		load.csvOpplasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+
+		for (Lokale l: load.getLokaler()) {
+			leggTilLokal(l);
+		}
+		for (Person p: load.getPersoner()) {
+			leggTilPerson(p);
+		}
+		for (Arrangement a: load.getArrangementer()) {
+			leggTilArrangement(a);
+			a.nullstillSalg();
+		}
+		for (Billett b: load.getBilletter()) {
+			BILLETT.lagBillett(b.getArrangement(),b.getTelefonNummer(),b.getAntall());
+		}
 
 	}
 
-	public void clearArrangement(){
 
+	public void btnClearRegSystem(ActionEvent actionEvent) {
+		clearRegSystem();
+		refreshTabeller();
 	}
-
-	public void clearPerson(){
-
-	}
-
-	public void clearBillett(){
-
-	}
-
-
 }

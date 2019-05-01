@@ -1,7 +1,6 @@
 org/groupId/models/Lagring/Opplasting.class
 org/groupId/models/Feilhaandtering.class
 org/groupId/models/Lagring/Lagring.class
-org/groupId/controllers/TestController.class
 org/groupId/models/Lokale.class
 org/groupId/models/Lagring/Load.class
 org/groupId/RegSystem.class

@@ -96,13 +96,14 @@
                            <TableColumn fx:id="TCAntallLokale" prefWidth="102.0" text="Ledige Plasser" />
                        </columns>
                      </TableView>
-                     <Button layoutX="94.0" layoutY="511.0" mnemonicParsing="false" onAction="#btnRedigerLokal" text="Rediger">
+                     <Button fx:id="btnRedigerLokal" layoutX="94.0" layoutY="511.0" mnemonicParsing="false" onAction="#btnRedigerLokal" text="Rediger">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Button>
                      <Button layoutX="47.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnLagring" text="LAGRE" />
                      <Button layoutX="130.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnOpplasting" text="LAST OPP" />
+                     <Button layoutX="223.0" layoutY="591.0" mnemonicParsing="false" onAction="#btnClearRegSystem" text="Clear" />
                   </children></AnchorPane>
          </content>
        </Tab>
@@ -282,34 +283,22 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@Stylesheet.css">
                   <children>
-                     <ComboBox fx:id="cbBillettArrangement" layoutX="363.0" layoutY="26.0" onAction="#cbBillettArrangement" prefHeight="69.0" prefWidth="273.0" promptText="Velg et Arrangement" />
-                     <TableView fx:id="tableBillett" layoutX="24.0" layoutY="90.0" prefHeight="498.0" prefWidth="274.0">
+                     <ComboBox fx:id="cbBillettArrangement" layoutX="319.0" layoutY="23.0" onAction="#cbBillettArrangement" prefHeight="69.0" prefWidth="273.0" promptText="Velg et Arrangement" />
+                     <TableView fx:id="tableBillett" layoutX="24.0" layoutY="229.0" prefHeight="359.0" prefWidth="436.0">
                        <columns>
-                         <TableColumn fx:id="TCBillettArrangement" prefWidth="93.5" text="Arrangement" />
-                         <TableColumn fx:id="TCBillettSete" prefWidth="56.5" text="Billetter" />
-                           <TableColumn fx:id="TCBillettTlf" prefWidth="120.0" text="Telefonnummer" />
+                         <TableColumn fx:id="TCBillettArrangement" prefWidth="212.0" text="Arrangement" />
+                         <TableColumn fx:id="TCBillettSete" prefWidth="90.0" text="Billetter" />
+                           <TableColumn fx:id="TCBillettTlf" prefWidth="128.0" text="Telefonnummer" />
                        </columns>
                      </TableView>
-                     <Button layoutX="50.0" layoutY="598.0" mnemonicParsing="false" onAction="#btnBillettFjern" text="Fjern">
+                     <Button layoutX="373.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnBillettFjern" text="Fjern">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Button>
-                     <Button layoutX="214.0" layoutY="598.0" mnemonicParsing="false" onAction="#btnBillettRediger" text="Rediger">
-                        <font>
-                           <Font size="16.0" />
-                        </font></Button>
-                     <Text layoutX="372.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato">
-                        <font>
-                           <Font size="16.0" />
-                        </font></Text>
-                     <TextField fx:id="txtBillettDato" layoutX="435.0" layoutY="110.0" />
-                     <Text layoutX="373.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokale">
-                        <font>
-                           <Font size="16.0" />
-                        </font></Text>
-                     <TextField fx:id="txtBillettLokale" layoutX="436.0" layoutY="151.0" />
-                     <HBox fx:id="HBoxBillettKjop" layoutX="352.0" layoutY="278.0" prefHeight="230.0" prefWidth="296.0" visible="false">
+                     <TextField fx:id="txtBillettDato" layoutX="391.0" layoutY="107.0" />
+                     <TextField fx:id="txtBillettLokale" layoutX="392.0" layoutY="148.0" />
+                     <HBox fx:id="HBoxBillettKjop" layoutX="569.0" layoutY="336.0" prefHeight="230.0" prefWidth="296.0">
                         <children>
                            <VBox prefHeight="200.0" prefWidth="100.0">
                               <children>
@@ -338,9 +327,10 @@
                            </VBox>
                         </children>
                      </HBox>
-                     <Label fx:id="lblBillettDato" layoutX="320.0" layoutY="115.0" text="Dato" />
-                     <Label fx:id="lblBillettLokale" layoutX="320.0" layoutY="154.0" text="Lokale" />
+                     <Label fx:id="lblBillettDato" layoutX="338.0" layoutY="112.0" text="Dato" />
+                     <Label fx:id="lblBillettLokale" layoutX="333.0" layoutY="153.0" text="Lokale" />
                      <Label fx:id="lblBillettMax" layoutX="761.0" layoutY="319.0" />
+                     <Separator layoutX="8.0" layoutY="198.0" prefHeight="13.0" prefWidth="978.0" />
                   </children></AnchorPane>
             </content>
          </Tab>

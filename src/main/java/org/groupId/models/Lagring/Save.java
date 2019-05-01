@@ -33,8 +33,6 @@ public class Save implements Lagring {
 
             //Lokale
             skriver.append("LOKALE");
-            //skriver.append("NAVN;TYPE;ANTALL;");
-
             for (Lokale l : lokale.getLokaler()) {
                 skriverLokale(skriver,l);
             }
@@ -42,18 +40,13 @@ public class Save implements Lagring {
 
             //Personer
             skriver.append("\nPERSONER");
-            //skriver.append("NAVN;TLF;EPOST;NETTSIDE;OPPLYSNINGER;");
-
             for (Person p : person.getPersoner()) {
                 skriverPerson(skriver,p);
             }
-            //Person kontaktPerson, Lokale lokale, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg
 
 
             //Arrangement
             skriver.append("\nARRANGEMENT");
-            //skriver.append("PERSON;LOKALE;NAVN;ARTIST;PROGRAM;TIDSPUNKT;BILLETTPRIS;BILLETTSALG;");
-
             for (Arrangement a : arrangement.getArrangementer()) {
                 skriverArrangement(skriver,a, person, lokale);
             }
@@ -61,8 +54,6 @@ public class Save implements Lagring {
 
             //Billett
             skriver.append("\nBILLETT");
-            //skriver.append("ARRANGEMENT;TELEFONNUMMER;ANTALL;");
-
             for (Billett b : billett.getBilletter()) {
                 skriverBillett(skriver,b, arrangement);
             }

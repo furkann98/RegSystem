@@ -30,14 +30,11 @@ public class Billett {
         this.sete = antall + " stk";
 
         arrangement.leggTilSalg(antall);
-
-        System.out.println("lager BILLETT til: " + arrangement.getNavn() + "   --  " + sete);
     }
 
     // METODER
     public void lagBillett(Arrangement arrangement, String telefonNummer, int antall){
         billetter.add(new Billett(arrangement,telefonNummer,antall));
-        //ARRANGEMENT.leggTilSalg(antall);
     }
 
     public void fjernBillett(Billett b){
@@ -71,5 +68,9 @@ public class Billett {
 
     public Arrangement getArrangement() {
         return arrangement;
+    }
+
+    public void clear(){
+        billetter.clear();
     }
 }

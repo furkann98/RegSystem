@@ -244,12 +244,16 @@ public class Feilhaandtering {
         boolean godkjent = true;
 
         if(liste.length != 3){
+            System.out.println("feil i lengde");
             godkjent = false;
-        }else if(Integer.valueOf(liste[0]) < 0 || Integer.valueOf(liste[0]) >= arrangementer.size()){
+        }else if(arrangementer.get(Integer.valueOf(liste[0])) != null){
+            System.out.println("feil i arr");
             godkjent =  false;
         }else if(!tlfRegex.matcher(liste[1]).matches()){
+            System.out.println("feil i tlf");
             godkjent = false;
-        }else if(!tallRegex.matcher(liste[2]).matches() || Integer.valueOf(liste[2]) > arrangementer.get(Integer.valueOf(0)).getAntallLedigeInt()){
+        }else if(!(tallRegex.matcher(liste[2]).matches()) || Integer.valueOf(liste[2]) > arrangementer.get(Integer.valueOf(0)).getAntallLedigeInt()){
+            System.out.println("feil siste");
             godkjent = false;
         }
 

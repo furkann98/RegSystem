@@ -157,9 +157,11 @@ public class InnlastingCSV implements Innlasting {
                     "\n Person: " + feilPersonAnt + " feil" +
                     "\n Arrangment: " + feilArrangementAnt + " feil" +
                     "\n Billett: " + feilBillettAnt + " feil";
-
+            System.out.println(melding);
             feilhaandtering.feilMelding(melding);
+
         }
+
 
 
     }

@@ -16,6 +16,7 @@ import org.groupId.models.*;
 import org.groupId.models.Feilhaandtering;
 import org.groupId.models.filhaandtering.InnlastingCSV;
 import org.groupId.models.filhaandtering.LagringCSV;
+import org.groupId.models.thread.threadClass;
 
 import java.io.File;
 import java.io.IOException;
@@ -531,6 +532,7 @@ public class MainController implements Initializable {
 	}
 
 	public void leggTilArrangementOgBillett(Arrangement arrangement){
+		System.out.println(arrangement.getKontaktPerson().getTlfNummer());
 		BILLETT.lagBillett(arrangement, arrangement.getKontaktPerson().getTlfNummer(), Integer.valueOf(arrangement.getBillettSalg()));
 		leggTilArrangement(arrangement);
 
@@ -882,7 +884,7 @@ public class MainController implements Initializable {
 		feilmelding += feilhaandtering.IngenDatoValgt(DatePickerArrangement);
 		feilmelding += feilhaandtering.KunBokstaver(txtArrangementNavn);
 		feilmelding += feilhaandtering.KunTekstTextArea(txtArrangementProgram);
-		feilmelding += feilhaandtering.KunBokstaver(txtArrangementArtist);
+		feilmelding += feilhaandtering.KunTekst(txtArrangementArtist);
 		feilmelding += feilhaandtering.IngenObjektValgt(cbKontaktperson);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillPris);
 		feilmelding += feilhaandtering.KunTall(txtArrangementBillSalg);
@@ -948,9 +950,9 @@ public class MainController implements Initializable {
 		leggTilPerson(abdi);
 		leggTilPerson(ali);
 
-		Arrangement arr1 = new Arrangement(ole, konsert,"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT!", DatePickerArrangement.getValue(),250,100);
-		Arrangement arr2 = new Arrangement(abdi, konsert,"Konsert med Drake","Drake","Konsert av Drake, GAALT!", DatePickerArrangement.getValue(),400,50);
-		Arrangement arr3 = new Arrangement(ali, foredrag,"Minnestund","","Minnestund for brødre", DatePickerArrangement.getValue(),0,20);
+		Arrangement arr1 = new Arrangement(ole, konsert,"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT", DatePickerArrangement.getValue(),250,100);
+		Arrangement arr2 = new Arrangement(abdi, konsert,"Konsert med Drake","Drake","Konsert av Drake, GAALT", DatePickerArrangement.getValue(),400,50);
+		Arrangement arr3 = new Arrangement(ali, foredrag,"Minnestund","","Minnestund for broodre", DatePickerArrangement.getValue(),0,20);
 
 
 		leggTilArrangementOgBillett(arr1);
@@ -1001,6 +1003,38 @@ public class MainController implements Initializable {
 	}
 
 	public void btnInnlasting(ActionEvent actionEvent) throws IOException {
+
+		FileChooser fileChooser = new FileChooser();
+		//fileChooser.setTitle("Laste opp");
+
+		File fil = fileChooser.showOpenDialog(null);
+		String filnavn = fil.getPath(); //Valgt filechooser path
+
+		Task task = new threadClass(innlastingCSV,this::threadDone, fil, filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+		//service.execute(task);
+
+		try {
+
+			if (fil != null) {
+				//Thread lagreThread;
+
+
+				//Starter thread
+				Thread thread = new Thread(task);
+				thread.start();
+
+
+
+			} else {
+				System.out.println("cancel save");
+			}
+		} catch (NullPointerException e) {
+
+
+		}
+
+
+
 		/*
 		try {
 			FileChooser fileChooser = new FileChooser();
@@ -1050,7 +1084,7 @@ public class MainController implements Initializable {
 
 
 
-	public void loadCSV(String kilde) throws IOException{
+/*	public void loadCSV(String kilde) throws IOException{
 		//Tømmer hele systemet for verdier og GUI
 		clearRegSystem();
 		innlastingCSV.InnLasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
@@ -1069,11 +1103,36 @@ public class MainController implements Initializable {
 			BILLETT.lagBillett(b.getArrangement(),b.getTelefonNummer(),b.getAntall());
 		}
 
-	}
+	}*/
 
 
 	public void btnClearRegSystem(ActionEvent actionEvent) {
 		clearRegSystem();
 		refreshTabeller();
+	}
+
+
+	private void threadDone() {
+		clearRegSystem();
+		//	load.csvOpplasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+
+		for (Lokale l : innlastingCSV.getLokaler()) {
+			leggTilLokal(l);
+		}
+		for (Person p : innlastingCSV.getPersoner()) {
+			leggTilPerson(p);
+		}
+		for (Arrangement a : innlastingCSV.getArrangementer()) {
+			leggTilArrangement(a);
+			a.nullstillSalg();
+		}
+		for (Billett b : innlastingCSV.getBilletter()) {
+			BILLETT.lagBillett(b.getArrangement(), b.getTelefonNummer(), b.getAntall());
+		}
+
+
+		//button.setDisable(false);
+		//label.setText("Thread has completed.");
+
 	}
 }

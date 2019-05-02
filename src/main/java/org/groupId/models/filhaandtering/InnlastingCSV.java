@@ -1,4 +1,4 @@
-package org.groupId.models.Lagring;
+package org.groupId.models.filhaandtering;
 
 import org.groupId.models.*;
 
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Load implements Opplasting {
+public class InnlastingCSV implements Innlasting {
 
     //Datafelt
 
@@ -25,11 +25,11 @@ public class Load implements Opplasting {
 
     //Konstruktør
 
-    public Load(){ }
+    public InnlastingCSV(){ }
 
 
     @Override
-    public void csvOpplasting(String kilde, Lokale lokale, Person person, Arrangement arrangement, Billett billett) throws IOException, FileNotFoundException {
+    public void InnLasting(String kilde, Lokale lokale, Person person, Arrangement arrangement, Billett billett) throws IOException, FileNotFoundException {
         Boolean lokaleBoolean = false;
         Boolean personBoolean = false;
         Boolean arrangementBoolean = false;
@@ -39,6 +39,13 @@ public class Load implements Opplasting {
         personer.clear();
         arrangementer.clear();
         billetter.clear();
+
+        int feilLokaleAnt = 0;
+        int feilPersonAnt = 0;
+        int feilArrangementAnt = 0;
+        int feilBillettAnt = 0;
+
+
 
 
         try {
@@ -77,6 +84,8 @@ public class Load implements Opplasting {
                         lokale = new Lokale(innlesing[0],innlesing[1],Integer.valueOf(innlesing[2]));
                         lokaler.add(lokale);
                     }else{
+                        System.out.println("feil i Lokale");
+                        feilLokaleAnt++;
                     }
 
 
@@ -87,10 +96,9 @@ public class Load implements Opplasting {
                     if(feilhaandtering.personLoadSjekk(innlesing)){
                         person = new Person(innlesing[0],innlesing[1],innlesing[2],innlesing[3],innlesing[4]);
                         personer.add(person);
-                        System.out.println("la til Person");
-
                     }else{
-                        System.out.println("fant feil i PErson");
+                        System.out.println("fant feil i Person");
+                        feilPersonAnt++;
 
                     }
 
@@ -111,21 +119,27 @@ public class Load implements Opplasting {
                         Arrangement a = new Arrangement(p,l,navn,artist,program,tidspunkt,bPris,bSalg);
                         arrangementer.add(a);
                     }else{
-                        System.out.println("feil i lokalet");
+                        System.out.println("feil i Arrangement");
+                        feilArrangementAnt++;
                     }
 
                 }
 
                 if(billettBoolean){
-                    if(innlesing[0].matches("-1")){
-                        break;
-                    }else{
-                        Arrangement a = arrangementer.get(Integer.valueOf(innlesing[0]));
-                        String tlf = innlesing[1];
-                        int antall = Integer.valueOf(innlesing[2]);
+                    if(feilhaandtering.billettLoadSjekk(innlesing,arrangementer)){
+                        if(innlesing[0].matches("-1")){
+                            break;
+                        }else{
+                            Arrangement a = arrangementer.get(Integer.valueOf(innlesing[0]));
+                            String tlf = innlesing[1];
+                            int antall = Integer.valueOf(innlesing[2]);
 
-                        billett = new Billett(a,tlf,antall);
-                        billetter.add(billett);
+                            billett = new Billett(a,tlf,antall);
+                            billetter.add(billett);
+                        }
+                    }else {
+                        System.out.println("feil i Billett");
+                        feilBillettAnt++;
                     }
                 }
             }
@@ -135,12 +149,21 @@ public class Load implements Opplasting {
             System.out.println("IOException");
         }
 
+        if(feilArrangementAnt+feilBillettAnt+feilLokaleAnt+feilPersonAnt != 0){
+            String melding = "Det ble fjernet noen objekter under innlastning, med feil format. " +
+                    "Alle objekter går gjennom en feilhåndteringsmetode som fanger og fjerner disse fra registreringsystemet." +
+                    " \n\n Antallet er listet opp under: " +
+                    "\n Lokaler: " + feilLokaleAnt + " feil" +
+                    "\n Person: " + feilPersonAnt + " feil" +
+                    "\n Arrangment: " + feilArrangementAnt + " feil" +
+                    "\n Billett: " + feilBillettAnt + " feil";
+
+            feilhaandtering.feilMelding(melding);
+        }
+
+
     }
 
-    @Override
-    public void jobjOpplasting(String kilde) throws IOException {
-
-    }
 
     //Metoder
 

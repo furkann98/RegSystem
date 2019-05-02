@@ -3,6 +3,7 @@ package org.groupId.controllers;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,8 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import org.groupId.models.*;
 import org.groupId.models.Feilhaandtering;
-import org.groupId.models.Lagring.Load;
-import org.groupId.models.Lagring.Save;
+import org.groupId.models.filhaandtering.InnlastingCSV;
+import org.groupId.models.filhaandtering.LagringCSV;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +31,10 @@ public class MainController implements Initializable {
 	/*
 	//MANGLENDE
 
-	- THREAD På loading og saving
+	- THREAD På loading og saving - VI MÅ BRUKE EGEN KLASSE MED TASK
 	- jobj lagring og loading
 	- CSS av fxml
-	- Strutktur på fxml
-	- ekstra Tab for save/load
+	- ekstra Tab for lagringCSV/innlastingCSV
 	- fikse feilhåndtering - tlf - epost osv.
 
 	 */
@@ -42,8 +42,8 @@ public class MainController implements Initializable {
 
 	//DATAFELT
 	private Feilhaandtering feilhaandtering = new Feilhaandtering();
-	private Save save = new Save();
-	private Load load = new Load();
+	private LagringCSV lagringCSV = new LagringCSV();
+	private InnlastingCSV innlastingCSV = new InnlastingCSV();
 
 	// lokale
 	private Lokale LOKALE = new Lokale();
@@ -82,6 +82,10 @@ public class MainController implements Initializable {
 	private Tab tabPaneLokale, tabPaneArrangement, tabPaneBillettsalg;
 
 */
+
+	@FXML
+	private ProgressBar progressBar;
+
 	//Lokale
 
 	@FXML
@@ -224,6 +228,7 @@ public class MainController implements Initializable {
 		//Testverdier
 		DatePickerArrangement.setValue(LocalDate.now());
 		TESTDATA();
+
 
 
 
@@ -640,7 +645,7 @@ public class MainController implements Initializable {
 	public void tablePersonArrangementOnMouseClicked(MouseEvent mouseEvent) {
 		personArrangementObservableList.clear();
 		if(tablePerson.getSelectionModel().getSelectedItem() != null){
-			txtPersonOversikt.setText(tablePerson.getSelectionModel().getSelectedItem().getOpplysninger());
+			txtPersonOversikt.setText("OPPLYSNINGER: \n" + tablePerson.getSelectionModel().getSelectedItem().getOpplysninger());
 
 			ArrayList<Arrangement> test = tablePerson.getSelectionModel().getSelectedItem().getArrangementer();
 			personArrangementObservableList.addAll(test);
@@ -897,9 +902,9 @@ public class MainController implements Initializable {
 		String feilmelding = "";
 
 		feilmelding += feilhaandtering.KunBokstaver(txtPersonNavn);
-		feilmelding += feilhaandtering.KunTall(txtPersonTlf); //TELEFON REGEX
-		feilmelding += feilhaandtering.KunBokstaver(txtPersonEpost); //EPOST REGEX
-		feilmelding += feilhaandtering.KunBokstaver(txtPersonNettside);
+		feilmelding += feilhaandtering.kunTlf(txtPersonTlf); //TELEFON REGEX
+		feilmelding += feilhaandtering.kunEpost(txtPersonEpost); //EPOST REGEX
+		feilmelding += feilhaandtering.KunTekst(txtPersonNettside);
 		feilmelding += feilhaandtering.KunTekstTextArea(txtPersonOpplysninger);
 
 		if(feilmelding.isEmpty()){
@@ -973,35 +978,21 @@ public class MainController implements Initializable {
 			File fil = fileChooser.showSaveDialog(null);
 
 			if(fil != null){
-				Thread lagreThread = new Thread(() -> {
+				String filnavn = fil.getPath(); //Valgt filechooser path
 
-
-
-					String filnavn = fil.getPath(); //Valgt filechooser path
-
-					if (filnavn.endsWith(".csv")) {
-						try {
-							save.csvLagring(filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
-						} catch (IOException e) {
-							//e.printStackTrace();
-						}
-
-					} else if (filnavn.endsWith(".jobj")) {
-						//	save.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
-						System.out.println("ikke implementert");
-
-					} else {
-						System.out.println("cancel save");
+				if (filnavn.endsWith(".csv")) {
+					try {
+						lagringCSV.Lagring(filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+					} catch (IOException e) {
+						//e.printStackTrace();
 					}
-				});
 
-				//Starter thread
-				lagreThread.start();
+				} else if (filnavn.endsWith(".jobj")) {
+					//	lagringCSV.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+					System.out.println("ikke implementert");
 
-				try {
-					Thread.sleep(10_000);
-				} catch (InterruptedException e) {
-					//e.printStackTrace();
+				} else {
+					System.out.println("cancel lagringCSV");
 				}
 			}
 		}catch (NullPointerException e){
@@ -1009,15 +1000,15 @@ public class MainController implements Initializable {
 		}
 	}
 
-	public void btnOpplasting(ActionEvent actionEvent) throws IOException {
+	public void btnInnlasting(ActionEvent actionEvent) throws IOException {
+		/*
 		try {
 			FileChooser fileChooser = new FileChooser();
-			fileChooser.setTitle("Laste opp");
+			fileChooser.setTitle("Laste inn");
 
 			File fil = fileChooser.showOpenDialog(null);
 
 			if(fil != null){
-
 
 				Thread lagreThread;
 				lagreThread = new Thread(() -> {
@@ -1032,7 +1023,7 @@ public class MainController implements Initializable {
 							}
 
 						} else if (filnavn.endsWith(".jobj")) {
-							//	save.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
+							//	lagringCSV.jobjLagring("src/lagring.csv", LOKALE, PERSON, ARRANGEMENT, BILLETT);
 							System.out.println("ikke implementert");
 
 						}
@@ -1048,11 +1039,13 @@ public class MainController implements Initializable {
 					//e.printStackTrace();
 				}
 			}else {
-				System.out.println("cancel save");
+				System.out.println("cancel lagringCSV");
 			}
 		}catch (NullPointerException e){
 
 		}
+
+		 */
 	}
 
 
@@ -1060,19 +1053,19 @@ public class MainController implements Initializable {
 	public void loadCSV(String kilde) throws IOException{
 		//Tømmer hele systemet for verdier og GUI
 		clearRegSystem();
-		load.csvOpplasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
+		innlastingCSV.InnLasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
 
-		for (Lokale l: load.getLokaler()) {
+		for (Lokale l: innlastingCSV.getLokaler()) {
 			leggTilLokal(l);
 		}
-		for (Person p: load.getPersoner()) {
+		for (Person p: innlastingCSV.getPersoner()) {
 			leggTilPerson(p);
 		}
-		for (Arrangement a: load.getArrangementer()) {
+		for (Arrangement a: innlastingCSV.getArrangementer()) {
 			leggTilArrangement(a);
 			a.nullstillSalg();
 		}
-		for (Billett b: load.getBilletter()) {
+		for (Billett b: innlastingCSV.getBilletter()) {
 			BILLETT.lagBillett(b.getArrangement(),b.getTelefonNummer(),b.getAntall());
 		}
 

@@ -1,33 +1,26 @@
-package org.groupId.models.Lagring;
+package org.groupId.models.filhaandtering;
 
 import org.groupId.models.Arrangement;
 import org.groupId.models.Billett;
 import org.groupId.models.Lokale;
 import org.groupId.models.Person;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
-public class Save implements Lagring {
+public class LagringCSV implements Lagring {
 
     //DATAFELT
-    private PrintWriter skriver; // = new PrintWriter(new FileWriter(),);
-    private File fil;
-
-    private Lokale lokale = new Lokale();
-    private ArrayList<Lokale> lokaleListe;
-
+    private PrintWriter skriver;
 
     //KONSTRUKTØR
-    public Save(){
+    public LagringCSV(){
 
     }
 
     @Override
-    public void csvLagring(String kilde, Lokale lokale, Person person, Arrangement arrangement, Billett billett) throws IOException {
+    public void Lagring(String kilde, Lokale lokale, Person person, Arrangement arrangement, Billett billett) throws IOException {
         try {
             skriver = new PrintWriter(new FileWriter(kilde));
 
@@ -71,10 +64,6 @@ public class Save implements Lagring {
 
     }
 
-    @Override
-    public void jobjLagring(String kilde) throws IOException {
-
-    }
 
     //METODER
 

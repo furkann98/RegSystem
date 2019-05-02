@@ -72,7 +72,7 @@ public class Person {
         if(arrangementer.isEmpty()){
             antallArrangementer =  "Ingen arrangementer";
         }else {
-            antallArrangementer =  arrangementer.size() + " arrangementer";
+            antallArrangementer =  arrangementer.size() + "stk";
 
         }
     }

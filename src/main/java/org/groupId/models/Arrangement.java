@@ -1,9 +1,10 @@
 package org.groupId.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Arrangement {
+public class Arrangement implements Serializable {
 
     //DATAFELT
     private ArrayList<Arrangement> arrangementer = new ArrayList<>();
@@ -27,9 +28,11 @@ public class Arrangement {
 
     // KONSTRUKTØR
     public Arrangement(){
+        super();
     }
 
     public Arrangement(Person kontaktPerson, Lokale lokale, String navn, String artist, String program, LocalDate tidspunkt, int billettPris, int billettSalg) {
+        super();
         this.kontaktPerson = kontaktPerson;
         this.lokale = lokale;
         this.type = lokale.getType();

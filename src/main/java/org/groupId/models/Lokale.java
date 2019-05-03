@@ -4,10 +4,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Lokale {
+public class Lokale implements Serializable {
 
 
     // DATAFELT
@@ -19,10 +20,11 @@ public class Lokale {
 
     // KONSTRUKTØRER
     public Lokale(){
-
+        super();
     }
 
     public Lokale(String navn, String type, int antallPlasser){
+        super();
         this.navn = navn;
         this.type = type;
         this.antallPlasser = antallPlasser;
@@ -37,9 +39,8 @@ public class Lokale {
         return navn;
     }
 
-    public void getOversikt(TextArea tittel, TextArea info){
-        tittel.setText(this.navn);
-        info.setText("Type: " + this.type + "\n" + "Antall Plasser: " + this.antallPlasser);
+    public void getOversikt(TextArea info){
+        info.setText(this.navn + "\nType: " + this.type + "\n" + "Antall Plasser: " + this.antallPlasser + "\n\nArrangementer:");
     }
 
     public String getNavn(){ return navn; }

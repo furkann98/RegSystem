@@ -1,7 +1,8 @@
 package org.groupId.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Billett {
+public class Billett implements Serializable {
 
 
 
@@ -20,9 +21,11 @@ public class Billett {
 
     // KONSTRUKTØR
     public Billett() {
+        super();
     }
 
     public Billett(Arrangement arrangement,String telefonNummer, int antall) {
+        super();
         this.arrangement = arrangement;
         this.telefonNummer = telefonNummer;
         this.arrangementNavn = arrangement.getNavn();

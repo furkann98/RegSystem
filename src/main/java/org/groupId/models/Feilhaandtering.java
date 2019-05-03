@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import javafx.scene.control.*;
-import org.groupId.controllers.MainController;
-import org.groupId.models.Arrangement;
-import org.groupId.models.Lokale;
 import org.groupId.models.exceptions.*;
 
 public class Feilhaandtering {
@@ -148,10 +145,10 @@ public class Feilhaandtering {
         }
     }
 
-    public String AntallBillett(TextField input, TextField inputMax){
+    public String AntallBillett(TextField input, Lokale lokale){
         try {
-            if((Integer.valueOf(input.getText()) < 0) || (Integer.valueOf(input.getText()) > Integer.valueOf(inputMax.getText()))){
-                throw new AntallBillettException("Antall forhåndssolgte billetter må være i intervallet mellom: [0 , " + inputMax.getText() + "]");
+            if((Integer.valueOf(input.getText()) < 0) || (Integer.valueOf(input.getText()) > lokale.getAntallPlasser())){
+                throw new AntallBillettException("Antall forhåndssolgte billetter må være i intervallet mellom: [0 , " + lokale.getAntallPlasser() + "]");
             }else{
                 textFieldFarge(input, "#FFFFFF");
                 return "";
@@ -163,18 +160,6 @@ public class Feilhaandtering {
 
         }
     }
-
-/*
-    public boolean navnRegex(String tekst){
-        boolean godkjent = false;
-
-        if(navnRegex.matcher(tekst).matches()){
-            godkjent = true;
-        }
-
-        return godkjent;
-    }
-*/
 
     //Feilhåndtering ved loading
     public boolean lokalLoadSjekk(String[] liste){
@@ -242,11 +227,13 @@ public class Feilhaandtering {
 
     public boolean billettLoadSjekk(String[] liste, ArrayList<Arrangement> arrangementer){
         boolean godkjent = true;
-
         if(liste.length != 3){
             System.out.println("feil i lengde");
             godkjent = false;
-        }else if(arrangementer.get(Integer.valueOf(liste[0])) != null){
+        }else if(liste[0].matches("-1")){
+            System.out.println("feil i -1");
+            godkjent =  false;
+        }else if(Integer.valueOf(liste[0]) >= arrangementer.size()){
             System.out.println("feil i arr");
             godkjent =  false;
         }else if(!tlfRegex.matcher(liste[1]).matches()){

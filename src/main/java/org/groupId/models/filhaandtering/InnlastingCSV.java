@@ -1,5 +1,6 @@
 package org.groupId.models.filhaandtering;
 
+import javafx.scene.control.Alert;
 import org.groupId.models.*;
 
 import java.io.BufferedReader;
@@ -16,6 +17,13 @@ public class InnlastingCSV implements Innlasting {
     private BufferedReader br;
     private String feltGrense = ";";
     private Feilhaandtering feilhaandtering = new Feilhaandtering();
+    private Alert errorAlert;
+    public String mld = "Filen er lastet inn!";
+
+    public int feilLokaleAnt = 0;
+    public int feilPersonAnt = 0;
+    public int feilArrangementAnt = 0;
+    public int feilBillettAnt = 0;
 
 
     ArrayList<Lokale> lokaler = new ArrayList<>();
@@ -39,13 +47,6 @@ public class InnlastingCSV implements Innlasting {
         personer.clear();
         arrangementer.clear();
         billetter.clear();
-
-        int feilLokaleAnt = 0;
-        int feilPersonAnt = 0;
-        int feilArrangementAnt = 0;
-        int feilBillettAnt = 0;
-
-
 
 
         try {
@@ -87,9 +88,6 @@ public class InnlastingCSV implements Innlasting {
                         System.out.println("feil i Lokale");
                         feilLokaleAnt++;
                     }
-
-
-
                 }
 
                 if(personBoolean){
@@ -99,9 +97,7 @@ public class InnlastingCSV implements Innlasting {
                     }else{
                         System.out.println("fant feil i Person");
                         feilPersonAnt++;
-
                     }
-
                 }
 
 
@@ -142,28 +138,24 @@ public class InnlastingCSV implements Innlasting {
                         feilBillettAnt++;
                     }
                 }
+
+                if(feilArrangementAnt+feilBillettAnt+feilLokaleAnt+feilPersonAnt != 0){
+                    this.mld = "Det ble fjernet noen objekter under innlastning, med feil format. " +
+                            "Alle objekter går gjennom en feilhåndteringsmetode som fanger og fjerner disse fra registreringsystemet." +
+                            " \n\n Antallet er listet opp under: " +
+                            "\n Lokaler: " + feilLokaleAnt + " feil" +
+                            "\n Person: " + feilPersonAnt + " feil" +
+                            "\n Arrangment: " + feilArrangementAnt + " feil" +
+                            "\n Billett: " + feilBillettAnt + " feil";
+                }
             }
+
+
         }catch (FileNotFoundException e){
             System.out.println("FileNotFoundException");
         }catch (IOException e){
             System.out.println("IOException");
         }
-
-        if(feilArrangementAnt+feilBillettAnt+feilLokaleAnt+feilPersonAnt != 0){
-            String melding = "Det ble fjernet noen objekter under innlastning, med feil format. " +
-                    "Alle objekter går gjennom en feilhåndteringsmetode som fanger og fjerner disse fra registreringsystemet." +
-                    " \n\n Antallet er listet opp under: " +
-                    "\n Lokaler: " + feilLokaleAnt + " feil" +
-                    "\n Person: " + feilPersonAnt + " feil" +
-                    "\n Arrangment: " + feilArrangementAnt + " feil" +
-                    "\n Billett: " + feilBillettAnt + " feil";
-            System.out.println(melding);
-            feilhaandtering.feilMelding(melding);
-
-        }
-
-
-
     }
 
 
@@ -183,6 +175,20 @@ public class InnlastingCSV implements Innlasting {
 
     public ArrayList<Billett> getBilletter() {
         return billetter;
+    }
+
+    public void feilMelding(){
+        //SE OM MAN KAN FORANDRE STØRELSE OG FIKSE LAYOUT
+        errorAlert = new Alert(Alert.AlertType.INFORMATION);
+        if(this.mld.matches("Filen er lastet inn!")){
+            errorAlert.setHeaderText("Innlasting!");
+        }else{
+            errorAlert.setHeaderText("Feilmelding!");
+        }
+        errorAlert.setContentText(this.mld);
+        errorAlert.showAndWait();
+        this.mld = "Filen er lastet inn!";
+        feilArrangementAnt = feilLokaleAnt = feilPersonAnt = feilBillettAnt = 0;
     }
 
 

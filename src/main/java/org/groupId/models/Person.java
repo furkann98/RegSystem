@@ -1,8 +1,9 @@
 package org.groupId.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Person {
+public class Person implements Serializable {
 
     // DATAFELT
     private ArrayList<Person> personer = new ArrayList<>();
@@ -20,9 +21,11 @@ public class Person {
 
     // KONSTRUKTØR
     public Person(){
+        super();
     }
 
     public Person(String navn, String tlfNummer, String epost, String nettside, String opplysninger) {
+        super();
         this.navn = navn;
         this.tlfNummer = tlfNummer;
         this.Epost = epost;
@@ -64,7 +67,7 @@ public class Person {
 
     public void LeggTilArrangement(Arrangement arrangement){
         arrangementer.add(arrangement);
-        antallArrangementer =  arrangementer.size() + " arrangementer";
+        antallArrangementer =  arrangementer.size() + " stk";
     }
 
     public void FjernArrangement(Arrangement arrangement){

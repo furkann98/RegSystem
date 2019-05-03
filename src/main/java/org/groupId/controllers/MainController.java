@@ -1011,12 +1011,6 @@ public class MainController implements Initializable {
 	public void btnInnlasting(ActionEvent actionEvent) throws IOException {
 
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().addAll(
-				new FileChooser.ExtensionFilter(".jobj fil (Serialisering format)", "*.jobj"),
-				new FileChooser.ExtensionFilter(".csv fil (Excel format)", "*.csv")
-
-		);
-
 		File fil = fileChooser.showOpenDialog(null);
 
 		if (fil != null) {

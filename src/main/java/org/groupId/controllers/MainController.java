@@ -955,17 +955,17 @@ public class MainController implements Initializable {
 		leggTilLokal(teater);
 		leggTilLokal(foredrag);
 
-		Person ole = new Person("Ole","95959595","hei.txt@Oslomet.no","www.test.no","Dette er en test");
-		Person abdi = new Person("Abdi","25255555","Petter@Oslomet.no","Ingen","Dette er en test2");
-		Person ali = new Person("Ali","23543092","Thomas@Oslomet.no","www.test.no","Dette er en test3");
+		Person ole = new Person("Ole","95959595","hei.txt@Oslomet.no","www.test.no","Opplysninger");
+		Person petter = new Person("Petter","25255555","Petter@Oslomet.no","Ingen","Opplysninger");
+		Person thomas = new Person("Thomas","23543092","Thomas@Oslomet.no","www.test.no","Opplysninger");
 
 		leggTilPerson(ole);
-		leggTilPerson(abdi);
-		leggTilPerson(ali);
+		leggTilPerson(petter);
+		leggTilPerson(thomas);
 
-		Arrangement arr1 = new Arrangement(ole, konsert,"Konsert med Khalid","Khalid","Konsert av Khalid, GAALT", DatePickerArrangement.getValue(),250,100);
-		Arrangement arr2 = new Arrangement(abdi, konsert,"Konsert med Drake","Drake","Konsert av Drake, GAALT", DatePickerArrangement.getValue(),400,50);
-		Arrangement arr3 = new Arrangement(ali, foredrag,"Minnestund","","Minnestund for broodre", DatePickerArrangement.getValue(),0,20);
+		Arrangement arr1 = new Arrangement(ole, konsert,"Konsert med Khalid","Khalid","Konsert", DatePickerArrangement.getValue(),250,100);
+		Arrangement arr2 = new Arrangement(petter, konsert,"Konsert med Drake","Drake","Konsert", DatePickerArrangement.getValue(),400,50);
+		Arrangement arr3 = new Arrangement(thomas, foredrag,"Minnestund","","Minnestund for familie", DatePickerArrangement.getValue(),0,20);
 
 
 		leggTilArrangementOgBillett(arr1);
@@ -994,13 +994,11 @@ public class MainController implements Initializable {
 					try {
 						lagringCSV.Lagring(filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
 					} catch (IOException e) {
-						//e.printStackTrace();
+						e.printStackTrace();
 					}
 
 				} else if (filnavn.endsWith(".jobj")) {
 						lagringJOBJ.Lagring(filnavn, LOKALE, PERSON, ARRANGEMENT, BILLETT);
-					//System.out.println("ikke implementert");
-
 				} else {
 					System.out.println("cancel lagringCSV");
 				}
@@ -1018,7 +1016,6 @@ public class MainController implements Initializable {
 				new FileChooser.ExtensionFilter(".csv fil (Excel format)", "*.csv")
 
 		);
-		//fileChooser.setTitle("Laste opp");
 
 		File fil = fileChooser.showOpenDialog(null);
 

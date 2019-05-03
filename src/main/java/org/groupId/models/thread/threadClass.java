@@ -43,12 +43,12 @@ public class threadClass extends Task {
     }
 
     @Override
-    protected Void call() throws Exception {
+    protected Void call() {
         try {
             String filnavn = file.getPath(); //Valgt filechooser path
 
             if (filnavn.endsWith(".csv")) {
-                try {
+                    try {
                     CSV = true;
                     innlastingCSV.InnLasting(kilde, LOKALE, PERSON, ARRANGEMENT, BILLETT);
 

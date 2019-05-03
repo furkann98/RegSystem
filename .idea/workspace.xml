@@ -2,38 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f33512b5-fe76-4144-855c-32dce0eb2dc4" name="Default Changelist" comment="Test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingJOBJ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/LagringJOBJ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/TaskJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RegSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Untitled.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lagring.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingCSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadCSV.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/TaskJobj.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/RegSystem-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/RegSystem-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/controllers/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Arrangement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Billett.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Billett.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Feilhaandtering.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Feilhaandtering.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Lokale.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Lokale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/filhaandtering/InnlastingCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/filhaandtering/InnlastingCSV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/thread/threadCSV.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/thread/threadClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/groupId/models/thread/threadClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/groupId/models/thread/TaskJobj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -51,29 +30,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="1034" column="18" lean-forward="true" selection-start-line="1034" selection-start-column="18" selection-end-line="1034" selection-end-column="18" />
+            <state relative-caret-position="1563">
+              <caret line="255" column="61" selection-start-line="255" selection-start-column="59" selection-end-line="255" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#20551#20552#0" expanded="true" />
+                <element signature="e#20590#20591#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="150" column="146" selection-start-line="150" selection-start-column="146" selection-end-line="150" selection-end-column="146" />
+            <state relative-caret-position="773">
+              <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9100#9101#0" expanded="true" />
-                <element signature="e#9164#9165#0" expanded="true" />
-                <element signature="e#9214#9215#0" expanded="true" />
-                <element signature="e#9262#9263#0" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#750#751#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
+            <state relative-caret-position="733">
               <caret line="74" column="36" lean-forward="true" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -96,8 +84,68 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+            <state relative-caret-position="-594">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingCSV.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4606">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1650">
+              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#416#417#0" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,8 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add</find>
-      <find>mouse</find>
       <find>cb</find>
       <find>system.out</find>
       <find>tableview</find>
@@ -147,6 +193,8 @@
       <find>cle</find>
       <find>System</find>
       <find>INFO</find>
+      <find>testdata</find>
+      <find>//</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,13 +239,13 @@
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/LagringJOBJ.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/FINAL.jobj" />
-        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingJOBJ.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/views/Stylesheet.css" />
         <option value="$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java" />
       </list>
     </option>
   </component>
@@ -240,11 +288,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="597" />
-    <option name="y" value="64" />
-    <option name="width" value="2376" />
-    <option name="height" value="1817" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
+    <option name="width" value="1522" />
+    <option name="height" value="1931" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -254,8 +301,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,17 +360,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="groupId" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RegSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="groupId" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="filhaandtering" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RegSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -346,6 +381,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -465,13 +502,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269539000" />
+    <option name="totallyTimeSpent" value="270733000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="826" extended-state="0" />
+    <frame x="-13" y="-13" width="3026" height="1946" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25608012" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17307693" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -480,7 +517,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49828297" weight="0.32288828" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.3119891" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4903846" visible="true" weight="0.035523977" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896908" weight="0.39918256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -587,22 +624,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Untitled.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Untitled.csv" />
+    <entry file="file://$PROJECT_DIR$/src/test.csv" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/Thread.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/11.0.2/javafx-graphics-11.0.2-sources.jar!/javafx/concurrent/Task.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -616,102 +645,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadCSV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lagring.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="2674" selection-start-line="2674" selection-end-line="2674" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/Serializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="178" column="17" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hei.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jobjTest2.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jobjtest.jobj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jobjTest2.jobj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="69" selection-start-column="69" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/TaskJobj.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FINAL.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadCSV.java" />
+    <entry file="file://$PROJECT_DIR$/src/lagring.csv" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/Serializable.java" />
+    <entry file="file://$PROJECT_DIR$/src/hei.txt" />
+    <entry file="file://$PROJECT_DIR$/src/jobjTest2.csv" />
+    <entry file="file://$PROJECT_DIR$/src/jobjtest.jobj" />
+    <entry file="file://$PROJECT_DIR$/src/jobjTest2.jobj" />
+    <entry file="file://$PROJECT_DIR$/src/FINAL.csv" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/views/MainView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FINAL.jobj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="127" selection-start-line="14" selection-start-column="127" selection-end-line="14" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FINAL.jobj" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/Innlasting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -724,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/RegSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        <state relative-caret-position="561">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#263#264#0" expanded="true" />
@@ -754,26 +704,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Lokale.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="950">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#1665#1666#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -798,41 +735,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="94" column="1" lean-forward="true" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/filhaandtering/InnlastingCSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6014#6015#0" expanded="true" />
-            <element signature="e#6044#6045#0" expanded="true" />
-            <element signature="e#6090#6091#0" expanded="true" />
-            <element signature="e#6121#6122#0" expanded="true" />
-            <element signature="e#6177#6178#0" expanded="true" />
-            <element signature="e#6213#6214#0" expanded="true" />
-            <element signature="e#6261#6262#0" expanded="true" />
-            <element signature="e#6293#6294#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-4606">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        <state relative-caret-position="-594">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/TaskJobj.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/Stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Billett.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Arrangement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#750#751#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="733">
           <caret line="74" column="36" lean-forward="true" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -842,24 +812,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/Feilhaandtering.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="150" column="146" selection-start-line="150" selection-start-column="146" selection-end-line="150" selection-end-column="146" />
+        <state relative-caret-position="1563">
+          <caret line="255" column="61" selection-start-line="255" selection-start-column="59" selection-end-line="255" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9100#9101#0" expanded="true" />
-            <element signature="e#9164#9165#0" expanded="true" />
-            <element signature="e#9214#9215#0" expanded="true" />
-            <element signature="e#9262#9263#0" expanded="true" />
+            <element signature="e#20551#20552#0" expanded="true" />
+            <element signature="e#20590#20591#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/controllers/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/groupId/models/thread/threadClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="1034" column="18" lean-forward="true" selection-start-line="1034" selection-start-column="18" selection-end-line="1034" selection-end-column="18" />
+        <state relative-caret-position="1650">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

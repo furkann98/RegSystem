@@ -16,11 +16,8 @@
 
 .tab-label
 {
-
-
     -fx-font-size: 30;
     -fx-text-alignment: CENTER;
-    
 }
 
 
@@ -36,22 +33,14 @@
 }
 
 
-/*  BAKGRUNN        */
+/******** BAKGRUNNN  ********/
+
 .anchorPane
 {
     -fx-background-color: LightGREY;
 }
 
-/*
-.text-area *.text
-{
-    -fx-background-color:transparent;
 
-    -fx-opacity: 1.0;
-    -fx-font-size: 18;
-    -fx-text-alignment: center;
-}
-*/
 .text-area
 {
     -fx-font-size: 18;
@@ -73,16 +62,10 @@
 .text-area *.text
 {
     -fx-opacity: 1;
-
-
 }
-/*
-.text-area .content {
-    -fx-background-color:Grey;
 
-}
-*/
-.txtAreaOversikt {
+.txtAreaOversikt
+{
 
 
     -fx-text-fill: BlACK;
@@ -96,48 +79,49 @@
     -fx-text-alignment: center;
 }
 
-.txtNull {
+.txtNull
+{
     -fx-background-color: lightGrey;
     -fx-text-fill: black;
     -fx-font-size: 16;
 }
-/*
-.table-view{
-    -fx-background-color: transparent;
-}*/
 
+
+/******** TABLE-VIEW  ********/
 .table-view
 {
     -fx-border-color: darkgrey;
 }
 
-.table-view .column-header-background .label{
+.table-view .column-header-background .label
+{
     -fx-background-color: transparent;
     -fx-text-fill: white;
 }
 
-.table-view .column-header {
+.table-view .column-header
+{
     -fx-background-color: #616161;
 }
 
-.table-view .table-cell{
+.table-view .table-cell
+{
     -fx-text-fill: black;
-
 }
-.table-view:focused{
+.table-view:focused
+{
     -fx-background-color: transparent;
 }
 
-.table-row-cell{ /*.table-row-cell:odd /**/
+.table-row-cell
+{
 
-    -fx-background-color: -fx-table-cell-border-color, lightgrey; /*#616161 */ /* grey*/
+    -fx-background-color: -fx-table-cell-border-color, lightgrey;
     -fx-background-insets: 0, 0 0 1 0;
-
 }
 
-
-
-.table-row-cell:selected {
+.table-row-cell:selected
+{
     -fx-background-color: #005797;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
